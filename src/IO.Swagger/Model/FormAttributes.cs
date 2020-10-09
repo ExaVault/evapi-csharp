@@ -37,7 +37,7 @@ namespace IO.Swagger.Model
         /// <param name="successMessage">Message displayed to submitter after files are uploaded.</param>
         /// <param name="cssStyles">CSS Styles of the form..</param>
         /// <param name="elements">Array of form fields defined for the form.</param>
-        public FormAttributes(string formDescription = default(string), string submitButtonText = default(string), string successMessage = default(string), string cssStyles = default(string), List<> elements = default(List<>))
+        public FormAttributes(string formDescription = default(string), string submitButtonText = default(string), string successMessage = default(string), string cssStyles = default(string), List<Included> elements = default(List<Included>))
         {
             this.FormDescription = formDescription;
             this.SubmitButtonText = submitButtonText;
@@ -79,7 +79,7 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <value>Array of form fields defined for the form</value>
         [DataMember(Name="elements", EmitDefaultValue=false)]
-        public List<> Elements { get; set; }
+        public List<Included> Elements { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

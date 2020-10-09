@@ -24,42 +24,41 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// AccountResponse
+    /// Included
     /// </summary>
     [DataContract]
-        public partial class AccountResponse :  IEquatable<AccountResponse>, IValidatableObject
+        public partial class Included :  IEquatable<Included>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccountResponse" /> class.
+        /// Initializes a new instance of the <see cref="Included" /> class.
         /// </summary>
-        /// <param name="responseStatus">responseStatus.</param>
-        /// <param name="data">data.</param>
-        /// <param name="included">Array can contain objects specified in include param of the get call e.g User object.</param>
-        public AccountResponse(int? responseStatus = default(int?), Account data = default(Account), List<Included> included = default(List<Included>))
+        /// <param name="id">id.</param>
+        /// <param name="type">type.</param>
+        /// <param name="attributes">attributes.</param>
+        public Included(int? id = default(int?), string type = default(string), Object attributes = default(Object))
         {
-            this.ResponseStatus = responseStatus;
-            this.Data = data;
-            this.Included = included;
+            this.Id = id;
+            this.Type = type;
+            this.Attributes = attributes;
         }
         
         /// <summary>
-        /// Gets or Sets ResponseStatus
+        /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="responseStatus", EmitDefaultValue=false)]
-        public int? ResponseStatus { get; set; }
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public int? Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="data", EmitDefaultValue=false)]
-        public Account Data { get; set; }
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public string Type { get; set; }
 
         /// <summary>
-        /// Array can contain objects specified in include param of the get call e.g User object
+        /// Gets or Sets Attributes
         /// </summary>
-        /// <value>Array can contain objects specified in include param of the get call e.g User object</value>
-        [DataMember(Name="included", EmitDefaultValue=false)]
-        public List<Included> Included { get; set; }
+        [DataMember(Name="attributes", EmitDefaultValue=false)]
+        public Object Attributes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -68,10 +67,10 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AccountResponse {\n");
-            sb.Append("  ResponseStatus: ").Append(ResponseStatus).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  Included: ").Append(Included).Append("\n");
+            sb.Append("class Included {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,35 +91,34 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AccountResponse);
+            return this.Equals(input as Included);
         }
 
         /// <summary>
-        /// Returns true if AccountResponse instances are equal
+        /// Returns true if Included instances are equal
         /// </summary>
-        /// <param name="input">Instance of AccountResponse to be compared</param>
+        /// <param name="input">Instance of Included to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AccountResponse input)
+        public bool Equals(Included input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.ResponseStatus == input.ResponseStatus ||
-                    (this.ResponseStatus != null &&
-                    this.ResponseStatus.Equals(input.ResponseStatus))
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Data == input.Data ||
-                    (this.Data != null &&
-                    this.Data.Equals(input.Data))
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Included == input.Included ||
-                    this.Included != null &&
-                    input.Included != null &&
-                    this.Included.SequenceEqual(input.Included)
+                    this.Attributes == input.Attributes ||
+                    (this.Attributes != null &&
+                    this.Attributes.Equals(input.Attributes))
                 );
         }
 
@@ -133,12 +131,12 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ResponseStatus != null)
-                    hashCode = hashCode * 59 + this.ResponseStatus.GetHashCode();
-                if (this.Data != null)
-                    hashCode = hashCode * 59 + this.Data.GetHashCode();
-                if (this.Included != null)
-                    hashCode = hashCode * 59 + this.Included.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Attributes != null)
+                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
                 return hashCode;
             }
         }

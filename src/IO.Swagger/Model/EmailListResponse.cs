@@ -35,7 +35,7 @@ namespace IO.Swagger.Model
         /// <param name="responseStatus">Http Status code.</param>
         /// <param name="data">data.</param>
         /// <param name="included">included.</param>
-        public EmailListResponse(int? responseStatus = default(int?), EmailList data = default(EmailList), List<> included = default(List<>))
+        public EmailListResponse(int? responseStatus = default(int?), EmailList data = default(EmailList), List<Included> included = default(List<Included>))
         {
             this.ResponseStatus = responseStatus;
             this.Data = data;
@@ -59,7 +59,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Included
         /// </summary>
         [DataMember(Name="included", EmitDefaultValue=false)]
-        public List<> Included { get; set; }
+        public List<Included> Included { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -34,7 +34,7 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="responseStatus">Http status code of the response. .</param>
         /// <param name="data">data.</param>
-        public EmptyResponse(int? responseStatus = default(int?), List<> data = default(List<>))
+        public EmptyResponse(int? responseStatus = default(int?), List<Included> data = default(List<Included>))
         {
             this.ResponseStatus = responseStatus;
             this.Data = data;
@@ -51,7 +51,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name="data", EmitDefaultValue=false)]
-        public List<> Data { get; set; }
+        public List<Included> Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -33,7 +33,7 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="ResourceMultiResponse" /> class.
         /// </summary>
         /// <param name="responses">responses.</param>
-        public ResourceMultiResponse(List<> responses = default(List<>))
+        public ResourceMultiResponse(List<Included> responses = default(List<Included>))
         {
             this.Responses = responses;
         }
@@ -42,7 +42,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Responses
         /// </summary>
         [DataMember(Name="responses", EmitDefaultValue=false)]
-        public List<> Responses { get; set; }
+        public List<Included> Responses { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
