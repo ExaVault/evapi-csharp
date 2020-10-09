@@ -35,7 +35,7 @@ namespace IO.Swagger.Model
         /// <param name="responseStatus">responseStatus.</param>
         /// <param name="data">data.</param>
         /// <param name="included">Array can contain objects specified in include param of the get call e.g User object.</param>
-        public AccountResponse(int? responseStatus = default(int?), Account data = default(Account), List<Included> included = default(List<Included>))
+        public AccountResponse(int? responseStatus = default(int?), Account data = default(Account), List<OneOfAccountResponseIncludedItems> included = default(List<OneOfAccountResponseIncludedItems>))
         {
             this.ResponseStatus = responseStatus;
             this.Data = data;
@@ -59,7 +59,7 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <value>Array can contain objects specified in include param of the get call e.g User object</value>
         [DataMember(Name="included", EmitDefaultValue=false)]
-        public List<Included> Included { get; set; }
+        public List<OneOfAccountResponseIncludedItems> Included { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

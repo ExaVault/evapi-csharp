@@ -3448,7 +3448,7 @@ namespace IO.Swagger.Api
             if (evApiKey != null) localVarHeaderParams.Add("ev-api-key", this.Configuration.ApiClient.ParameterToString(evApiKey)); // header parameter
             if (evAccessToken != null) localVarHeaderParams.Add("ev-access-token", this.Configuration.ApiClient.ParameterToString(evAccessToken)); // header parameter
             if (offsetBytes != null) localVarHeaderParams.Add("offsetBytes", this.Configuration.ApiClient.ParameterToString(offsetBytes)); // header parameter
-            if (_file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", _file));
+            if (_file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", _file));
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,

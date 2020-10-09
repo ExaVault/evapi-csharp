@@ -24,35 +24,18 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// EmptyResponse
+    /// OneOfUserCollectionResponseIncludedItems
     /// </summary>
     [DataContract]
-        public partial class EmptyResponse :  IEquatable<EmptyResponse>, IValidatableObject
+        public partial class OneOfUserCollectionResponseIncludedItems :  IEquatable<OneOfUserCollectionResponseIncludedItems>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmptyResponse" /> class.
+        /// Initializes a new instance of the <see cref="OneOfUserCollectionResponseIncludedItems" /> class.
         /// </summary>
-        /// <param name="responseStatus">Http status code of the response. .</param>
-        /// <param name="data">data.</param>
-        public EmptyResponse(int? responseStatus = default(int?), List<string> data = default(List<string>))
+        public OneOfUserCollectionResponseIncludedItems()
         {
-            this.ResponseStatus = responseStatus;
-            this.Data = data;
         }
         
-        /// <summary>
-        /// Http status code of the response. 
-        /// </summary>
-        /// <value>Http status code of the response. </value>
-        [DataMember(Name="responseStatus", EmitDefaultValue=false)]
-        public int? ResponseStatus { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Data
-        /// </summary>
-        [DataMember(Name="data", EmitDefaultValue=false)]
-        public List<string> Data { get; set; }
-
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -60,9 +43,7 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class EmptyResponse {\n");
-            sb.Append("  ResponseStatus: ").Append(ResponseStatus).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("class OneOfUserCollectionResponseIncludedItems {\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,31 +64,20 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EmptyResponse);
+            return this.Equals(input as OneOfUserCollectionResponseIncludedItems);
         }
 
         /// <summary>
-        /// Returns true if EmptyResponse instances are equal
+        /// Returns true if OneOfUserCollectionResponseIncludedItems instances are equal
         /// </summary>
-        /// <param name="input">Instance of EmptyResponse to be compared</param>
+        /// <param name="input">Instance of OneOfUserCollectionResponseIncludedItems to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(EmptyResponse input)
+        public bool Equals(OneOfUserCollectionResponseIncludedItems input)
         {
             if (input == null)
                 return false;
 
-            return 
-                (
-                    this.ResponseStatus == input.ResponseStatus ||
-                    (this.ResponseStatus != null &&
-                    this.ResponseStatus.Equals(input.ResponseStatus))
-                ) && 
-                (
-                    this.Data == input.Data ||
-                    this.Data != null &&
-                    input.Data != null &&
-                    this.Data.SequenceEqual(input.Data)
-                );
+            return false;
         }
 
         /// <summary>
@@ -119,10 +89,6 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ResponseStatus != null)
-                    hashCode = hashCode * 59 + this.ResponseStatus.GetHashCode();
-                if (this.Data != null)
-                    hashCode = hashCode * 59 + this.Data.GetHashCode();
                 return hashCode;
             }
         }

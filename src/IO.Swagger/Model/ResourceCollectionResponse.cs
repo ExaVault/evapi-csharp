@@ -37,7 +37,7 @@ namespace IO.Swagger.Model
         /// <param name="returnedResults">Count of returned results..</param>
         /// <param name="data">data.</param>
         /// <param name="included">included.</param>
-        public ResourceCollectionResponse(int? responseStatus = default(int?), int? totalResults = default(int?), int? returnedResults = default(int?), List<Resource> data = default(List<Resource>), List<Included> included = default(List<Included>))
+        public ResourceCollectionResponse(int? responseStatus = default(int?), int? totalResults = default(int?), int? returnedResults = default(int?), List<Resource> data = default(List<Resource>), List<OneOfResourceCollectionResponseIncludedItems> included = default(List<OneOfResourceCollectionResponseIncludedItems>))
         {
             this.ResponseStatus = responseStatus;
             this.TotalResults = totalResults;
@@ -77,7 +77,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Included
         /// </summary>
         [DataMember(Name="included", EmitDefaultValue=false)]
-        public List<Included> Included { get; set; }
+        public List<OneOfResourceCollectionResponseIncludedItems> Included { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
