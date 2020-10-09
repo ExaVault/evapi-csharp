@@ -14,6 +14,7 @@ using System.Linq;
 using RestSharp;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
+using System.IO;
 
 namespace IO.Swagger.Api
 {
@@ -3448,7 +3449,11 @@ namespace IO.Swagger.Api
             if (evApiKey != null) localVarHeaderParams.Add("ev-api-key", this.Configuration.ApiClient.ParameterToString(evApiKey)); // header parameter
             if (evAccessToken != null) localVarHeaderParams.Add("ev-access-token", this.Configuration.ApiClient.ParameterToString(evAccessToken)); // header parameter
             if (offsetBytes != null) localVarHeaderParams.Add("offsetBytes", this.Configuration.ApiClient.ParameterToString(offsetBytes)); // header parameter
-            if (_file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", _file));
+            if (_file != null)
+            {
+                MemoryStream stream = new MemoryStream(_file);
+                localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", stream));
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -3545,7 +3550,12 @@ namespace IO.Swagger.Api
             if (evApiKey != null) localVarHeaderParams.Add("ev-api-key", this.Configuration.ApiClient.ParameterToString(evApiKey)); // header parameter
             if (evAccessToken != null) localVarHeaderParams.Add("ev-access-token", this.Configuration.ApiClient.ParameterToString(evAccessToken)); // header parameter
             if (offsetBytes != null) localVarHeaderParams.Add("offsetBytes", this.Configuration.ApiClient.ParameterToString(offsetBytes)); // header parameter
-            if (_file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", _file));
+            if (_file != null)
+            {
+                /** EV - Custom code **/ 
+                MemoryStream stream = new MemoryStream(_file);
+                localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", stream));
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
