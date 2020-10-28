@@ -49,9 +49,9 @@ And save the file.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using ExaVault.Api;
+using ExaVault.Client;
+using ExaVault.Model;
 
 namespace Example
 {
