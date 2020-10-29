@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Swagger Library")]
-[assembly: AssemblyDescription("A library generated from a Swagger doc")]
+[assembly: AssemblyTitle("ExaVault API C#")]
+[assembly: AssemblyDescription("SDK for interacting with ExaVault's API")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Swagger")]
-[assembly: AssemblyProduct("SwaggerLibrary")]
+[assembly: AssemblyCompany("ExaVault")]
+[assembly: AssemblyProduct("EVAPI")]
 [assembly: AssemblyCopyright("No Copyright")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
