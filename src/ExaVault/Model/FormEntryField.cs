@@ -24,7 +24,7 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// Contains the data of form field
+    /// Attributes of the form including its included fields and css styles
     /// </summary>
     [DataContract]
         public partial class FormEntryField :  IEquatable<FormEntryField>, IValidatableObject

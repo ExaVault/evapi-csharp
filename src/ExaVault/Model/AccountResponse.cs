@@ -35,7 +35,7 @@ namespace ExaVault.Model
         /// <param name="responseStatus">responseStatus.</param>
         /// <param name="data">data.</param>
         /// <param name="included">Array can contain objects specified in include param of the get call e.g User object.</param>
-        public AccountResponse(int? responseStatus = default(int?), Account data = default(Account), List<OneOfAccountResponseIncludedItems> included = default(List<OneOfAccountResponseIncludedItems>))
+        public AccountResponse(int? responseStatus = default(int?), Account data = default(Account), List<User> included = default(List<User>))
         {
             this.ResponseStatus = responseStatus;
             this.Data = data;
@@ -59,7 +59,7 @@ namespace ExaVault.Model
         /// </summary>
         /// <value>Array can contain objects specified in include param of the get call e.g User object</value>
         [DataMember(Name="included", EmitDefaultValue=false)]
-        public List<OneOfAccountResponseIncludedItems> Included { get; set; }
+        public List<User> Included { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

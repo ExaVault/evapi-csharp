@@ -35,7 +35,7 @@ namespace ExaVault.Model
         /// <param name="responseStatus">Http status code of the response. .</param>
         /// <param name="data">data.</param>
         /// <param name="included">included.</param>
-        public FormResponse(int? responseStatus = default(int?), Form data = default(Form), List<OneOfFormResponseIncludedItems> included = default(List<OneOfFormResponseIncludedItems>))
+        public FormResponse(int? responseStatus = default(int?), Form data = default(Form), List<Share> included = default(List<Share>))
         {
             this.ResponseStatus = responseStatus;
             this.Data = data;
@@ -59,7 +59,7 @@ namespace ExaVault.Model
         /// Gets or Sets Included
         /// </summary>
         [DataMember(Name="included", EmitDefaultValue=false)]
-        public List<OneOfFormResponseIncludedItems> Included { get; set; }
+        public List<Share> Included { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

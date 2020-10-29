@@ -66,7 +66,8 @@ namespace ExaVault.Model
         /// <param name="expiration">Optional timestamp when the user should expire..</param>
         /// <param name="locked">If true, the user will be prevented from logging in.</param>
         /// <param name="onboarding">Set this to **true** to enable extra help popups in the web file manager for this user..</param>
-        public Body6(string username = default(string), string nickname = default(string), string homeResource = default(string), string email = default(string), string password = default(string), RoleEnum? role = default(RoleEnum?), string permissions = default(string), string timeZone = default(string), string expiration = default(string), bool? locked = default(bool?), bool? onboarding = default(bool?))
+        /// <param name="currentUserPassword">The password of the currently authenticated user. Required when updating any user’s email, username or password..</param>
+        public Body6(string username = default(string), string nickname = default(string), string homeResource = default(string), string email = default(string), string password = default(string), RoleEnum? role = default(RoleEnum?), string permissions = default(string), string timeZone = default(string), string expiration = default(string), bool? locked = default(bool?), bool? onboarding = default(bool?), string currentUserPassword = default(string))
         {
             this.Username = username;
             this.Nickname = nickname;
@@ -79,6 +80,7 @@ namespace ExaVault.Model
             this.Expiration = expiration;
             this.Locked = locked;
             this.Onboarding = onboarding;
+            this.CurrentUserPassword = currentUserPassword;
         }
         
         /// <summary>
@@ -153,6 +155,13 @@ namespace ExaVault.Model
         public bool? Onboarding { get; set; }
 
         /// <summary>
+        /// The password of the currently authenticated user. Required when updating any user’s email, username or password.
+        /// </summary>
+        /// <value>The password of the currently authenticated user. Required when updating any user’s email, username or password.</value>
+        [DataMember(Name="currentUserPassword", EmitDefaultValue=false)]
+        public string CurrentUserPassword { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -171,6 +180,7 @@ namespace ExaVault.Model
             sb.Append("  Expiration: ").Append(Expiration).Append("\n");
             sb.Append("  Locked: ").Append(Locked).Append("\n");
             sb.Append("  Onboarding: ").Append(Onboarding).Append("\n");
+            sb.Append("  CurrentUserPassword: ").Append(CurrentUserPassword).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -259,6 +269,11 @@ namespace ExaVault.Model
                     this.Onboarding == input.Onboarding ||
                     (this.Onboarding != null &&
                     this.Onboarding.Equals(input.Onboarding))
+                ) && 
+                (
+                    this.CurrentUserPassword == input.CurrentUserPassword ||
+                    (this.CurrentUserPassword != null &&
+                    this.CurrentUserPassword.Equals(input.CurrentUserPassword))
                 );
         }
 
@@ -293,6 +308,8 @@ namespace ExaVault.Model
                     hashCode = hashCode * 59 + this.Locked.GetHashCode();
                 if (this.Onboarding != null)
                     hashCode = hashCode * 59 + this.Onboarding.GetHashCode();
+                if (this.CurrentUserPassword != null)
+                    hashCode = hashCode * 59 + this.CurrentUserPassword.GetHashCode();
                 return hashCode;
             }
         }

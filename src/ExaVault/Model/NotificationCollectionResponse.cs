@@ -37,7 +37,7 @@ namespace ExaVault.Model
         /// <param name="returnedResults">Number of returned results..</param>
         /// <param name="data">data.</param>
         /// <param name="included">included.</param>
-        public NotificationCollectionResponse(int? responseStatus = default(int?), int? totalResults = default(int?), int? returnedResults = default(int?), List<Notification> data = default(List<Notification>), List<OneOfNotificationCollectionResponseIncludedItems> included = default(List<OneOfNotificationCollectionResponseIncludedItems>))
+        public NotificationCollectionResponse(int? responseStatus = default(int?), int? totalResults = default(int?), int? returnedResults = default(int?), List<Notification> data = default(List<Notification>), List<AnyOfNotificationCollectionResponseIncludedItems> included = default(List<AnyOfNotificationCollectionResponseIncludedItems>))
         {
             this.ResponseStatus = responseStatus;
             this.TotalResults = totalResults;
@@ -77,7 +77,7 @@ namespace ExaVault.Model
         /// Gets or Sets Included
         /// </summary>
         [DataMember(Name="included", EmitDefaultValue=false)]
-        public List<OneOfNotificationCollectionResponseIncludedItems> Included { get; set; }
+        public List<AnyOfNotificationCollectionResponseIncludedItems> Included { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

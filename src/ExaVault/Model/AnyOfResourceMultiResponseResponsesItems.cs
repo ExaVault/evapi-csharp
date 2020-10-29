@@ -24,26 +24,18 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// ResourceMultiResponse
+    /// AnyOfResourceMultiResponseResponsesItems
     /// </summary>
     [DataContract]
-        public partial class ResourceMultiResponse :  IEquatable<ResourceMultiResponse>, IValidatableObject
+        public partial class AnyOfResourceMultiResponseResponsesItems :  IEquatable<AnyOfResourceMultiResponseResponsesItems>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ResourceMultiResponse" /> class.
+        /// Initializes a new instance of the <see cref="AnyOfResourceMultiResponseResponsesItems" /> class.
         /// </summary>
-        /// <param name="responses">responses.</param>
-        public ResourceMultiResponse(List<AnyOfResourceMultiResponseResponsesItems> responses = default(List<AnyOfResourceMultiResponseResponsesItems>))
+        public AnyOfResourceMultiResponseResponsesItems()
         {
-            this.Responses = responses;
         }
         
-        /// <summary>
-        /// Gets or Sets Responses
-        /// </summary>
-        [DataMember(Name="responses", EmitDefaultValue=false)]
-        public List<AnyOfResourceMultiResponseResponsesItems> Responses { get; set; }
-
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -51,8 +43,7 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ResourceMultiResponse {\n");
-            sb.Append("  Responses: ").Append(Responses).Append("\n");
+            sb.Append("class AnyOfResourceMultiResponseResponsesItems {\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -73,26 +64,20 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ResourceMultiResponse);
+            return this.Equals(input as AnyOfResourceMultiResponseResponsesItems);
         }
 
         /// <summary>
-        /// Returns true if ResourceMultiResponse instances are equal
+        /// Returns true if AnyOfResourceMultiResponseResponsesItems instances are equal
         /// </summary>
-        /// <param name="input">Instance of ResourceMultiResponse to be compared</param>
+        /// <param name="input">Instance of AnyOfResourceMultiResponseResponsesItems to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ResourceMultiResponse input)
+        public bool Equals(AnyOfResourceMultiResponseResponsesItems input)
         {
             if (input == null)
                 return false;
 
-            return 
-                (
-                    this.Responses == input.Responses ||
-                    this.Responses != null &&
-                    input.Responses != null &&
-                    this.Responses.SequenceEqual(input.Responses)
-                );
+            return false;
         }
 
         /// <summary>
@@ -104,8 +89,6 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Responses != null)
-                    hashCode = hashCode * 59 + this.Responses.GetHashCode();
                 return hashCode;
             }
         }
