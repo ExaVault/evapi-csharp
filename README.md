@@ -35,7 +35,7 @@ For a gentle introduction to using C# code with ExaVault's API, check out [our c
 
 When you're ready to write your own code using this library, you'll need to:
 
-1. Install our code library in your project, either with `Clone this repository` or by downloading the dll files from `bin\Release` [folder onto your local computer](https://github.com/ExaVault/evapi-csharp-samples/tree/main/Example/bin/Release)
+1. Install our code library in your project, either with `Clone this repository` or by downloading the dll files from [lib folder](lib) onto your local computer.
    and adding them to this repository.
 2. Provide your API key and access token with every function method on the Api classes, which are in the ExaVault\Api namespace.
 3. Whenever you instantiate an Api object (ResourcesApi, UsersApi, etc.), override the configuration to point the code at the correct API URL:
