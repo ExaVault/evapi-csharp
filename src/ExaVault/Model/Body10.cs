@@ -68,7 +68,7 @@ namespace ExaVault.Model
         /// Name of the zip archive to create. If left blank, current date will be used.
         /// </summary>
         /// <value>Name of the zip archive to create. If left blank, current date will be used.</value>
-        [DataMember(Name="archive Name", EmitDefaultValue=false)]
+        [DataMember(Name="archiveName", EmitDefaultValue=false)]
         public string ArchiveName { get; set; }
 
         /// <summary>

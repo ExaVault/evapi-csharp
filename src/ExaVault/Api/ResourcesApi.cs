@@ -160,7 +160,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
         /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be pulled till zip file is created. (optional)</param>
+        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
         /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>byte[]</returns>
         byte[] Download (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null);
@@ -176,7 +176,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
         /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be pulled till zip file is created. (optional)</param>
+        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
         /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
         ApiResponse<byte[]> DownloadWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null);
@@ -589,7 +589,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
         /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be pulled till zip file is created. (optional)</param>
+        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
         /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>Task of byte[]</returns>
         System.Threading.Tasks.Task<byte[]> DownloadAsync (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null);
@@ -605,7 +605,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
         /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be pulled till zip file is created. (optional)</param>
+        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
         /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
         System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadAsyncWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null);
@@ -1814,7 +1814,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
         /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be pulled till zip file is created. (optional)</param>
+        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
         /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>byte[]</returns>
         public byte[] Download (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null)
@@ -1831,7 +1831,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
         /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be pulled till zip file is created. (optional)</param>
+        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
         /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
         public ApiResponse< byte[] > DownloadWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null)
@@ -1902,7 +1902,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
         /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be pulled till zip file is created. (optional)</param>
+        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
         /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>Task of byte[]</returns>
         public async System.Threading.Tasks.Task<byte[]> DownloadAsync (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null)
@@ -1920,7 +1920,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
         /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be pulled till zip file is created. (optional)</param>
+        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
         /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
         public async System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadAsyncWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null)

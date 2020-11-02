@@ -28,7 +28,7 @@ namespace ExaVault.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.0.0";
+        public const string Version = "2.1.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -113,13 +113,12 @@ namespace ExaVault.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "Swagger-Codegen/1.0.0/csharp";
+            UserAgent = "Swagger-Codegen/2.1.0/csharp";
             BasePath = "https://accountname.exavault.com/api/v2";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
 
-            // Setting Timeout has side effects (forces ApiClient creation).
             Timeout = 100000;
         }
 
@@ -186,7 +185,7 @@ namespace ExaVault.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "Swagger-Codegen/1.0.0/csharp"
+            string userAgent = "Swagger-Codegen/2.1.0/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -242,14 +241,32 @@ namespace ExaVault.Client
         /// </summary>
         public virtual IDictionary<string, string> DefaultHeader { get; set; }
 
+        private int _timeout = 100000;
         /// <summary>
         /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
         /// </summary>
         public virtual int Timeout
         {
             
-            get { return ApiClient.RestClient.Timeout; }
-            set { ApiClient.RestClient.Timeout = value; }
+            get
+            {
+                if (_apiClient == null)
+                {
+                    return _timeout;
+                } 
+                else
+                {
+                    return ApiClient.RestClient.Timeout;
+                }
+            }
+            set
+            {
+                _timeout = value;
+                if (_apiClient != null)
+                {
+                    ApiClient.RestClient.Timeout = _timeout;
+                }
+            }
         }
 
         /// <summary>
@@ -421,7 +438,7 @@ namespace ExaVault.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 2.0\n";
-            report += "    SDK Package Version: 1.0.0\n";
+            report += "    SDK Package Version: 2.1.0\n";
 
             return report;
         }
