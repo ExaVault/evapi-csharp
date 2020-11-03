@@ -14,6 +14,7 @@ using System.Linq;
 using RestSharp;
 using ExaVault.Client;
 using ExaVault.Model;
+/* EV-CUSTOM - Need System.IO for memory streams */
 using System.IO;
 
 namespace ExaVault.Api
@@ -445,11 +446,13 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="path">Destination path for the file being uploaded, including the file name.</param>
         /// <param name="fileSize">File size, in bits, of the file being uploaded.</param>
+		/// EV-CUSTOM - need the _file byte array parameter for file contents
         /// <param name="_file"> (optional)</param>
         /// <param name="offsetBytes">Allows a file upload to resume at a certain number of bytes. (optional)</param>
         /// <param name="resume">True if upload resume is supported, false if it isn&#x27;t.  (optional, default to true)</param>
         /// <param name="allowOverwrite">True if a file with the same name is found in the designated path, should be overwritten. False if different file names should be generated.  (optional, default to false)</param>
         /// <returns>ApiResponse of ResourceResponse</returns>
+		/* EV-CUSTOM - Need function signature that includes _file parameter */
         ApiResponse<ResourceResponse> UploadFileWithHttpInfo (string evApiKey, string evAccessToken, string path, int? fileSize, byte[] _file = null, int? offsetBytes = null, bool? resume = null, bool? allowOverwrite = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
@@ -856,11 +859,13 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="path">Destination path for the file being uploaded, including the file name.</param>
         /// <param name="fileSize">File size, in bits, of the file being uploaded.</param>
+		/// EV-CUSTOM - Need _file parameter for uploading
         /// <param name="_file"> (optional)</param>
         /// <param name="offsetBytes">Allows a file upload to resume at a certain number of bytes. (optional)</param>
         /// <param name="resume">True if upload resume is supported, false if it isn&#x27;t.  (optional, default to true)</param>
         /// <param name="allowOverwrite">True if a file with the same name is found in the designated path, should be overwritten. False if different file names should be generated.  (optional, default to false)</param>
         /// <returns>Task of ResourceResponse</returns>
+		/* EV-CUSTOM - Updated function signature with byte array for file contents */
         System.Threading.Tasks.Task<ResourceResponse> UploadFileAsync (string evApiKey, string evAccessToken, string path, int? fileSize, byte[] _file = null, int? offsetBytes = null, bool? resume = null, bool? allowOverwrite = null);
 
         /// <summary>
@@ -874,11 +879,13 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="path">Destination path for the file being uploaded, including the file name.</param>
         /// <param name="fileSize">File size, in bits, of the file being uploaded.</param>
+		/// EV-CUSTOM - Need file paramter for upload
         /// <param name="_file"> (optional)</param>
         /// <param name="offsetBytes">Allows a file upload to resume at a certain number of bytes. (optional)</param>
         /// <param name="resume">True if upload resume is supported, false if it isn&#x27;t.  (optional, default to true)</param>
         /// <param name="allowOverwrite">True if a file with the same name is found in the designated path, should be overwritten. False if different file names should be generated.  (optional, default to false)</param>
         /// <returns>Task of ApiResponse (ResourceResponse)</returns>
+		/* EV-CUSTOM - Updated function signature with byte array for file contents */
         System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> UploadFileAsyncWithHttpInfo (string evApiKey, string evAccessToken, string path, int? fileSize, byte[] _file = null, int? offsetBytes = null, bool? resume = null, bool? allowOverwrite = null);
         #endregion Asynchronous Operations
     }
@@ -3381,16 +3388,19 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="path">Destination path for the file being uploaded, including the file name.</param>
         /// <param name="fileSize">File size, in bits, of the file being uploaded.</param>
+		/// EV-CUSTOM - Need the next line = _file parameter for file contents
         /// <param name="_file"> (optional)</param>
         /// <param name="offsetBytes">Allows a file upload to resume at a certain number of bytes. (optional)</param>
         /// <param name="resume">True if upload resume is supported, false if it isn&#x27;t.  (optional, default to true)</param>
         /// <param name="allowOverwrite">True if a file with the same name is found in the designated path, should be overwritten. False if different file names should be generated.  (optional, default to false)</param>
         /// <returns>ResourceResponse</returns>
+		/* EV-CUSTOM - Need updated method for upload */
         public ResourceResponse UploadFile (string evApiKey, string evAccessToken, string path, int? fileSize, byte[] _file = null, int? offsetBytes = null, bool? resume = null, bool? allowOverwrite = null)
         {
              ApiResponse<ResourceResponse> localVarResponse = UploadFileWithHttpInfo(evApiKey, evAccessToken, path, fileSize, _file, offsetBytes, resume, allowOverwrite);
              return localVarResponse.Data;
         }
+		/* EV-CUSTOM -end of customization */
 
         /// <summary>
         /// Upload a file Uploads a file to a specified path, with optional support for resuming a partially uploaded existing file. 
@@ -3400,11 +3410,13 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="path">Destination path for the file being uploaded, including the file name.</param>
         /// <param name="fileSize">File size, in bits, of the file being uploaded.</param>
+		/* EV-CUSTOM - Need next line for file contents */
         /// <param name="_file"> (optional)</param>
         /// <param name="offsetBytes">Allows a file upload to resume at a certain number of bytes. (optional)</param>
         /// <param name="resume">True if upload resume is supported, false if it isn&#x27;t.  (optional, default to true)</param>
         /// <param name="allowOverwrite">True if a file with the same name is found in the designated path, should be overwritten. False if different file names should be generated.  (optional, default to false)</param>
         /// <returns>ApiResponse of ResourceResponse</returns>
+		/* EV-CUSTOM - Need updated function signature for upload */
         public ApiResponse< ResourceResponse > UploadFileWithHttpInfo (string evApiKey, string evAccessToken, string path, int? fileSize, byte[] _file = null, int? offsetBytes = null, bool? resume = null, bool? allowOverwrite = null)
         {
             // verify the required parameter 'evApiKey' is set
@@ -3449,11 +3461,13 @@ namespace ExaVault.Api
             if (evApiKey != null) localVarHeaderParams.Add("ev-api-key", this.Configuration.ApiClient.ParameterToString(evApiKey)); // header parameter
             if (evAccessToken != null) localVarHeaderParams.Add("ev-access-token", this.Configuration.ApiClient.ParameterToString(evAccessToken)); // header parameter
             if (offsetBytes != null) localVarHeaderParams.Add("offsetBytes", this.Configuration.ApiClient.ParameterToString(offsetBytes)); // header parameter
-            if (_file != null)
+            /* EV-CUSTOM - convertes byte array into memory stream */
+			if (_file != null)
             {
                 MemoryStream stream = new MemoryStream(_file);
                 localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", stream));
             }
+			/* EV-CUSTOM - end of customization */
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -3481,17 +3495,20 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="path">Destination path for the file being uploaded, including the file name.</param>
         /// <param name="fileSize">File size, in bits, of the file being uploaded.</param>
+		/// EV-CUSTOM - Need next line for file contents
         /// <param name="_file"> (optional)</param>
         /// <param name="offsetBytes">Allows a file upload to resume at a certain number of bytes. (optional)</param>
         /// <param name="resume">True if upload resume is supported, false if it isn&#x27;t.  (optional, default to true)</param>
         /// <param name="allowOverwrite">True if a file with the same name is found in the designated path, should be overwritten. False if different file names should be generated.  (optional, default to false)</param>
         /// <returns>Task of ResourceResponse</returns>
+		/* EV-CUSTOM - Updated so uploading will work */
         public async System.Threading.Tasks.Task<ResourceResponse> UploadFileAsync (string evApiKey, string evAccessToken, string path, int? fileSize, byte[] _file = null, int? offsetBytes = null, bool? resume = null, bool? allowOverwrite = null)
         {
              ApiResponse<ResourceResponse> localVarResponse = await UploadFileAsyncWithHttpInfo(evApiKey, evAccessToken, path, fileSize, _file, offsetBytes, resume, allowOverwrite);
              return localVarResponse.Data;
 
         }
+		/* EV-CUSTOM - end of customization */
 
         /// <summary>
         /// Upload a file Uploads a file to a specified path, with optional support for resuming a partially uploaded existing file. 
@@ -3501,11 +3518,13 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="path">Destination path for the file being uploaded, including the file name.</param>
         /// <param name="fileSize">File size, in bits, of the file being uploaded.</param>
+		/// EV-CUSTOM - Need next line for file contents
         /// <param name="_file"> (optional)</param>
         /// <param name="offsetBytes">Allows a file upload to resume at a certain number of bytes. (optional)</param>
         /// <param name="resume">True if upload resume is supported, false if it isn&#x27;t.  (optional, default to true)</param>
         /// <param name="allowOverwrite">True if a file with the same name is found in the designated path, should be overwritten. False if different file names should be generated.  (optional, default to false)</param>
         /// <returns>Task of ApiResponse (ResourceResponse)</returns>
+		/// EV-CUSTOM - Need updated function signature for file contents byte array 
         public async System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> UploadFileAsyncWithHttpInfo (string evApiKey, string evAccessToken, string path, int? fileSize, byte[] _file = null, int? offsetBytes = null, bool? resume = null, bool? allowOverwrite = null)
         {
             // verify the required parameter 'evApiKey' is set
@@ -3550,12 +3569,13 @@ namespace ExaVault.Api
             if (evApiKey != null) localVarHeaderParams.Add("ev-api-key", this.Configuration.ApiClient.ParameterToString(evApiKey)); // header parameter
             if (evAccessToken != null) localVarHeaderParams.Add("ev-access-token", this.Configuration.ApiClient.ParameterToString(evAccessToken)); // header parameter
             if (offsetBytes != null) localVarHeaderParams.Add("offsetBytes", this.Configuration.ApiClient.ParameterToString(offsetBytes)); // header parameter
-            if (_file != null)
+            /* EV-CUSTOM - convert _file byte array to memory stream before adding to API Client */
+			if (_file != null)
             {
-                /** EV - Custom code **/ 
                 MemoryStream stream = new MemoryStream(_file);
                 localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", stream));
             }
+			/* EV-CUSTOM -end of customization */
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
