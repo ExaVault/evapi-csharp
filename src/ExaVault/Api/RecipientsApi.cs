@@ -35,7 +35,7 @@ namespace ExaVault.Api
         /// <param name="shareId">ID of the share to resend invites for.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ShareRecipientsResponse</returns>
-        ShareRecipientsResponse ResendInvitationsForShare (string evApiKey, string evAccessToken, int? shareId, Body18 body = null);
+        ShareRecipientsResponse ResendInvitationsForShare (string evApiKey, string evAccessToken, int? shareId, ResendInvitationsRequestBody body = null);
 
         /// <summary>
         /// Resend invitations to share recipients
@@ -49,7 +49,7 @@ namespace ExaVault.Api
         /// <param name="shareId">ID of the share to resend invites for.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ShareRecipientsResponse</returns>
-        ApiResponse<ShareRecipientsResponse> ResendInvitationsForShareWithHttpInfo (string evApiKey, string evAccessToken, int? shareId, Body18 body = null);
+        ApiResponse<ShareRecipientsResponse> ResendInvitationsForShareWithHttpInfo (string evApiKey, string evAccessToken, int? shareId, ResendInvitationsRequestBody body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -64,7 +64,7 @@ namespace ExaVault.Api
         /// <param name="shareId">ID of the share to resend invites for.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ShareRecipientsResponse</returns>
-        System.Threading.Tasks.Task<ShareRecipientsResponse> ResendInvitationsForShareAsync (string evApiKey, string evAccessToken, int? shareId, Body18 body = null);
+        System.Threading.Tasks.Task<ShareRecipientsResponse> ResendInvitationsForShareAsync (string evApiKey, string evAccessToken, int? shareId, ResendInvitationsRequestBody body = null);
 
         /// <summary>
         /// Resend invitations to share recipients
@@ -78,7 +78,7 @@ namespace ExaVault.Api
         /// <param name="shareId">ID of the share to resend invites for.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ShareRecipientsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ShareRecipientsResponse>> ResendInvitationsForShareAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? shareId, Body18 body = null);
+        System.Threading.Tasks.Task<ApiResponse<ShareRecipientsResponse>> ResendInvitationsForShareAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? shareId, ResendInvitationsRequestBody body = null);
         #endregion Asynchronous Operations
     }
 
@@ -199,7 +199,7 @@ namespace ExaVault.Api
         /// <param name="shareId">ID of the share to resend invites for.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ShareRecipientsResponse</returns>
-        public ShareRecipientsResponse ResendInvitationsForShare (string evApiKey, string evAccessToken, int? shareId, Body18 body = null)
+        public ShareRecipientsResponse ResendInvitationsForShare (string evApiKey, string evAccessToken, int? shareId, ResendInvitationsRequestBody body = null)
         {
              ApiResponse<ShareRecipientsResponse> localVarResponse = ResendInvitationsForShareWithHttpInfo(evApiKey, evAccessToken, shareId, body);
              return localVarResponse.Data;
@@ -214,7 +214,7 @@ namespace ExaVault.Api
         /// <param name="shareId">ID of the share to resend invites for.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ShareRecipientsResponse</returns>
-        public ApiResponse< ShareRecipientsResponse > ResendInvitationsForShareWithHttpInfo (string evApiKey, string evAccessToken, int? shareId, Body18 body = null)
+        public ApiResponse< ShareRecipientsResponse > ResendInvitationsForShareWithHttpInfo (string evApiKey, string evAccessToken, int? shareId, ResendInvitationsRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -287,7 +287,7 @@ namespace ExaVault.Api
         /// <param name="shareId">ID of the share to resend invites for.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ShareRecipientsResponse</returns>
-        public async System.Threading.Tasks.Task<ShareRecipientsResponse> ResendInvitationsForShareAsync (string evApiKey, string evAccessToken, int? shareId, Body18 body = null)
+        public async System.Threading.Tasks.Task<ShareRecipientsResponse> ResendInvitationsForShareAsync (string evApiKey, string evAccessToken, int? shareId, ResendInvitationsRequestBody body = null)
         {
              ApiResponse<ShareRecipientsResponse> localVarResponse = await ResendInvitationsForShareAsyncWithHttpInfo(evApiKey, evAccessToken, shareId, body);
              return localVarResponse.Data;
@@ -303,7 +303,7 @@ namespace ExaVault.Api
         /// <param name="shareId">ID of the share to resend invites for.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ShareRecipientsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ShareRecipientsResponse>> ResendInvitationsForShareAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? shareId, Body18 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ShareRecipientsResponse>> ResendInvitationsForShareAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? shareId, ResendInvitationsRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)

@@ -24,55 +24,47 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// All properties of the resource delete object
+    /// ShareMessageData
     /// </summary>
     [DataContract]
-        public partial class ResourceDelete :  IEquatable<ResourceDelete>, IValidatableObject
+        public partial class ShareMessageData :  IEquatable<ShareMessageData>, IValidatableObject
     {
         /// <summary>
-        /// Type of item. \&quot;resource\&quot;
+        /// Type is message. 
         /// </summary>
-        /// <value>Type of item. \&quot;resource\&quot;</value>
+        /// <value>Type is message. </value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum TypeEnum
         {
             /// <summary>
-            /// Enum Resource for value: resource
+            /// Enum Message for value: message
             /// </summary>
-            [EnumMember(Value = "resource")]
-            Resource = 1        }
+            [EnumMember(Value = "message")]
+            Message = 1        }
         /// <summary>
-        /// Type of item. \&quot;resource\&quot;
+        /// Type is message. 
         /// </summary>
-        /// <value>Type of item. \&quot;resource\&quot;</value>
+        /// <value>Type is message. </value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ResourceDelete" /> class.
+        /// Initializes a new instance of the <see cref="ShareMessageData" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="type">Type of item. \&quot;resource\&quot;.</param>
-        /// <param name="meta">Meta object containing non-standard meta-information about the delete operation..</param>
-        public ResourceDelete(long? id = default(long?), TypeEnum? type = default(TypeEnum?), Object meta = default(Object))
+        /// <param name="type">Type is message. .</param>
+        /// <param name="id">ID of the message..</param>
+        public ShareMessageData(TypeEnum? type = default(TypeEnum?), int? id = default(int?))
         {
-            this.Id = id;
             this.Type = type;
-            this.Meta = meta;
+            this.Id = id;
         }
         
+
         /// <summary>
-        /// Gets or Sets Id
+        /// ID of the message.
         /// </summary>
+        /// <value>ID of the message.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
-
-        /// <summary>
-        /// Meta object containing non-standard meta-information about the delete operation.
-        /// </summary>
-        /// <value>Meta object containing non-standard meta-information about the delete operation.</value>
-        [DataMember(Name="meta", EmitDefaultValue=false)]
-        public Object Meta { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -81,10 +73,9 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ResourceDelete {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("class ShareMessageData {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Meta: ").Append(Meta).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -105,34 +96,29 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ResourceDelete);
+            return this.Equals(input as ShareMessageData);
         }
 
         /// <summary>
-        /// Returns true if ResourceDelete instances are equal
+        /// Returns true if ShareMessageData instances are equal
         /// </summary>
-        /// <param name="input">Instance of ResourceDelete to be compared</param>
+        /// <param name="input">Instance of ShareMessageData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ResourceDelete input)
+        public bool Equals(ShareMessageData input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Meta == input.Meta ||
-                    (this.Meta != null &&
-                    this.Meta.Equals(input.Meta))
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 );
         }
 
@@ -145,12 +131,10 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Meta != null)
-                    hashCode = hashCode * 59 + this.Meta.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 return hashCode;
             }
         }

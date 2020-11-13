@@ -24,41 +24,34 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// Object with preview image properties.
+    /// DeleteResourcesRequestBody
     /// </summary>
     [DataContract]
-        public partial class PreviewFile :  IEquatable<PreviewFile>, IValidatableObject
+        public partial class DeleteResourcesRequestBody :  IEquatable<DeleteResourcesRequestBody>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PreviewFile" /> class.
+        /// Initializes a new instance of the <see cref="DeleteResourcesRequestBody" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="type">type.</param>
-        /// <param name="attributes">attributes.</param>
-        public PreviewFile(long? id = default(long?), string type = default(string), PreviewFileAttributes attributes = default(PreviewFileAttributes))
+        /// <param name="resources">Resource identifiers of items to delete. (required).</param>
+        public DeleteResourcesRequestBody(List<string> resources = default(List<string>))
         {
-            this.Id = id;
-            this.Type = type;
-            this.Attributes = attributes;
+            // to ensure "resources" is required (not null)
+            if (resources == null)
+            {
+                throw new InvalidDataException("resources is a required property for DeleteResourcesRequestBody and cannot be null");
+            }
+            else
+            {
+                this.Resources = resources;
+            }
         }
         
         /// <summary>
-        /// Gets or Sets Id
+        /// Resource identifiers of items to delete.
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Attributes
-        /// </summary>
-        [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public PreviewFileAttributes Attributes { get; set; }
+        /// <value>Resource identifiers of items to delete.</value>
+        [DataMember(Name="resources", EmitDefaultValue=false)]
+        public List<string> Resources { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,10 +60,8 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class PreviewFile {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("class DeleteResourcesRequestBody {\n");
+            sb.Append("  Resources: ").Append(Resources).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,34 +82,25 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as PreviewFile);
+            return this.Equals(input as DeleteResourcesRequestBody);
         }
 
         /// <summary>
-        /// Returns true if PreviewFile instances are equal
+        /// Returns true if DeleteResourcesRequestBody instances are equal
         /// </summary>
-        /// <param name="input">Instance of PreviewFile to be compared</param>
+        /// <param name="input">Instance of DeleteResourcesRequestBody to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(PreviewFile input)
+        public bool Equals(DeleteResourcesRequestBody input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
-                ) && 
-                (
-                    this.Attributes == input.Attributes ||
-                    (this.Attributes != null &&
-                    this.Attributes.Equals(input.Attributes))
+                    this.Resources == input.Resources ||
+                    this.Resources != null &&
+                    input.Resources != null &&
+                    this.Resources.SequenceEqual(input.Resources)
                 );
         }
 
@@ -131,12 +113,8 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Attributes != null)
-                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
+                if (this.Resources != null)
+                    hashCode = hashCode * 59 + this.Resources.GetHashCode();
                 return hashCode;
             }
         }

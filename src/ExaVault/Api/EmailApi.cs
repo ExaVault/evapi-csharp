@@ -34,7 +34,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>EmptyResponse</returns>
-        EmptyResponse SendReferralEmail (string evApiKey, string evAccessToken, Body15 body = null);
+        EmptyResponse SendReferralEmail (string evApiKey, string evAccessToken, SendReferralEmailRequestBody body = null);
 
         /// <summary>
         /// Send referral email to a given address
@@ -47,7 +47,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of EmptyResponse</returns>
-        ApiResponse<EmptyResponse> SendReferralEmailWithHttpInfo (string evApiKey, string evAccessToken, Body15 body = null);
+        ApiResponse<EmptyResponse> SendReferralEmailWithHttpInfo (string evApiKey, string evAccessToken, SendReferralEmailRequestBody body = null);
         /// <summary>
         /// Resend welcome email to specific user
         /// </summary>
@@ -86,7 +86,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of EmptyResponse</returns>
-        System.Threading.Tasks.Task<EmptyResponse> SendReferralEmailAsync (string evApiKey, string evAccessToken, Body15 body = null);
+        System.Threading.Tasks.Task<EmptyResponse> SendReferralEmailAsync (string evApiKey, string evAccessToken, SendReferralEmailRequestBody body = null);
 
         /// <summary>
         /// Send referral email to a given address
@@ -99,7 +99,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (EmptyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> SendReferralEmailAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body15 body = null);
+        System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> SendReferralEmailAsyncWithHttpInfo (string evApiKey, string evAccessToken, SendReferralEmailRequestBody body = null);
         /// <summary>
         /// Resend welcome email to specific user
         /// </summary>
@@ -244,7 +244,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>EmptyResponse</returns>
-        public EmptyResponse SendReferralEmail (string evApiKey, string evAccessToken, Body15 body = null)
+        public EmptyResponse SendReferralEmail (string evApiKey, string evAccessToken, SendReferralEmailRequestBody body = null)
         {
              ApiResponse<EmptyResponse> localVarResponse = SendReferralEmailWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -258,7 +258,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of EmptyResponse</returns>
-        public ApiResponse< EmptyResponse > SendReferralEmailWithHttpInfo (string evApiKey, string evAccessToken, Body15 body = null)
+        public ApiResponse< EmptyResponse > SendReferralEmailWithHttpInfo (string evApiKey, string evAccessToken, SendReferralEmailRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -326,7 +326,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of EmptyResponse</returns>
-        public async System.Threading.Tasks.Task<EmptyResponse> SendReferralEmailAsync (string evApiKey, string evAccessToken, Body15 body = null)
+        public async System.Threading.Tasks.Task<EmptyResponse> SendReferralEmailAsync (string evApiKey, string evAccessToken, SendReferralEmailRequestBody body = null)
         {
              ApiResponse<EmptyResponse> localVarResponse = await SendReferralEmailAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -341,7 +341,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (EmptyResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> SendReferralEmailAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body15 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> SendReferralEmailAsyncWithHttpInfo (string evApiKey, string evAccessToken, SendReferralEmailRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)

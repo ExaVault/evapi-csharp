@@ -143,7 +143,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>FormResponse</returns>
-        FormResponse UpdateFormById (string evApiKey, string evAccessToken, int? id, Body2 body = null);
+        FormResponse UpdateFormById (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null);
 
         /// <summary>
         /// Updates a form with given parameters
@@ -157,7 +157,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of FormResponse</returns>
-        ApiResponse<FormResponse> UpdateFormByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body2 body = null);
+        ApiResponse<FormResponse> UpdateFormByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -280,7 +280,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of FormResponse</returns>
-        System.Threading.Tasks.Task<FormResponse> UpdateFormByIdAsync (string evApiKey, string evAccessToken, int? id, Body2 body = null);
+        System.Threading.Tasks.Task<FormResponse> UpdateFormByIdAsync (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null);
 
         /// <summary>
         /// Updates a form with given parameters
@@ -294,7 +294,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (FormResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FormResponse>> UpdateFormByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body2 body = null);
+        System.Threading.Tasks.Task<ApiResponse<FormResponse>> UpdateFormByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null);
         #endregion Asynchronous Operations
     }
 
@@ -1059,7 +1059,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>FormResponse</returns>
-        public FormResponse UpdateFormById (string evApiKey, string evAccessToken, int? id, Body2 body = null)
+        public FormResponse UpdateFormById (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null)
         {
              ApiResponse<FormResponse> localVarResponse = UpdateFormByIdWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1074,7 +1074,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of FormResponse</returns>
-        public ApiResponse< FormResponse > UpdateFormByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body2 body = null)
+        public ApiResponse< FormResponse > UpdateFormByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1147,7 +1147,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of FormResponse</returns>
-        public async System.Threading.Tasks.Task<FormResponse> UpdateFormByIdAsync (string evApiKey, string evAccessToken, int? id, Body2 body = null)
+        public async System.Threading.Tasks.Task<FormResponse> UpdateFormByIdAsync (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null)
         {
              ApiResponse<FormResponse> localVarResponse = await UpdateFormByIdAsyncWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1163,7 +1163,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (FormResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<FormResponse>> UpdateFormByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body2 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<FormResponse>> UpdateFormByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)

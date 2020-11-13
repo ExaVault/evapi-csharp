@@ -32,43 +32,17 @@ namespace ExaVault.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Body" /> class.
         /// </summary>
-        /// <param name="name">Name of the email list.  (required).</param>
-        /// <param name="emails">Array of email addresses to include in the email list.  (required).</param>
-        public Body(string name = default(string), List<string> emails = default(List<string>))
+        /// <param name="_file">_file.</param>
+        public Body(byte[] _file = default(byte[]))
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new InvalidDataException("name is a required property for Body and cannot be null");
-            }
-            else
-            {
-                this.Name = name;
-            }
-            // to ensure "emails" is required (not null)
-            if (emails == null)
-            {
-                throw new InvalidDataException("emails is a required property for Body and cannot be null");
-            }
-            else
-            {
-                this.Emails = emails;
-            }
+            this.File = _file;
         }
         
         /// <summary>
-        /// Name of the email list. 
+        /// Gets or Sets File
         /// </summary>
-        /// <value>Name of the email list. </value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Array of email addresses to include in the email list. 
-        /// </summary>
-        /// <value>Array of email addresses to include in the email list. </value>
-        [DataMember(Name="emails", EmitDefaultValue=false)]
-        public List<string> Emails { get; set; }
+        [DataMember(Name="file", EmitDefaultValue=false)]
+        public byte[] File { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,8 +52,7 @@ namespace ExaVault.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Body {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Emails: ").Append(Emails).Append("\n");
+            sb.Append("  File: ").Append(File).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -115,15 +88,9 @@ namespace ExaVault.Model
 
             return 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.Emails == input.Emails ||
-                    this.Emails != null &&
-                    input.Emails != null &&
-                    this.Emails.SequenceEqual(input.Emails)
+                    this.File == input.File ||
+                    (this.File != null &&
+                    this.File.Equals(input.File))
                 );
         }
 
@@ -136,10 +103,8 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Emails != null)
-                    hashCode = hashCode * 59 + this.Emails.GetHashCode();
+                if (this.File != null)
+                    hashCode = hashCode * 59 + this.File.GetHashCode();
                 return hashCode;
             }
         }

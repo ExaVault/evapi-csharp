@@ -97,7 +97,8 @@ namespace ExaVault.Model
         /// <param name="timeZone">User&#x27;s timezone. See &lt;a href&#x3D;&#x27;https://php.net/manual/en/timezones.php&#x27; target&#x3D;&#x27;blank&#x27;&gt;this page&lt;/a&gt; for allowed values. (required).</param>
         /// <param name="onboarding">Whether the onboarding help system is enabled for this user. &#x60;true&#x60; means that additional help popups are displayed in the web application for this user. (required).</param>
         /// <param name="firstLogin">&#x60;true&#x60; if the user has logged into the system..</param>
-        public UserAttributes(StatusEnum status = default(StatusEnum), string expiration = default(string), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?), string accessTimestamp = default(string), string accountName = default(string), string username = default(string), string nickname = default(string), string email = default(string), string homeDir = default(string), UserPermissions permissions = default(UserPermissions), RoleEnum role = default(RoleEnum), string timeZone = default(string), bool? onboarding = default(bool?), bool? firstLogin = default(bool?))
+        /// <param name="locked">&#x60;true&#x60; if the user is locked and cannot log in..</param>
+        public UserAttributes(StatusEnum status = default(StatusEnum), string expiration = default(string), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?), string accessTimestamp = default(string), string accountName = default(string), string username = default(string), string nickname = default(string), string email = default(string), string homeDir = default(string), UserPermissions permissions = default(UserPermissions), RoleEnum role = default(RoleEnum), string timeZone = default(string), bool? onboarding = default(bool?), bool? firstLogin = default(bool?), bool? locked = default(bool?))
         {
             // to ensure "status" is required (not null)
             if (status == null)
@@ -202,6 +203,7 @@ namespace ExaVault.Model
             this.AccessTimestamp = accessTimestamp;
             this.Email = email;
             this.FirstLogin = firstLogin;
+            this.Locked = locked;
         }
         
 
@@ -297,6 +299,13 @@ namespace ExaVault.Model
         public bool? FirstLogin { get; set; }
 
         /// <summary>
+        /// &#x60;true&#x60; if the user is locked and cannot log in.
+        /// </summary>
+        /// <value>&#x60;true&#x60; if the user is locked and cannot log in.</value>
+        [DataMember(Name="locked", EmitDefaultValue=false)]
+        public bool? Locked { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -319,6 +328,7 @@ namespace ExaVault.Model
             sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
             sb.Append("  Onboarding: ").Append(Onboarding).Append("\n");
             sb.Append("  FirstLogin: ").Append(FirstLogin).Append("\n");
+            sb.Append("  Locked: ").Append(Locked).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -427,6 +437,11 @@ namespace ExaVault.Model
                     this.FirstLogin == input.FirstLogin ||
                     (this.FirstLogin != null &&
                     this.FirstLogin.Equals(input.FirstLogin))
+                ) && 
+                (
+                    this.Locked == input.Locked ||
+                    (this.Locked != null &&
+                    this.Locked.Equals(input.Locked))
                 );
         }
 
@@ -469,6 +484,8 @@ namespace ExaVault.Model
                     hashCode = hashCode * 59 + this.Onboarding.GetHashCode();
                 if (this.FirstLogin != null)
                     hashCode = hashCode * 59 + this.FirstLogin.GetHashCode();
+                if (this.Locked != null)
+                    hashCode = hashCode * 59 + this.Locked.GetHashCode();
                 return hashCode;
             }
         }

@@ -34,7 +34,7 @@ namespace ExaVault.Model
         /// </summary>
         /// <param name="type">type.</param>
         /// <param name="id">id.</param>
-        public NotificationRelationshipsResourceData(string type = default(string), int? id = default(int?))
+        public NotificationRelationshipsResourceData(string type = default(string), long? id = default(long?))
         {
             this.Type = type;
             this.Id = id;
@@ -50,7 +50,7 @@ namespace ExaVault.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

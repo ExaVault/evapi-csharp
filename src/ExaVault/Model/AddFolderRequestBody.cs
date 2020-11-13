@@ -24,53 +24,44 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// Information for the email list, including its short title and recipient emails
+    /// AddFolderRequestBody
     /// </summary>
     [DataContract]
-        public partial class EmailListAttributes :  IEquatable<EmailListAttributes>, IValidatableObject
+        public partial class AddFolderRequestBody :  IEquatable<AddFolderRequestBody>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmailListAttributes" /> class.
+        /// Initializes a new instance of the <see cref="AddFolderRequestBody" /> class.
         /// </summary>
-        /// <param name="name">Short title for email list.</param>
-        /// <param name="emails">Recipient emails in the email list.</param>
-        /// <param name="created">Created datetime.</param>
-        /// <param name="modified">Modified datetime.</param>
-        public EmailListAttributes(string name = default(string), List<string> emails = default(List<string>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
+        /// <param name="path">Path to the newly created folder including new ame.</param>
+        /// <param name="name">Name of the folder to create. Required if **path** is not used.</param>
+        /// <param name="parentResource">Resource identifier where to create a folder. Required if **path** is not used.</param>
+        public AddFolderRequestBody(string path = default(string), string name = default(string), string parentResource = default(string))
         {
+            this.Path = path;
             this.Name = name;
-            this.Emails = emails;
-            this.Created = created;
-            this.Modified = modified;
+            this.ParentResource = parentResource;
         }
         
         /// <summary>
-        /// Short title for email list
+        /// Path to the newly created folder including new ame
         /// </summary>
-        /// <value>Short title for email list</value>
+        /// <value>Path to the newly created folder including new ame</value>
+        [DataMember(Name="path", EmitDefaultValue=false)]
+        public string Path { get; set; }
+
+        /// <summary>
+        /// Name of the folder to create. Required if **path** is not used
+        /// </summary>
+        /// <value>Name of the folder to create. Required if **path** is not used</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Recipient emails in the email list
+        /// Resource identifier where to create a folder. Required if **path** is not used
         /// </summary>
-        /// <value>Recipient emails in the email list</value>
-        [DataMember(Name="emails", EmitDefaultValue=false)]
-        public List<string> Emails { get; set; }
-
-        /// <summary>
-        /// Created datetime
-        /// </summary>
-        /// <value>Created datetime</value>
-        [DataMember(Name="created", EmitDefaultValue=false)]
-        public DateTime? Created { get; set; }
-
-        /// <summary>
-        /// Modified datetime
-        /// </summary>
-        /// <value>Modified datetime</value>
-        [DataMember(Name="modified", EmitDefaultValue=false)]
-        public DateTime? Modified { get; set; }
+        /// <value>Resource identifier where to create a folder. Required if **path** is not used</value>
+        [DataMember(Name="parentResource", EmitDefaultValue=false)]
+        public string ParentResource { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,11 +70,10 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class EmailListAttributes {\n");
+            sb.Append("class AddFolderRequestBody {\n");
+            sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Emails: ").Append(Emails).Append("\n");
-            sb.Append("  Created: ").Append(Created).Append("\n");
-            sb.Append("  Modified: ").Append(Modified).Append("\n");
+            sb.Append("  ParentResource: ").Append(ParentResource).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -104,40 +94,34 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EmailListAttributes);
+            return this.Equals(input as AddFolderRequestBody);
         }
 
         /// <summary>
-        /// Returns true if EmailListAttributes instances are equal
+        /// Returns true if AddFolderRequestBody instances are equal
         /// </summary>
-        /// <param name="input">Instance of EmailListAttributes to be compared</param>
+        /// <param name="input">Instance of AddFolderRequestBody to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(EmailListAttributes input)
+        public bool Equals(AddFolderRequestBody input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
+                    this.Path == input.Path ||
+                    (this.Path != null &&
+                    this.Path.Equals(input.Path))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Emails == input.Emails ||
-                    this.Emails != null &&
-                    input.Emails != null &&
-                    this.Emails.SequenceEqual(input.Emails)
-                ) && 
-                (
-                    this.Created == input.Created ||
-                    (this.Created != null &&
-                    this.Created.Equals(input.Created))
-                ) && 
-                (
-                    this.Modified == input.Modified ||
-                    (this.Modified != null &&
-                    this.Modified.Equals(input.Modified))
+                    this.ParentResource == input.ParentResource ||
+                    (this.ParentResource != null &&
+                    this.ParentResource.Equals(input.ParentResource))
                 );
         }
 
@@ -150,14 +134,12 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Path != null)
+                    hashCode = hashCode * 59 + this.Path.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Emails != null)
-                    hashCode = hashCode * 59 + this.Emails.GetHashCode();
-                if (this.Created != null)
-                    hashCode = hashCode * 59 + this.Created.GetHashCode();
-                if (this.Modified != null)
-                    hashCode = hashCode * 59 + this.Modified.GetHashCode();
+                if (this.ParentResource != null)
+                    hashCode = hashCode * 59 + this.ParentResource.GetHashCode();
                 return hashCode;
             }
         }

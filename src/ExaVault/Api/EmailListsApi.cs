@@ -34,7 +34,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>EmailListResponse</returns>
-        EmailListResponse AddEmailList (string evApiKey, string evAccessToken, Body body = null);
+        EmailListResponse AddEmailList (string evApiKey, string evAccessToken, AddEmailListRequestBody body = null);
 
         /// <summary>
         /// Create new email list
@@ -47,7 +47,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of EmailListResponse</returns>
-        ApiResponse<EmailListResponse> AddEmailListWithHttpInfo (string evApiKey, string evAccessToken, Body body = null);
+        ApiResponse<EmailListResponse> AddEmailListWithHttpInfo (string evApiKey, string evAccessToken, AddEmailListRequestBody body = null);
         /// <summary>
         /// Delete an email group with given id
         /// </summary>
@@ -104,7 +104,7 @@ namespace ExaVault.Api
         /// Get all email groups
         /// </summary>
         /// <remarks>
-        /// 
+        /// List all email groups for authenticated user
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
@@ -117,7 +117,7 @@ namespace ExaVault.Api
         /// Get all email groups
         /// </summary>
         /// <remarks>
-        /// 
+        /// List all email groups for authenticated user
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
@@ -137,7 +137,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the email list to update.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>EmailListResponse</returns>
-        EmailListResponse UpdateEmailListById (string evApiKey, string evAccessToken, int? id, Body1 body = null);
+        EmailListResponse UpdateEmailListById (string evApiKey, string evAccessToken, int? id, UpdateEmailListRequestBody body = null);
 
         /// <summary>
         /// Update an email group
@@ -151,7 +151,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the email list to update.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of EmailListResponse</returns>
-        ApiResponse<EmailListResponse> UpdateEmailListByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body1 body = null);
+        ApiResponse<EmailListResponse> UpdateEmailListByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateEmailListRequestBody body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -165,7 +165,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of EmailListResponse</returns>
-        System.Threading.Tasks.Task<EmailListResponse> AddEmailListAsync (string evApiKey, string evAccessToken, Body body = null);
+        System.Threading.Tasks.Task<EmailListResponse> AddEmailListAsync (string evApiKey, string evAccessToken, AddEmailListRequestBody body = null);
 
         /// <summary>
         /// Create new email list
@@ -178,7 +178,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (EmailListResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmailListResponse>> AddEmailListAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body body = null);
+        System.Threading.Tasks.Task<ApiResponse<EmailListResponse>> AddEmailListAsyncWithHttpInfo (string evApiKey, string evAccessToken, AddEmailListRequestBody body = null);
         /// <summary>
         /// Delete an email group with given id
         /// </summary>
@@ -235,7 +235,7 @@ namespace ExaVault.Api
         /// Get all email groups
         /// </summary>
         /// <remarks>
-        /// 
+        /// List all email groups for authenticated user
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
@@ -248,7 +248,7 @@ namespace ExaVault.Api
         /// Get all email groups
         /// </summary>
         /// <remarks>
-        /// 
+        /// List all email groups for authenticated user
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
@@ -268,7 +268,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the email list to update.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of EmailListResponse</returns>
-        System.Threading.Tasks.Task<EmailListResponse> UpdateEmailListByIdAsync (string evApiKey, string evAccessToken, int? id, Body1 body = null);
+        System.Threading.Tasks.Task<EmailListResponse> UpdateEmailListByIdAsync (string evApiKey, string evAccessToken, int? id, UpdateEmailListRequestBody body = null);
 
         /// <summary>
         /// Update an email group
@@ -282,7 +282,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the email list to update.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (EmailListResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmailListResponse>> UpdateEmailListByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body1 body = null);
+        System.Threading.Tasks.Task<ApiResponse<EmailListResponse>> UpdateEmailListByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateEmailListRequestBody body = null);
         #endregion Asynchronous Operations
     }
 
@@ -402,7 +402,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>EmailListResponse</returns>
-        public EmailListResponse AddEmailList (string evApiKey, string evAccessToken, Body body = null)
+        public EmailListResponse AddEmailList (string evApiKey, string evAccessToken, AddEmailListRequestBody body = null)
         {
              ApiResponse<EmailListResponse> localVarResponse = AddEmailListWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -416,7 +416,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of EmailListResponse</returns>
-        public ApiResponse< EmailListResponse > AddEmailListWithHttpInfo (string evApiKey, string evAccessToken, Body body = null)
+        public ApiResponse< EmailListResponse > AddEmailListWithHttpInfo (string evApiKey, string evAccessToken, AddEmailListRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -484,7 +484,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of EmailListResponse</returns>
-        public async System.Threading.Tasks.Task<EmailListResponse> AddEmailListAsync (string evApiKey, string evAccessToken, Body body = null)
+        public async System.Threading.Tasks.Task<EmailListResponse> AddEmailListAsync (string evApiKey, string evAccessToken, AddEmailListRequestBody body = null)
         {
              ApiResponse<EmailListResponse> localVarResponse = await AddEmailListAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -499,7 +499,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (EmailListResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EmailListResponse>> AddEmailListAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<EmailListResponse>> AddEmailListAsyncWithHttpInfo (string evApiKey, string evAccessToken, AddEmailListRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -876,7 +876,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get all email groups 
+        /// Get all email groups List all email groups for authenticated user
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
@@ -890,7 +890,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get all email groups 
+        /// Get all email groups List all email groups for authenticated user
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
@@ -950,7 +950,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get all email groups 
+        /// Get all email groups List all email groups for authenticated user
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
@@ -965,7 +965,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get all email groups 
+        /// Get all email groups List all email groups for authenticated user
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
@@ -1033,7 +1033,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the email list to update.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>EmailListResponse</returns>
-        public EmailListResponse UpdateEmailListById (string evApiKey, string evAccessToken, int? id, Body1 body = null)
+        public EmailListResponse UpdateEmailListById (string evApiKey, string evAccessToken, int? id, UpdateEmailListRequestBody body = null)
         {
              ApiResponse<EmailListResponse> localVarResponse = UpdateEmailListByIdWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1048,7 +1048,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the email list to update.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of EmailListResponse</returns>
-        public ApiResponse< EmailListResponse > UpdateEmailListByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body1 body = null)
+        public ApiResponse< EmailListResponse > UpdateEmailListByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateEmailListRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1121,7 +1121,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the email list to update.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of EmailListResponse</returns>
-        public async System.Threading.Tasks.Task<EmailListResponse> UpdateEmailListByIdAsync (string evApiKey, string evAccessToken, int? id, Body1 body = null)
+        public async System.Threading.Tasks.Task<EmailListResponse> UpdateEmailListByIdAsync (string evApiKey, string evAccessToken, int? id, UpdateEmailListRequestBody body = null)
         {
              ApiResponse<EmailListResponse> localVarResponse = await UpdateEmailListByIdAsyncWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1137,7 +1137,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the email list to update.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (EmailListResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EmailListResponse>> UpdateEmailListByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body1 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<EmailListResponse>> UpdateEmailListByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateEmailListRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)

@@ -30,38 +30,37 @@ namespace ExaVault.Model
         public partial class ShareAttributes :  IEquatable<ShareAttributes>, IValidatableObject
     {
         /// <summary>
-        /// Access rights for the share.
+        /// Defines AccessMode
         /// </summary>
-        /// <value>Access rights for the share.</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum AccessModeEnum
         {
             /// <summary>
-            /// Enum Upload for value: upload
-            /// </summary>
-            [EnumMember(Value = "upload")]
-            Upload = 1,
-            /// <summary>
             /// Enum Download for value: download
             /// </summary>
             [EnumMember(Value = "download")]
-            Download = 2,
+            Download = 1,
             /// <summary>
-            /// Enum Downloadupload for value: download_upload
+            /// Enum Upload for value: upload
             /// </summary>
-            [EnumMember(Value = "download_upload")]
-            Downloadupload = 3,
+            [EnumMember(Value = "upload")]
+            Upload = 2,
             /// <summary>
-            /// Enum Downloaduploadmodifydelete for value: download_upload_modify_delete
+            /// Enum Modify for value: modify
             /// </summary>
-            [EnumMember(Value = "download_upload_modify_delete")]
-            Downloaduploadmodifydelete = 4        }
+            [EnumMember(Value = "modify")]
+            Modify = 3,
+            /// <summary>
+            /// Enum Delete for value: delete
+            /// </summary>
+            [EnumMember(Value = "delete")]
+            Delete = 4        }
         /// <summary>
         /// Access rights for the share.
         /// </summary>
         /// <value>Access rights for the share.</value>
         [DataMember(Name="accessMode", EmitDefaultValue=false)]
-        public AccessModeEnum? AccessMode { get; set; }
+        public List<AccessModeEnum> AccessMode { get; set; }
         /// <summary>
         /// Type of share.
         /// </summary>
@@ -113,9 +112,9 @@ namespace ExaVault.Model
         [DataMember(Name="status", EmitDefaultValue=false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
-        /// Checks recipient received status and returns whether it&#x27;s been recevied (&#x60;complete&#x60;,) partial recevied (&#x60;incomplete&#x60;,) or not recevied yet (&#x60;pending&#x60;.)
+        /// Checks recipient received status and returns whether it&#x27;s been recevied (&#x60;complete&#x60;,) partial recevied (&#x60;incomplete&#x60;,) or not received yet (&#x60;pending&#x60;.)
         /// </summary>
-        /// <value>Checks recipient received status and returns whether it&#x27;s been recevied (&#x60;complete&#x60;,) partial recevied (&#x60;incomplete&#x60;,) or not recevied yet (&#x60;pending&#x60;.)</value>
+        /// <value>Checks recipient received status and returns whether it&#x27;s been recevied (&#x60;complete&#x60;,) partial recevied (&#x60;incomplete&#x60;,) or not received yet (&#x60;pending&#x60;.)</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum TrackingStatusEnum
         {
@@ -135,9 +134,9 @@ namespace ExaVault.Model
             [EnumMember(Value = "pending")]
             Pending = 3        }
         /// <summary>
-        /// Checks recipient received status and returns whether it&#x27;s been recevied (&#x60;complete&#x60;,) partial recevied (&#x60;incomplete&#x60;,) or not recevied yet (&#x60;pending&#x60;.)
+        /// Checks recipient received status and returns whether it&#x27;s been recevied (&#x60;complete&#x60;,) partial recevied (&#x60;incomplete&#x60;,) or not received yet (&#x60;pending&#x60;.)
         /// </summary>
-        /// <value>Checks recipient received status and returns whether it&#x27;s been recevied (&#x60;complete&#x60;,) partial recevied (&#x60;incomplete&#x60;,) or not recevied yet (&#x60;pending&#x60;.)</value>
+        /// <value>Checks recipient received status and returns whether it&#x27;s been recevied (&#x60;complete&#x60;,) partial recevied (&#x60;incomplete&#x60;,) or not received yet (&#x60;pending&#x60;.)</value>
         [DataMember(Name="trackingStatus", EmitDefaultValue=false)]
         public TrackingStatusEnum? TrackingStatus { get; set; }
         /// <summary>
@@ -165,9 +164,9 @@ namespace ExaVault.Model
         /// <param name="hasNotification">True if share has notification..</param>
         /// <param name="created">Timestamp of share creation..</param>
         /// <param name="modified">Timestamp of share modification. Can be &#x60;null&#x60; if it wasn&#x27;t modified..</param>
-        /// <param name="trackingStatus">Checks recipient received status and returns whether it&#x27;s been recevied (&#x60;complete&#x60;,) partial recevied (&#x60;incomplete&#x60;,) or not recevied yet (&#x60;pending&#x60;.).</param>
+        /// <param name="trackingStatus">Checks recipient received status and returns whether it&#x27;s been recevied (&#x60;complete&#x60;,) partial recevied (&#x60;incomplete&#x60;,) or not received yet (&#x60;pending&#x60;.).</param>
         /// <param name="formId">ID of the form..</param>
-        public ShareAttributes(string name = default(string), bool? hasPassword = default(bool?), bool? _public = default(bool?), AccessModeEnum? accessMode = default(AccessModeEnum?), string accessDescription = default(string), bool? embed = default(bool?), string hash = default(string), string ownerHash = default(string), string expiration = default(string), bool? expired = default(bool?), DateTime? resent = default(DateTime?), TypeEnum? type = default(TypeEnum?), bool? requireEmail = default(bool?), bool? fileDropCreateFolders = default(bool?), List<string> paths = default(List<string>), List<ShareRecipient1> recipients = default(List<ShareRecipient1>), List<ShareMessage> messages = default(List<ShareMessage>), bool? inherited = default(bool?), StatusEnum? status = default(StatusEnum?), bool? hasNotification = default(bool?), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?), TrackingStatusEnum? trackingStatus = default(TrackingStatusEnum?), int? formId = default(int?))
+        public ShareAttributes(string name = default(string), bool? hasPassword = default(bool?), bool? _public = default(bool?), List<AccessModeEnum> accessMode = default(List<AccessModeEnum>), string accessDescription = default(string), bool? embed = default(bool?), string hash = default(string), string ownerHash = default(string), string expiration = default(string), bool? expired = default(bool?), DateTime? resent = default(DateTime?), TypeEnum? type = default(TypeEnum?), bool? requireEmail = default(bool?), bool? fileDropCreateFolders = default(bool?), List<string> paths = default(List<string>), List<ShareRecipient> recipients = default(List<ShareRecipient>), List<ShareMessage> messages = default(List<ShareMessage>), bool? inherited = default(bool?), StatusEnum? status = default(StatusEnum?), bool? hasNotification = default(bool?), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?), TrackingStatusEnum? trackingStatus = default(TrackingStatusEnum?), int? formId = default(int?))
         {
             this.Name = name;
             this.HasPassword = hasPassword;
@@ -293,7 +292,7 @@ namespace ExaVault.Model
         /// </summary>
         /// <value>Array of recipients.</value>
         [DataMember(Name="recipients", EmitDefaultValue=false)]
-        public List<ShareRecipient1> Recipients { get; set; }
+        public List<ShareRecipient> Recipients { get; set; }
 
         /// <summary>
         /// Array of invitation messages.
@@ -422,8 +421,9 @@ namespace ExaVault.Model
                 ) && 
                 (
                     this.AccessMode == input.AccessMode ||
-                    (this.AccessMode != null &&
-                    this.AccessMode.Equals(input.AccessMode))
+                    this.AccessMode != null &&
+                    input.AccessMode != null &&
+                    this.AccessMode.SequenceEqual(input.AccessMode)
                 ) && 
                 (
                     this.AccessDescription == input.AccessDescription ||

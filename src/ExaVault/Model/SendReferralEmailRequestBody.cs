@@ -24,41 +24,49 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// Object with preview image properties.
+    /// SendReferralEmailRequestBody
     /// </summary>
     [DataContract]
-        public partial class PreviewFile :  IEquatable<PreviewFile>, IValidatableObject
+        public partial class SendReferralEmailRequestBody :  IEquatable<SendReferralEmailRequestBody>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PreviewFile" /> class.
+        /// Initializes a new instance of the <see cref="SendReferralEmailRequestBody" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="type">type.</param>
-        /// <param name="attributes">attributes.</param>
-        public PreviewFile(long? id = default(long?), string type = default(string), PreviewFileAttributes attributes = default(PreviewFileAttributes))
+        /// <param name="emails">emails (required).</param>
+        /// <param name="message">message (required).</param>
+        public SendReferralEmailRequestBody(List<string> emails = default(List<string>), string message = default(string))
         {
-            this.Id = id;
-            this.Type = type;
-            this.Attributes = attributes;
+            // to ensure "emails" is required (not null)
+            if (emails == null)
+            {
+                throw new InvalidDataException("emails is a required property for SendReferralEmailRequestBody and cannot be null");
+            }
+            else
+            {
+                this.Emails = emails;
+            }
+            // to ensure "message" is required (not null)
+            if (message == null)
+            {
+                throw new InvalidDataException("message is a required property for SendReferralEmailRequestBody and cannot be null");
+            }
+            else
+            {
+                this.Message = message;
+            }
         }
         
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets Emails
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        [DataMember(Name="emails", EmitDefaultValue=false)]
+        public List<string> Emails { get; set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// Gets or Sets Message
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Attributes
-        /// </summary>
-        [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public PreviewFileAttributes Attributes { get; set; }
+        [DataMember(Name="message", EmitDefaultValue=false)]
+        public string Message { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,10 +75,9 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class PreviewFile {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("class SendReferralEmailRequestBody {\n");
+            sb.Append("  Emails: ").Append(Emails).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,34 +98,30 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as PreviewFile);
+            return this.Equals(input as SendReferralEmailRequestBody);
         }
 
         /// <summary>
-        /// Returns true if PreviewFile instances are equal
+        /// Returns true if SendReferralEmailRequestBody instances are equal
         /// </summary>
-        /// <param name="input">Instance of PreviewFile to be compared</param>
+        /// <param name="input">Instance of SendReferralEmailRequestBody to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(PreviewFile input)
+        public bool Equals(SendReferralEmailRequestBody input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.Emails == input.Emails ||
+                    this.Emails != null &&
+                    input.Emails != null &&
+                    this.Emails.SequenceEqual(input.Emails)
                 ) && 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
-                ) && 
-                (
-                    this.Attributes == input.Attributes ||
-                    (this.Attributes != null &&
-                    this.Attributes.Equals(input.Attributes))
+                    this.Message == input.Message ||
+                    (this.Message != null &&
+                    this.Message.Equals(input.Message))
                 );
         }
 
@@ -131,12 +134,10 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Attributes != null)
-                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
+                if (this.Emails != null)
+                    hashCode = hashCode * 59 + this.Emails.GetHashCode();
+                if (this.Message != null)
+                    hashCode = hashCode * 59 + this.Message.GetHashCode();
                 return hashCode;
             }
         }
