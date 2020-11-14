@@ -54,7 +54,7 @@ namespace ExaVault.Model
         /// <param name="type">Type of item. \&quot;resource\&quot;.</param>
         /// <param name="attributes">attributes.</param>
         /// <param name="relationships">relationships.</param>
-        public Resource(long? id = default(long?), TypeEnum? type = default(TypeEnum?), ResourceAttributes attributes = default(ResourceAttributes), ResourceRelationships relationships = default(ResourceRelationships))
+        public Resource(int? id = default(int?), TypeEnum? type = default(TypeEnum?), ResourceAttributes attributes = default(ResourceAttributes), ResourceRelationships relationships = default(ResourceRelationships))
         {
             this.Id = id;
             this.Type = type;
@@ -66,7 +66,7 @@ namespace ExaVault.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public int? Id { get; set; }
 
 
         /// <summary>

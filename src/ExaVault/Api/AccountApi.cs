@@ -59,7 +59,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>AccountResponse</returns>
-        AccountResponse UpdateAccount (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null);
+        AccountResponse UpdateAccount (string evApiKey, string evAccessToken, UpdateAccountBody body = null);
 
         /// <summary>
         /// Update account settings
@@ -72,7 +72,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>ApiResponse of AccountResponse</returns>
-        ApiResponse<AccountResponse> UpdateAccountWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null);
+        ApiResponse<AccountResponse> UpdateAccountWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountBody body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -111,7 +111,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>Task of AccountResponse</returns>
-        System.Threading.Tasks.Task<AccountResponse> UpdateAccountAsync (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null);
+        System.Threading.Tasks.Task<AccountResponse> UpdateAccountAsync (string evApiKey, string evAccessToken, UpdateAccountBody body = null);
 
         /// <summary>
         /// Update account settings
@@ -124,7 +124,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>Task of ApiResponse (AccountResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccountResponse>> UpdateAccountAsyncWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null);
+        System.Threading.Tasks.Task<ApiResponse<AccountResponse>> UpdateAccountAsyncWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountBody body = null);
         #endregion Asynchronous Operations
     }
 
@@ -393,7 +393,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>AccountResponse</returns>
-        public AccountResponse UpdateAccount (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null)
+        public AccountResponse UpdateAccount (string evApiKey, string evAccessToken, UpdateAccountBody body = null)
         {
              ApiResponse<AccountResponse> localVarResponse = UpdateAccountWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -407,7 +407,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>ApiResponse of AccountResponse</returns>
-        public ApiResponse< AccountResponse > UpdateAccountWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null)
+        public ApiResponse< AccountResponse > UpdateAccountWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -475,7 +475,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>Task of AccountResponse</returns>
-        public async System.Threading.Tasks.Task<AccountResponse> UpdateAccountAsync (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null)
+        public async System.Threading.Tasks.Task<AccountResponse> UpdateAccountAsync (string evApiKey, string evAccessToken, UpdateAccountBody body = null)
         {
              ApiResponse<AccountResponse> localVarResponse = await UpdateAccountAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -490,7 +490,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>Task of ApiResponse (AccountResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<AccountResponse>> UpdateAccountAsyncWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<AccountResponse>> UpdateAccountAsyncWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)

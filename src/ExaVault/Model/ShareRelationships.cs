@@ -36,7 +36,7 @@ namespace ExaVault.Model
         /// <param name="owner">owner.</param>
         /// <param name="resources">resources.</param>
         /// <param name="notifications">null.</param>
-        public ShareRelationships(List<ShareRelationshpsMessage> messages = default(List<ShareRelationshpsMessage>), ShareRelationshipsOwner owner = default(ShareRelationshipsOwner), List<ShareRelationshipsResource> resources = default(List<ShareRelationshipsResource>), List<ShareRelationshipsNotification> notifications = default(List<ShareRelationshipsNotification>))
+        public ShareRelationships(List<ShareRelationshipsMessages> messages = default(List<ShareRelationshipsMessages>), ShareRelationshipsOwner owner = default(ShareRelationshipsOwner), List<ShareRelationshipsResources> resources = default(List<ShareRelationshipsResources>), List<ShareRelationshipsNotifications> notifications = default(List<ShareRelationshipsNotifications>))
         {
             this.Messages = messages;
             this.Owner = owner;
@@ -49,7 +49,7 @@ namespace ExaVault.Model
         /// </summary>
         /// <value>null</value>
         [DataMember(Name="messages", EmitDefaultValue=false)]
-        public List<ShareRelationshpsMessage> Messages { get; set; }
+        public List<ShareRelationshipsMessages> Messages { get; set; }
 
         /// <summary>
         /// Gets or Sets Owner
@@ -61,14 +61,14 @@ namespace ExaVault.Model
         /// Gets or Sets Resources
         /// </summary>
         [DataMember(Name="resources", EmitDefaultValue=false)]
-        public List<ShareRelationshipsResource> Resources { get; set; }
+        public List<ShareRelationshipsResources> Resources { get; set; }
 
         /// <summary>
         /// null
         /// </summary>
         /// <value>null</value>
         [DataMember(Name="notifications", EmitDefaultValue=false)]
-        public List<ShareRelationshipsNotification> Notifications { get; set; }
+        public List<ShareRelationshipsNotifications> Notifications { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

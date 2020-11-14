@@ -34,7 +34,7 @@ namespace ExaVault.Model
         /// </summary>
         /// <param name="id">id.</param>
         /// <param name="type">type.</param>
-        public ResourceRelationshipsParentResourceData(long? id = default(long?), string type = default(string))
+        public ResourceRelationshipsParentResourceData(int? id = default(int?), string type = default(string))
         {
             this.Id = id;
             this.Type = type;
@@ -44,7 +44,7 @@ namespace ExaVault.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Type

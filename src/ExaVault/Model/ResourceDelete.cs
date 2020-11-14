@@ -53,7 +53,7 @@ namespace ExaVault.Model
         /// <param name="id">id.</param>
         /// <param name="type">Type of item. \&quot;resource\&quot;.</param>
         /// <param name="meta">Meta object containing non-standard meta-information about the delete operation..</param>
-        public ResourceDelete(long? id = default(long?), TypeEnum? type = default(TypeEnum?), Object meta = default(Object))
+        public ResourceDelete(int? id = default(int?), TypeEnum? type = default(TypeEnum?), Object meta = default(Object))
         {
             this.Id = id;
             this.Type = type;
@@ -64,7 +64,7 @@ namespace ExaVault.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public int? Id { get; set; }
 
 
         /// <summary>

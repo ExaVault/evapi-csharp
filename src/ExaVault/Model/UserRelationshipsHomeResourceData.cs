@@ -52,7 +52,7 @@ namespace ExaVault.Model
         /// </summary>
         /// <param name="type">Type is resource..</param>
         /// <param name="id">ID of home directory resource..</param>
-        public UserRelationshipsHomeResourceData(TypeEnum? type = default(TypeEnum?), long? id = default(long?))
+        public UserRelationshipsHomeResourceData(TypeEnum? type = default(TypeEnum?), int? id = default(int?))
         {
             this.Type = type;
             this.Id = id;
@@ -64,7 +64,7 @@ namespace ExaVault.Model
         /// </summary>
         /// <value>ID of home directory resource.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

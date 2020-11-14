@@ -33,13 +33,13 @@ namespace ExaVault.Model
         /// Initializes a new instance of the <see cref="EmailListAttributes" /> class.
         /// </summary>
         /// <param name="name">Short title for email list.</param>
-        /// <param name="emails">Recipient emails in the email list.</param>
+        /// <param name="members">Recipient emails in the email list.</param>
         /// <param name="created">Created datetime.</param>
         /// <param name="modified">Modified datetime.</param>
-        public EmailListAttributes(string name = default(string), List<string> emails = default(List<string>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
+        public EmailListAttributes(string name = default(string), List<string> members = default(List<string>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
         {
             this.Name = name;
-            this.Emails = emails;
+            this.Members = members;
             this.Created = created;
             this.Modified = modified;
         }
@@ -55,8 +55,8 @@ namespace ExaVault.Model
         /// Recipient emails in the email list
         /// </summary>
         /// <value>Recipient emails in the email list</value>
-        [DataMember(Name="emails", EmitDefaultValue=false)]
-        public List<string> Emails { get; set; }
+        [DataMember(Name="members", EmitDefaultValue=false)]
+        public List<string> Members { get; set; }
 
         /// <summary>
         /// Created datetime
@@ -81,7 +81,7 @@ namespace ExaVault.Model
             var sb = new StringBuilder();
             sb.Append("class EmailListAttributes {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Emails: ").Append(Emails).Append("\n");
+            sb.Append("  Members: ").Append(Members).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Modified: ").Append(Modified).Append("\n");
             sb.Append("}\n");
@@ -124,10 +124,10 @@ namespace ExaVault.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Emails == input.Emails ||
-                    this.Emails != null &&
-                    input.Emails != null &&
-                    this.Emails.SequenceEqual(input.Emails)
+                    this.Members == input.Members ||
+                    this.Members != null &&
+                    input.Members != null &&
+                    this.Members.SequenceEqual(input.Members)
                 ) && 
                 (
                     this.Created == input.Created ||
@@ -152,8 +152,8 @@ namespace ExaVault.Model
                 int hashCode = 41;
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Emails != null)
-                    hashCode = hashCode * 59 + this.Emails.GetHashCode();
+                if (this.Members != null)
+                    hashCode = hashCode * 59 + this.Members.GetHashCode();
                 if (this.Created != null)
                     hashCode = hashCode * 59 + this.Created.GetHashCode();
                 if (this.Modified != null)

@@ -35,7 +35,7 @@ namespace ExaVault.Model
         /// <param name="id">id.</param>
         /// <param name="type">type.</param>
         /// <param name="attributes">attributes.</param>
-        public PreviewFile(long? id = default(long?), string type = default(string), PreviewFileAttributes attributes = default(PreviewFileAttributes))
+        public PreviewFile(int? id = default(int?), string type = default(string), PreviewFileAttributes attributes = default(PreviewFileAttributes))
         {
             this.Id = id;
             this.Type = type;
@@ -46,7 +46,7 @@ namespace ExaVault.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Type

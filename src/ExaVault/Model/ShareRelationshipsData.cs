@@ -30,28 +30,28 @@ namespace ExaVault.Model
         public partial class ShareRelationshipsData :  IEquatable<ShareRelationshipsData>, IValidatableObject
     {
         /// <summary>
-        /// Type is notification. 
+        /// Type is message. 
         /// </summary>
-        /// <value>Type is notification. </value>
+        /// <value>Type is message. </value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum TypeEnum
         {
             /// <summary>
-            /// Enum Notification for value: notification
+            /// Enum Message for value: message
             /// </summary>
-            [EnumMember(Value = "notification")]
-            Notification = 1        }
+            [EnumMember(Value = "message")]
+            Message = 1        }
         /// <summary>
-        /// Type is notification. 
+        /// Type is message. 
         /// </summary>
-        /// <value>Type is notification. </value>
+        /// <value>Type is message. </value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShareRelationshipsData" /> class.
         /// </summary>
-        /// <param name="type">Type is notification. .</param>
-        /// <param name="id">ID of the notification. .</param>
+        /// <param name="type">Type is message. .</param>
+        /// <param name="id">ID of the message..</param>
         public ShareRelationshipsData(TypeEnum? type = default(TypeEnum?), int? id = default(int?))
         {
             this.Type = type;
@@ -60,9 +60,9 @@ namespace ExaVault.Model
         
 
         /// <summary>
-        /// ID of the notification. 
+        /// ID of the message.
         /// </summary>
-        /// <value>ID of the notification. </value>
+        /// <value>ID of the message.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public int? Id { get; set; }
 

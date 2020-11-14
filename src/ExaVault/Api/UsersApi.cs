@@ -34,7 +34,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>UserResponse</returns>
-        UserResponse AddUser (string evApiKey, string evAccessToken, AddUserRequestBody body = null);
+        UserResponse AddUser (string evApiKey, string evAccessToken, Body5 body = null);
 
         /// <summary>
         /// Create a user
@@ -47,7 +47,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserResponse</returns>
-        ApiResponse<UserResponse> AddUserWithHttpInfo (string evApiKey, string evAccessToken, AddUserRequestBody body = null);
+        ApiResponse<UserResponse> AddUserWithHttpInfo (string evApiKey, string evAccessToken, Body5 body = null);
         /// <summary>
         /// Delete a user
         /// </summary>
@@ -157,7 +157,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>UserResponse</returns>
-        UserResponse UpdateUser (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null);
+        UserResponse UpdateUser (string evApiKey, string evAccessToken, decimal? id, Body6 body = null);
 
         /// <summary>
         /// Update a user
@@ -171,7 +171,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserResponse</returns>
-        ApiResponse<UserResponse> UpdateUserWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null);
+        ApiResponse<UserResponse> UpdateUserWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, Body6 body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -185,7 +185,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserResponse</returns>
-        System.Threading.Tasks.Task<UserResponse> AddUserAsync (string evApiKey, string evAccessToken, AddUserRequestBody body = null);
+        System.Threading.Tasks.Task<UserResponse> AddUserAsync (string evApiKey, string evAccessToken, Body5 body = null);
 
         /// <summary>
         /// Create a user
@@ -198,7 +198,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserResponse>> AddUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, AddUserRequestBody body = null);
+        System.Threading.Tasks.Task<ApiResponse<UserResponse>> AddUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body5 body = null);
         /// <summary>
         /// Delete a user
         /// </summary>
@@ -308,7 +308,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserResponse</returns>
-        System.Threading.Tasks.Task<UserResponse> UpdateUserAsync (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null);
+        System.Threading.Tasks.Task<UserResponse> UpdateUserAsync (string evApiKey, string evAccessToken, decimal? id, Body6 body = null);
 
         /// <summary>
         /// Update a user
@@ -322,7 +322,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserResponse>> UpdateUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null);
+        System.Threading.Tasks.Task<ApiResponse<UserResponse>> UpdateUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, Body6 body = null);
         #endregion Asynchronous Operations
     }
 
@@ -442,7 +442,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>UserResponse</returns>
-        public UserResponse AddUser (string evApiKey, string evAccessToken, AddUserRequestBody body = null)
+        public UserResponse AddUser (string evApiKey, string evAccessToken, Body5 body = null)
         {
              ApiResponse<UserResponse> localVarResponse = AddUserWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -456,7 +456,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserResponse</returns>
-        public ApiResponse< UserResponse > AddUserWithHttpInfo (string evApiKey, string evAccessToken, AddUserRequestBody body = null)
+        public ApiResponse< UserResponse > AddUserWithHttpInfo (string evApiKey, string evAccessToken, Body5 body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -524,7 +524,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserResponse</returns>
-        public async System.Threading.Tasks.Task<UserResponse> AddUserAsync (string evApiKey, string evAccessToken, AddUserRequestBody body = null)
+        public async System.Threading.Tasks.Task<UserResponse> AddUserAsync (string evApiKey, string evAccessToken, Body5 body = null)
         {
              ApiResponse<UserResponse> localVarResponse = await AddUserAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -539,7 +539,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserResponse>> AddUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, AddUserRequestBody body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<UserResponse>> AddUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body5 body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1133,7 +1133,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>UserResponse</returns>
-        public UserResponse UpdateUser (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null)
+        public UserResponse UpdateUser (string evApiKey, string evAccessToken, decimal? id, Body6 body = null)
         {
              ApiResponse<UserResponse> localVarResponse = UpdateUserWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1148,7 +1148,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserResponse</returns>
-        public ApiResponse< UserResponse > UpdateUserWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null)
+        public ApiResponse< UserResponse > UpdateUserWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, Body6 body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1221,7 +1221,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserResponse</returns>
-        public async System.Threading.Tasks.Task<UserResponse> UpdateUserAsync (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null)
+        public async System.Threading.Tasks.Task<UserResponse> UpdateUserAsync (string evApiKey, string evAccessToken, decimal? id, Body6 body = null)
         {
              ApiResponse<UserResponse> localVarResponse = await UpdateUserAsyncWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1237,7 +1237,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserResponse>> UpdateUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<UserResponse>> UpdateUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, Body6 body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)

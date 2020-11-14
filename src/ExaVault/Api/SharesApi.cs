@@ -34,7 +34,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ShareResponse</returns>
-        ShareResponse AddShare (string evApiKey, string evAccessToken, AddShareRequestBody body = null);
+        ShareResponse AddShare (string evApiKey, string evAccessToken, Body16 body = null);
 
         /// <summary>
         /// Creates a share
@@ -47,7 +47,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ShareResponse</returns>
-        ApiResponse<ShareResponse> AddShareWithHttpInfo (string evApiKey, string evAccessToken, AddShareRequestBody body = null);
+        ApiResponse<ShareResponse> AddShareWithHttpInfo (string evApiKey, string evAccessToken, Body16 body = null);
         /// <summary>
         /// Complete send files
         /// </summary>
@@ -182,7 +182,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="id">ID of the share entry</param>
         /// <returns>ShareResponse</returns>
-        ShareResponse UpdateShareById (UpdateShareRequestBody body, string evApiKey, string evAccessToken, int? id);
+        ShareResponse UpdateShareById (Body17 body, string evApiKey, string evAccessToken, int? id);
 
         /// <summary>
         /// Update a share
@@ -196,7 +196,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="id">ID of the share entry</param>
         /// <returns>ApiResponse of ShareResponse</returns>
-        ApiResponse<ShareResponse> UpdateShareByIdWithHttpInfo (UpdateShareRequestBody body, string evApiKey, string evAccessToken, int? id);
+        ApiResponse<ShareResponse> UpdateShareByIdWithHttpInfo (Body17 body, string evApiKey, string evAccessToken, int? id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -210,7 +210,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ShareResponse</returns>
-        System.Threading.Tasks.Task<ShareResponse> AddShareAsync (string evApiKey, string evAccessToken, AddShareRequestBody body = null);
+        System.Threading.Tasks.Task<ShareResponse> AddShareAsync (string evApiKey, string evAccessToken, Body16 body = null);
 
         /// <summary>
         /// Creates a share
@@ -223,7 +223,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ShareResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ShareResponse>> AddShareAsyncWithHttpInfo (string evApiKey, string evAccessToken, AddShareRequestBody body = null);
+        System.Threading.Tasks.Task<ApiResponse<ShareResponse>> AddShareAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body16 body = null);
         /// <summary>
         /// Complete send files
         /// </summary>
@@ -358,7 +358,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="id">ID of the share entry</param>
         /// <returns>Task of ShareResponse</returns>
-        System.Threading.Tasks.Task<ShareResponse> UpdateShareByIdAsync (UpdateShareRequestBody body, string evApiKey, string evAccessToken, int? id);
+        System.Threading.Tasks.Task<ShareResponse> UpdateShareByIdAsync (Body17 body, string evApiKey, string evAccessToken, int? id);
 
         /// <summary>
         /// Update a share
@@ -372,7 +372,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="id">ID of the share entry</param>
         /// <returns>Task of ApiResponse (ShareResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ShareResponse>> UpdateShareByIdAsyncWithHttpInfo (UpdateShareRequestBody body, string evApiKey, string evAccessToken, int? id);
+        System.Threading.Tasks.Task<ApiResponse<ShareResponse>> UpdateShareByIdAsyncWithHttpInfo (Body17 body, string evApiKey, string evAccessToken, int? id);
         #endregion Asynchronous Operations
     }
 
@@ -492,7 +492,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ShareResponse</returns>
-        public ShareResponse AddShare (string evApiKey, string evAccessToken, AddShareRequestBody body = null)
+        public ShareResponse AddShare (string evApiKey, string evAccessToken, Body16 body = null)
         {
              ApiResponse<ShareResponse> localVarResponse = AddShareWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -506,7 +506,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ShareResponse</returns>
-        public ApiResponse< ShareResponse > AddShareWithHttpInfo (string evApiKey, string evAccessToken, AddShareRequestBody body = null)
+        public ApiResponse< ShareResponse > AddShareWithHttpInfo (string evApiKey, string evAccessToken, Body16 body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -574,7 +574,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ShareResponse</returns>
-        public async System.Threading.Tasks.Task<ShareResponse> AddShareAsync (string evApiKey, string evAccessToken, AddShareRequestBody body = null)
+        public async System.Threading.Tasks.Task<ShareResponse> AddShareAsync (string evApiKey, string evAccessToken, Body16 body = null)
         {
              ApiResponse<ShareResponse> localVarResponse = await AddShareAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -589,7 +589,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ShareResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ShareResponse>> AddShareAsyncWithHttpInfo (string evApiKey, string evAccessToken, AddShareRequestBody body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ShareResponse>> AddShareAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body16 body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1338,7 +1338,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="id">ID of the share entry</param>
         /// <returns>ShareResponse</returns>
-        public ShareResponse UpdateShareById (UpdateShareRequestBody body, string evApiKey, string evAccessToken, int? id)
+        public ShareResponse UpdateShareById (Body17 body, string evApiKey, string evAccessToken, int? id)
         {
              ApiResponse<ShareResponse> localVarResponse = UpdateShareByIdWithHttpInfo(body, evApiKey, evAccessToken, id);
              return localVarResponse.Data;
@@ -1353,7 +1353,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="id">ID of the share entry</param>
         /// <returns>ApiResponse of ShareResponse</returns>
-        public ApiResponse< ShareResponse > UpdateShareByIdWithHttpInfo (UpdateShareRequestBody body, string evApiKey, string evAccessToken, int? id)
+        public ApiResponse< ShareResponse > UpdateShareByIdWithHttpInfo (Body17 body, string evApiKey, string evAccessToken, int? id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1429,7 +1429,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="id">ID of the share entry</param>
         /// <returns>Task of ShareResponse</returns>
-        public async System.Threading.Tasks.Task<ShareResponse> UpdateShareByIdAsync (UpdateShareRequestBody body, string evApiKey, string evAccessToken, int? id)
+        public async System.Threading.Tasks.Task<ShareResponse> UpdateShareByIdAsync (Body17 body, string evApiKey, string evAccessToken, int? id)
         {
              ApiResponse<ShareResponse> localVarResponse = await UpdateShareByIdAsyncWithHttpInfo(body, evApiKey, evAccessToken, id);
              return localVarResponse.Data;
@@ -1445,7 +1445,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="id">ID of the share entry</param>
         /// <returns>Task of ApiResponse (ShareResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ShareResponse>> UpdateShareByIdAsyncWithHttpInfo (UpdateShareRequestBody body, string evApiKey, string evAccessToken, int? id)
+        public async System.Threading.Tasks.Task<ApiResponse<ShareResponse>> UpdateShareByIdAsyncWithHttpInfo (Body17 body, string evApiKey, string evAccessToken, int? id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
