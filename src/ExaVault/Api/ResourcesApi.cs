@@ -36,7 +36,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceResponse</returns>
-        ResourceResponse AddFolder (string evApiKey, string evAccessToken, Body8 body = null);
+        ResourceResponse AddFolder (string evApiKey, string evAccessToken, AddFolderRequestBody body = null);
 
         /// <summary>
         /// Create a folder
@@ -49,7 +49,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceResponse</returns>
-        ApiResponse<ResourceResponse> AddFolderWithHttpInfo (string evApiKey, string evAccessToken, Body8 body = null);
+        ApiResponse<ResourceResponse> AddFolderWithHttpInfo (string evApiKey, string evAccessToken, AddFolderRequestBody body = null);
         /// <summary>
         /// Compress resources
         /// </summary>
@@ -61,7 +61,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceResponse</returns>
-        ResourceResponse CompressFiles (string evApiKey, string evAccessToken, Body10 body = null);
+        ResourceResponse CompressFiles (string evApiKey, string evAccessToken, CompressFilesRequestBody body = null);
 
         /// <summary>
         /// Compress resources
@@ -74,7 +74,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceResponse</returns>
-        ApiResponse<ResourceResponse> CompressFilesWithHttpInfo (string evApiKey, string evAccessToken, Body10 body = null);
+        ApiResponse<ResourceResponse> CompressFilesWithHttpInfo (string evApiKey, string evAccessToken, CompressFilesRequestBody body = null);
         /// <summary>
         /// Copy resources
         /// </summary>
@@ -86,7 +86,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceCopyMove</returns>
-        ResourceCopyMove CopyResources (string evApiKey, string evAccessToken, Body12 body = null);
+        ResourceCopyMove CopyResources (string evApiKey, string evAccessToken, CopyResourcesRequestBody body = null);
 
         /// <summary>
         /// Copy resources
@@ -99,7 +99,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceCopyMove</returns>
-        ApiResponse<ResourceCopyMove> CopyResourcesWithHttpInfo (string evApiKey, string evAccessToken, Body12 body = null);
+        ApiResponse<ResourceCopyMove> CopyResourcesWithHttpInfo (string evApiKey, string evAccessToken, CopyResourcesRequestBody body = null);
         /// <summary>
         /// Delete a Resource
         /// </summary>
@@ -111,7 +111,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>EmptyResponse</returns>
-        EmptyResponse DeleteResourceById (int? id, string evApiKey, string evAccessToken);
+        EmptyResponse DeleteResourceById (long? id, string evApiKey, string evAccessToken);
 
         /// <summary>
         /// Delete a Resource
@@ -124,7 +124,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>ApiResponse of EmptyResponse</returns>
-        ApiResponse<EmptyResponse> DeleteResourceByIdWithHttpInfo (int? id, string evApiKey, string evAccessToken);
+        ApiResponse<EmptyResponse> DeleteResourceByIdWithHttpInfo (long? id, string evApiKey, string evAccessToken);
         /// <summary>
         /// Delete Resources
         /// </summary>
@@ -136,7 +136,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="body"> (optional)</param>
         /// <returns>EmptyResponse</returns>
-        EmptyResponse DeleteResources (string evApiKey, string evAccessToken, Body9 body = null);
+        EmptyResponse DeleteResources (string evApiKey, string evAccessToken, DeleteResourcesRequestBody body = null);
 
         /// <summary>
         /// Delete Resources
@@ -149,38 +149,38 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of EmptyResponse</returns>
-        ApiResponse<EmptyResponse> DeleteResourcesWithHttpInfo (string evApiKey, string evAccessToken, Body9 body = null);
+        ApiResponse<EmptyResponse> DeleteResourcesWithHttpInfo (string evApiKey, string evAccessToken, DeleteResourcesRequestBody body = null);
         /// <summary>
         /// Download a file
         /// </summary>
         /// <remarks>
-        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadName parameter if supplied. 
+        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
+        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
         /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>byte[]</returns>
-        byte[] Download (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null);
+        byte[] Download (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null);
 
         /// <summary>
         /// Download a file
         /// </summary>
         /// <remarks>
-        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadName parameter if supplied. 
+        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
+        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
         /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> DownloadWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null);
+        ApiResponse<byte[]> DownloadWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null);
         /// <summary>
         /// Extract resources
         /// </summary>
@@ -192,7 +192,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceCollectionResponse</returns>
-        ResourceCollectionResponse ExtractFiles (string evApiKey, string evAccessToken, Body11 body = null);
+        ResourceCollectionResponse ExtractFiles (string evApiKey, string evAccessToken, ExtractFilesRequestBody body = null);
 
         /// <summary>
         /// Extract resources
@@ -205,7 +205,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceCollectionResponse</returns>
-        ApiResponse<ResourceCollectionResponse> ExtractFilesWithHttpInfo (string evApiKey, string evAccessToken, Body11 body = null);
+        ApiResponse<ResourceCollectionResponse> ExtractFilesWithHttpInfo (string evApiKey, string evAccessToken, ExtractFilesRequestBody body = null);
         /// <summary>
         /// Preview a file
         /// </summary>
@@ -278,7 +278,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>ResourceResponse</returns>
-        ResourceResponse GetResourceInfoById (int? id, string evApiKey, string evAccessToken, string include = null);
+        ResourceResponse GetResourceInfoById (long? id, string evApiKey, string evAccessToken, string include = null);
 
         /// <summary>
         /// Get resource metadata
@@ -292,7 +292,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>ApiResponse of ResourceResponse</returns>
-        ApiResponse<ResourceResponse> GetResourceInfoByIdWithHttpInfo (int? id, string evApiKey, string evAccessToken, string include = null);
+        ApiResponse<ResourceResponse> GetResourceInfoByIdWithHttpInfo (long? id, string evApiKey, string evAccessToken, string include = null);
         /// <summary>
         /// List contents of folder
         /// </summary>
@@ -309,7 +309,7 @@ namespace ExaVault.Api
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerUser**. (optional)</param>
         /// <returns>ResourceCollectionResponse</returns>
-        ResourceCollectionResponse ListResourceContents (string evApiKey, string evAccessToken, int? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null);
+        ResourceCollectionResponse ListResourceContents (string evApiKey, string evAccessToken, long? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null);
 
         /// <summary>
         /// List contents of folder
@@ -327,7 +327,7 @@ namespace ExaVault.Api
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerUser**. (optional)</param>
         /// <returns>ApiResponse of ResourceCollectionResponse</returns>
-        ApiResponse<ResourceCollectionResponse> ListResourceContentsWithHttpInfo (string evApiKey, string evAccessToken, int? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null);
+        ApiResponse<ResourceCollectionResponse> ListResourceContentsWithHttpInfo (string evApiKey, string evAccessToken, long? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null);
         /// <summary>
         /// Get a list of all resources
         /// </summary>
@@ -376,7 +376,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceCopyMove</returns>
-        ResourceCopyMove MoveResources (string evApiKey, string evAccessToken, Body13 body = null);
+        ResourceCopyMove MoveResources (string evApiKey, string evAccessToken, MoveResourcesRequestBody body = null);
 
         /// <summary>
         /// Move resources
@@ -389,7 +389,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceCopyMove</returns>
-        ApiResponse<ResourceCopyMove> MoveResourcesWithHttpInfo (string evApiKey, string evAccessToken, Body13 body = null);
+        ApiResponse<ResourceCopyMove> MoveResourcesWithHttpInfo (string evApiKey, string evAccessToken, MoveResourcesRequestBody body = null);
         /// <summary>
         /// Rename a resource.
         /// </summary>
@@ -402,7 +402,7 @@ namespace ExaVault.Api
         /// <param name="id">ID number of the resource</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceResponse</returns>
-        ResourceResponse UpdateResourceById (string evAccessToken, string evApiKey, int? id, Body7 body = null);
+        ResourceResponse UpdateResourceById (string evAccessToken, string evApiKey, long? id, UpdateResourceByIdRequestBody body = null);
 
         /// <summary>
         /// Rename a resource.
@@ -416,7 +416,7 @@ namespace ExaVault.Api
         /// <param name="id">ID number of the resource</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceResponse</returns>
-        ApiResponse<ResourceResponse> UpdateResourceByIdWithHttpInfo (string evAccessToken, string evApiKey, int? id, Body7 body = null);
+        ApiResponse<ResourceResponse> UpdateResourceByIdWithHttpInfo (string evAccessToken, string evApiKey, long? id, UpdateResourceByIdRequestBody body = null);
         /// <summary>
         /// Upload a file
         /// </summary>
@@ -467,7 +467,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceResponse</returns>
-        System.Threading.Tasks.Task<ResourceResponse> AddFolderAsync (string evApiKey, string evAccessToken, Body8 body = null);
+        System.Threading.Tasks.Task<ResourceResponse> AddFolderAsync (string evApiKey, string evAccessToken, AddFolderRequestBody body = null);
 
         /// <summary>
         /// Create a folder
@@ -480,7 +480,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> AddFolderAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body8 body = null);
+        System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> AddFolderAsyncWithHttpInfo (string evApiKey, string evAccessToken, AddFolderRequestBody body = null);
         /// <summary>
         /// Compress resources
         /// </summary>
@@ -492,7 +492,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceResponse</returns>
-        System.Threading.Tasks.Task<ResourceResponse> CompressFilesAsync (string evApiKey, string evAccessToken, Body10 body = null);
+        System.Threading.Tasks.Task<ResourceResponse> CompressFilesAsync (string evApiKey, string evAccessToken, CompressFilesRequestBody body = null);
 
         /// <summary>
         /// Compress resources
@@ -505,7 +505,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> CompressFilesAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body10 body = null);
+        System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> CompressFilesAsyncWithHttpInfo (string evApiKey, string evAccessToken, CompressFilesRequestBody body = null);
         /// <summary>
         /// Copy resources
         /// </summary>
@@ -517,7 +517,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceCopyMove</returns>
-        System.Threading.Tasks.Task<ResourceCopyMove> CopyResourcesAsync (string evApiKey, string evAccessToken, Body12 body = null);
+        System.Threading.Tasks.Task<ResourceCopyMove> CopyResourcesAsync (string evApiKey, string evAccessToken, CopyResourcesRequestBody body = null);
 
         /// <summary>
         /// Copy resources
@@ -530,7 +530,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceCopyMove)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ResourceCopyMove>> CopyResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body12 body = null);
+        System.Threading.Tasks.Task<ApiResponse<ResourceCopyMove>> CopyResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, CopyResourcesRequestBody body = null);
         /// <summary>
         /// Delete a Resource
         /// </summary>
@@ -542,7 +542,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>Task of EmptyResponse</returns>
-        System.Threading.Tasks.Task<EmptyResponse> DeleteResourceByIdAsync (int? id, string evApiKey, string evAccessToken);
+        System.Threading.Tasks.Task<EmptyResponse> DeleteResourceByIdAsync (long? id, string evApiKey, string evAccessToken);
 
         /// <summary>
         /// Delete a Resource
@@ -555,7 +555,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>Task of ApiResponse (EmptyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteResourceByIdAsyncWithHttpInfo (int? id, string evApiKey, string evAccessToken);
+        System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteResourceByIdAsyncWithHttpInfo (long? id, string evApiKey, string evAccessToken);
         /// <summary>
         /// Delete Resources
         /// </summary>
@@ -567,7 +567,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of EmptyResponse</returns>
-        System.Threading.Tasks.Task<EmptyResponse> DeleteResourcesAsync (string evApiKey, string evAccessToken, Body9 body = null);
+        System.Threading.Tasks.Task<EmptyResponse> DeleteResourcesAsync (string evApiKey, string evAccessToken, DeleteResourcesRequestBody body = null);
 
         /// <summary>
         /// Delete Resources
@@ -580,38 +580,38 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (EmptyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body9 body = null);
+        System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, DeleteResourcesRequestBody body = null);
         /// <summary>
         /// Download a file
         /// </summary>
         /// <remarks>
-        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadName parameter if supplied. 
+        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
+        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
         /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> DownloadAsync (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null);
+        System.Threading.Tasks.Task<byte[]> DownloadAsync (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null);
 
         /// <summary>
         /// Download a file
         /// </summary>
         /// <remarks>
-        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadName parameter if supplied. 
+        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
+        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
         /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadAsyncWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadAsyncWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null);
         /// <summary>
         /// Extract resources
         /// </summary>
@@ -623,7 +623,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceCollectionResponse</returns>
-        System.Threading.Tasks.Task<ResourceCollectionResponse> ExtractFilesAsync (string evApiKey, string evAccessToken, Body11 body = null);
+        System.Threading.Tasks.Task<ResourceCollectionResponse> ExtractFilesAsync (string evApiKey, string evAccessToken, ExtractFilesRequestBody body = null);
 
         /// <summary>
         /// Extract resources
@@ -636,7 +636,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceCollectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ResourceCollectionResponse>> ExtractFilesAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body11 body = null);
+        System.Threading.Tasks.Task<ApiResponse<ResourceCollectionResponse>> ExtractFilesAsyncWithHttpInfo (string evApiKey, string evAccessToken, ExtractFilesRequestBody body = null);
         /// <summary>
         /// Preview a file
         /// </summary>
@@ -709,7 +709,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>Task of ResourceResponse</returns>
-        System.Threading.Tasks.Task<ResourceResponse> GetResourceInfoByIdAsync (int? id, string evApiKey, string evAccessToken, string include = null);
+        System.Threading.Tasks.Task<ResourceResponse> GetResourceInfoByIdAsync (long? id, string evApiKey, string evAccessToken, string include = null);
 
         /// <summary>
         /// Get resource metadata
@@ -723,7 +723,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>Task of ApiResponse (ResourceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> GetResourceInfoByIdAsyncWithHttpInfo (int? id, string evApiKey, string evAccessToken, string include = null);
+        System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> GetResourceInfoByIdAsyncWithHttpInfo (long? id, string evApiKey, string evAccessToken, string include = null);
         /// <summary>
         /// List contents of folder
         /// </summary>
@@ -740,7 +740,7 @@ namespace ExaVault.Api
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerUser**. (optional)</param>
         /// <returns>Task of ResourceCollectionResponse</returns>
-        System.Threading.Tasks.Task<ResourceCollectionResponse> ListResourceContentsAsync (string evApiKey, string evAccessToken, int? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null);
+        System.Threading.Tasks.Task<ResourceCollectionResponse> ListResourceContentsAsync (string evApiKey, string evAccessToken, long? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null);
 
         /// <summary>
         /// List contents of folder
@@ -758,7 +758,7 @@ namespace ExaVault.Api
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerUser**. (optional)</param>
         /// <returns>Task of ApiResponse (ResourceCollectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ResourceCollectionResponse>> ListResourceContentsAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null);
+        System.Threading.Tasks.Task<ApiResponse<ResourceCollectionResponse>> ListResourceContentsAsyncWithHttpInfo (string evApiKey, string evAccessToken, long? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null);
         /// <summary>
         /// Get a list of all resources
         /// </summary>
@@ -807,7 +807,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceCopyMove</returns>
-        System.Threading.Tasks.Task<ResourceCopyMove> MoveResourcesAsync (string evApiKey, string evAccessToken, Body13 body = null);
+        System.Threading.Tasks.Task<ResourceCopyMove> MoveResourcesAsync (string evApiKey, string evAccessToken, MoveResourcesRequestBody body = null);
 
         /// <summary>
         /// Move resources
@@ -820,7 +820,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceCopyMove)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ResourceCopyMove>> MoveResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body13 body = null);
+        System.Threading.Tasks.Task<ApiResponse<ResourceCopyMove>> MoveResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, MoveResourcesRequestBody body = null);
         /// <summary>
         /// Rename a resource.
         /// </summary>
@@ -833,7 +833,7 @@ namespace ExaVault.Api
         /// <param name="id">ID number of the resource</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceResponse</returns>
-        System.Threading.Tasks.Task<ResourceResponse> UpdateResourceByIdAsync (string evAccessToken, string evApiKey, int? id, Body7 body = null);
+        System.Threading.Tasks.Task<ResourceResponse> UpdateResourceByIdAsync (string evAccessToken, string evApiKey, long? id, UpdateResourceByIdRequestBody body = null);
 
         /// <summary>
         /// Rename a resource.
@@ -847,7 +847,7 @@ namespace ExaVault.Api
         /// <param name="id">ID number of the resource</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> UpdateResourceByIdAsyncWithHttpInfo (string evAccessToken, string evApiKey, int? id, Body7 body = null);
+        System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> UpdateResourceByIdAsyncWithHttpInfo (string evAccessToken, string evApiKey, long? id, UpdateResourceByIdRequestBody body = null);
         /// <summary>
         /// Upload a file
         /// </summary>
@@ -1006,7 +1006,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceResponse</returns>
-        public ResourceResponse AddFolder (string evApiKey, string evAccessToken, Body8 body = null)
+        public ResourceResponse AddFolder (string evApiKey, string evAccessToken, AddFolderRequestBody body = null)
         {
              ApiResponse<ResourceResponse> localVarResponse = AddFolderWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -1020,7 +1020,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceResponse</returns>
-        public ApiResponse< ResourceResponse > AddFolderWithHttpInfo (string evApiKey, string evAccessToken, Body8 body = null)
+        public ApiResponse< ResourceResponse > AddFolderWithHttpInfo (string evApiKey, string evAccessToken, AddFolderRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1088,7 +1088,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceResponse</returns>
-        public async System.Threading.Tasks.Task<ResourceResponse> AddFolderAsync (string evApiKey, string evAccessToken, Body8 body = null)
+        public async System.Threading.Tasks.Task<ResourceResponse> AddFolderAsync (string evApiKey, string evAccessToken, AddFolderRequestBody body = null)
         {
              ApiResponse<ResourceResponse> localVarResponse = await AddFolderAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -1103,7 +1103,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> AddFolderAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body8 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> AddFolderAsyncWithHttpInfo (string evApiKey, string evAccessToken, AddFolderRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1171,7 +1171,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceResponse</returns>
-        public ResourceResponse CompressFiles (string evApiKey, string evAccessToken, Body10 body = null)
+        public ResourceResponse CompressFiles (string evApiKey, string evAccessToken, CompressFilesRequestBody body = null)
         {
              ApiResponse<ResourceResponse> localVarResponse = CompressFilesWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -1185,7 +1185,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceResponse</returns>
-        public ApiResponse< ResourceResponse > CompressFilesWithHttpInfo (string evApiKey, string evAccessToken, Body10 body = null)
+        public ApiResponse< ResourceResponse > CompressFilesWithHttpInfo (string evApiKey, string evAccessToken, CompressFilesRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1253,7 +1253,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceResponse</returns>
-        public async System.Threading.Tasks.Task<ResourceResponse> CompressFilesAsync (string evApiKey, string evAccessToken, Body10 body = null)
+        public async System.Threading.Tasks.Task<ResourceResponse> CompressFilesAsync (string evApiKey, string evAccessToken, CompressFilesRequestBody body = null)
         {
              ApiResponse<ResourceResponse> localVarResponse = await CompressFilesAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -1268,7 +1268,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> CompressFilesAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body10 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> CompressFilesAsyncWithHttpInfo (string evApiKey, string evAccessToken, CompressFilesRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1336,7 +1336,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceCopyMove</returns>
-        public ResourceCopyMove CopyResources (string evApiKey, string evAccessToken, Body12 body = null)
+        public ResourceCopyMove CopyResources (string evApiKey, string evAccessToken, CopyResourcesRequestBody body = null)
         {
              ApiResponse<ResourceCopyMove> localVarResponse = CopyResourcesWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -1350,7 +1350,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceCopyMove</returns>
-        public ApiResponse< ResourceCopyMove > CopyResourcesWithHttpInfo (string evApiKey, string evAccessToken, Body12 body = null)
+        public ApiResponse< ResourceCopyMove > CopyResourcesWithHttpInfo (string evApiKey, string evAccessToken, CopyResourcesRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1418,7 +1418,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceCopyMove</returns>
-        public async System.Threading.Tasks.Task<ResourceCopyMove> CopyResourcesAsync (string evApiKey, string evAccessToken, Body12 body = null)
+        public async System.Threading.Tasks.Task<ResourceCopyMove> CopyResourcesAsync (string evApiKey, string evAccessToken, CopyResourcesRequestBody body = null)
         {
              ApiResponse<ResourceCopyMove> localVarResponse = await CopyResourcesAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -1433,7 +1433,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceCopyMove)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ResourceCopyMove>> CopyResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body12 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ResourceCopyMove>> CopyResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, CopyResourcesRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1501,7 +1501,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>EmptyResponse</returns>
-        public EmptyResponse DeleteResourceById (int? id, string evApiKey, string evAccessToken)
+        public EmptyResponse DeleteResourceById (long? id, string evApiKey, string evAccessToken)
         {
              ApiResponse<EmptyResponse> localVarResponse = DeleteResourceByIdWithHttpInfo(id, evApiKey, evAccessToken);
              return localVarResponse.Data;
@@ -1515,7 +1515,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>ApiResponse of EmptyResponse</returns>
-        public ApiResponse< EmptyResponse > DeleteResourceByIdWithHttpInfo (int? id, string evApiKey, string evAccessToken)
+        public ApiResponse< EmptyResponse > DeleteResourceByIdWithHttpInfo (long? id, string evApiKey, string evAccessToken)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1578,7 +1578,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>Task of EmptyResponse</returns>
-        public async System.Threading.Tasks.Task<EmptyResponse> DeleteResourceByIdAsync (int? id, string evApiKey, string evAccessToken)
+        public async System.Threading.Tasks.Task<EmptyResponse> DeleteResourceByIdAsync (long? id, string evApiKey, string evAccessToken)
         {
              ApiResponse<EmptyResponse> localVarResponse = await DeleteResourceByIdAsyncWithHttpInfo(id, evApiKey, evAccessToken);
              return localVarResponse.Data;
@@ -1593,7 +1593,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>Task of ApiResponse (EmptyResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteResourceByIdAsyncWithHttpInfo (int? id, string evApiKey, string evAccessToken)
+        public async System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteResourceByIdAsyncWithHttpInfo (long? id, string evApiKey, string evAccessToken)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1656,7 +1656,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="body"> (optional)</param>
         /// <returns>EmptyResponse</returns>
-        public EmptyResponse DeleteResources (string evApiKey, string evAccessToken, Body9 body = null)
+        public EmptyResponse DeleteResources (string evApiKey, string evAccessToken, DeleteResourcesRequestBody body = null)
         {
              ApiResponse<EmptyResponse> localVarResponse = DeleteResourcesWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -1670,7 +1670,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of EmptyResponse</returns>
-        public ApiResponse< EmptyResponse > DeleteResourcesWithHttpInfo (string evApiKey, string evAccessToken, Body9 body = null)
+        public ApiResponse< EmptyResponse > DeleteResourcesWithHttpInfo (string evApiKey, string evAccessToken, DeleteResourcesRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1738,7 +1738,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of EmptyResponse</returns>
-        public async System.Threading.Tasks.Task<EmptyResponse> DeleteResourcesAsync (string evApiKey, string evAccessToken, Body9 body = null)
+        public async System.Threading.Tasks.Task<EmptyResponse> DeleteResourcesAsync (string evApiKey, string evAccessToken, DeleteResourcesRequestBody body = null)
         {
              ApiResponse<EmptyResponse> localVarResponse = await DeleteResourcesAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -1753,7 +1753,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access Token</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (EmptyResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body9 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, DeleteResourcesRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1814,34 +1814,34 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadName parameter if supplied. 
+        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
+        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
         /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>byte[]</returns>
-        public byte[] Download (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null)
+        public byte[] Download (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null)
         {
-             ApiResponse<byte[]> localVarResponse = DownloadWithHttpInfo(evApiKey, evAccessToken, resources, downloadName, polling, pollingZipName);
+             ApiResponse<byte[]> localVarResponse = DownloadWithHttpInfo(evApiKey, evAccessToken, resources, downloadArchiveName, polling, pollingArchiveName);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadName parameter if supplied. 
+        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
+        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
         /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > DownloadWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null)
+        public ApiResponse< byte[] > DownloadWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1877,9 +1877,9 @@ namespace ExaVault.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (resources != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "resources[]", resources)); // query parameter
-            if (downloadName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "downloadName", downloadName)); // query parameter
+            if (downloadArchiveName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "downloadArchiveName", downloadArchiveName)); // query parameter
             if (polling != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "polling", polling)); // query parameter
-            if (pollingZipName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pollingZipName", pollingZipName)); // query parameter
+            if (pollingArchiveName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pollingArchiveName", pollingArchiveName)); // query parameter
             if (evApiKey != null) localVarHeaderParams.Add("ev-api-key", this.Configuration.ApiClient.ParameterToString(evApiKey)); // header parameter
             if (evAccessToken != null) localVarHeaderParams.Add("ev-access-token", this.Configuration.ApiClient.ParameterToString(evAccessToken)); // header parameter
 
@@ -1902,35 +1902,35 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadName parameter if supplied. 
+        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
+        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
         /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> DownloadAsync (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null)
+        public async System.Threading.Tasks.Task<byte[]> DownloadAsync (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null)
         {
-             ApiResponse<byte[]> localVarResponse = await DownloadAsyncWithHttpInfo(evApiKey, evAccessToken, resources, downloadName, polling, pollingZipName);
+             ApiResponse<byte[]> localVarResponse = await DownloadAsyncWithHttpInfo(evApiKey, evAccessToken, resources, downloadArchiveName, polling, pollingArchiveName);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadName parameter if supplied. 
+        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
+        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
         /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingZipName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadAsyncWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadName = null, bool? polling = null, string pollingZipName = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadAsyncWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1966,9 +1966,9 @@ namespace ExaVault.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (resources != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "resources[]", resources)); // query parameter
-            if (downloadName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "downloadName", downloadName)); // query parameter
+            if (downloadArchiveName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "downloadArchiveName", downloadArchiveName)); // query parameter
             if (polling != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "polling", polling)); // query parameter
-            if (pollingZipName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pollingZipName", pollingZipName)); // query parameter
+            if (pollingArchiveName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pollingArchiveName", pollingArchiveName)); // query parameter
             if (evApiKey != null) localVarHeaderParams.Add("ev-api-key", this.Configuration.ApiClient.ParameterToString(evApiKey)); // header parameter
             if (evAccessToken != null) localVarHeaderParams.Add("ev-access-token", this.Configuration.ApiClient.ParameterToString(evAccessToken)); // header parameter
 
@@ -1998,7 +1998,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceCollectionResponse</returns>
-        public ResourceCollectionResponse ExtractFiles (string evApiKey, string evAccessToken, Body11 body = null)
+        public ResourceCollectionResponse ExtractFiles (string evApiKey, string evAccessToken, ExtractFilesRequestBody body = null)
         {
              ApiResponse<ResourceCollectionResponse> localVarResponse = ExtractFilesWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -2012,7 +2012,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceCollectionResponse</returns>
-        public ApiResponse< ResourceCollectionResponse > ExtractFilesWithHttpInfo (string evApiKey, string evAccessToken, Body11 body = null)
+        public ApiResponse< ResourceCollectionResponse > ExtractFilesWithHttpInfo (string evApiKey, string evAccessToken, ExtractFilesRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -2080,7 +2080,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceCollectionResponse</returns>
-        public async System.Threading.Tasks.Task<ResourceCollectionResponse> ExtractFilesAsync (string evApiKey, string evAccessToken, Body11 body = null)
+        public async System.Threading.Tasks.Task<ResourceCollectionResponse> ExtractFilesAsync (string evApiKey, string evAccessToken, ExtractFilesRequestBody body = null)
         {
              ApiResponse<ResourceCollectionResponse> localVarResponse = await ExtractFilesAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -2095,7 +2095,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceCollectionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ResourceCollectionResponse>> ExtractFilesAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body11 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ResourceCollectionResponse>> ExtractFilesAsyncWithHttpInfo (string evApiKey, string evAccessToken, ExtractFilesRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -2510,7 +2510,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>ResourceResponse</returns>
-        public ResourceResponse GetResourceInfoById (int? id, string evApiKey, string evAccessToken, string include = null)
+        public ResourceResponse GetResourceInfoById (long? id, string evApiKey, string evAccessToken, string include = null)
         {
              ApiResponse<ResourceResponse> localVarResponse = GetResourceInfoByIdWithHttpInfo(id, evApiKey, evAccessToken, include);
              return localVarResponse.Data;
@@ -2525,7 +2525,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>ApiResponse of ResourceResponse</returns>
-        public ApiResponse< ResourceResponse > GetResourceInfoByIdWithHttpInfo (int? id, string evApiKey, string evAccessToken, string include = null)
+        public ApiResponse< ResourceResponse > GetResourceInfoByIdWithHttpInfo (long? id, string evApiKey, string evAccessToken, string include = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2590,7 +2590,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>Task of ResourceResponse</returns>
-        public async System.Threading.Tasks.Task<ResourceResponse> GetResourceInfoByIdAsync (int? id, string evApiKey, string evAccessToken, string include = null)
+        public async System.Threading.Tasks.Task<ResourceResponse> GetResourceInfoByIdAsync (long? id, string evApiKey, string evAccessToken, string include = null)
         {
              ApiResponse<ResourceResponse> localVarResponse = await GetResourceInfoByIdAsyncWithHttpInfo(id, evApiKey, evAccessToken, include);
              return localVarResponse.Data;
@@ -2606,7 +2606,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>Task of ApiResponse (ResourceResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> GetResourceInfoByIdAsyncWithHttpInfo (int? id, string evApiKey, string evAccessToken, string include = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> GetResourceInfoByIdAsyncWithHttpInfo (long? id, string evApiKey, string evAccessToken, string include = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2675,7 +2675,7 @@ namespace ExaVault.Api
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerUser**. (optional)</param>
         /// <returns>ResourceCollectionResponse</returns>
-        public ResourceCollectionResponse ListResourceContents (string evApiKey, string evAccessToken, int? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null)
+        public ResourceCollectionResponse ListResourceContents (string evApiKey, string evAccessToken, long? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null)
         {
              ApiResponse<ResourceCollectionResponse> localVarResponse = ListResourceContentsWithHttpInfo(evApiKey, evAccessToken, id, sort, offset, limit, type, include);
              return localVarResponse.Data;
@@ -2694,7 +2694,7 @@ namespace ExaVault.Api
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerUser**. (optional)</param>
         /// <returns>ApiResponse of ResourceCollectionResponse</returns>
-        public ApiResponse< ResourceCollectionResponse > ListResourceContentsWithHttpInfo (string evApiKey, string evAccessToken, int? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null)
+        public ApiResponse< ResourceCollectionResponse > ListResourceContentsWithHttpInfo (string evApiKey, string evAccessToken, long? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -2767,7 +2767,7 @@ namespace ExaVault.Api
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerUser**. (optional)</param>
         /// <returns>Task of ResourceCollectionResponse</returns>
-        public async System.Threading.Tasks.Task<ResourceCollectionResponse> ListResourceContentsAsync (string evApiKey, string evAccessToken, int? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null)
+        public async System.Threading.Tasks.Task<ResourceCollectionResponse> ListResourceContentsAsync (string evApiKey, string evAccessToken, long? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null)
         {
              ApiResponse<ResourceCollectionResponse> localVarResponse = await ListResourceContentsAsyncWithHttpInfo(evApiKey, evAccessToken, id, sort, offset, limit, type, include);
              return localVarResponse.Data;
@@ -2787,7 +2787,7 @@ namespace ExaVault.Api
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerUser**. (optional)</param>
         /// <returns>Task of ApiResponse (ResourceCollectionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ResourceCollectionResponse>> ListResourceContentsAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ResourceCollectionResponse>> ListResourceContentsAsyncWithHttpInfo (string evApiKey, string evAccessToken, long? id, string sort = null, int? offset = null, int? limit = null, string type = null, string include = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -3046,7 +3046,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceCopyMove</returns>
-        public ResourceCopyMove MoveResources (string evApiKey, string evAccessToken, Body13 body = null)
+        public ResourceCopyMove MoveResources (string evApiKey, string evAccessToken, MoveResourcesRequestBody body = null)
         {
              ApiResponse<ResourceCopyMove> localVarResponse = MoveResourcesWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -3060,7 +3060,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceCopyMove</returns>
-        public ApiResponse< ResourceCopyMove > MoveResourcesWithHttpInfo (string evApiKey, string evAccessToken, Body13 body = null)
+        public ApiResponse< ResourceCopyMove > MoveResourcesWithHttpInfo (string evApiKey, string evAccessToken, MoveResourcesRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -3128,7 +3128,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceCopyMove</returns>
-        public async System.Threading.Tasks.Task<ResourceCopyMove> MoveResourcesAsync (string evApiKey, string evAccessToken, Body13 body = null)
+        public async System.Threading.Tasks.Task<ResourceCopyMove> MoveResourcesAsync (string evApiKey, string evAccessToken, MoveResourcesRequestBody body = null)
         {
              ApiResponse<ResourceCopyMove> localVarResponse = await MoveResourcesAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -3143,7 +3143,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceCopyMove)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ResourceCopyMove>> MoveResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body13 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ResourceCopyMove>> MoveResourcesAsyncWithHttpInfo (string evApiKey, string evAccessToken, MoveResourcesRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -3212,7 +3212,7 @@ namespace ExaVault.Api
         /// <param name="id">ID number of the resource</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ResourceResponse</returns>
-        public ResourceResponse UpdateResourceById (string evAccessToken, string evApiKey, int? id, Body7 body = null)
+        public ResourceResponse UpdateResourceById (string evAccessToken, string evApiKey, long? id, UpdateResourceByIdRequestBody body = null)
         {
              ApiResponse<ResourceResponse> localVarResponse = UpdateResourceByIdWithHttpInfo(evAccessToken, evApiKey, id, body);
              return localVarResponse.Data;
@@ -3227,7 +3227,7 @@ namespace ExaVault.Api
         /// <param name="id">ID number of the resource</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ResourceResponse</returns>
-        public ApiResponse< ResourceResponse > UpdateResourceByIdWithHttpInfo (string evAccessToken, string evApiKey, int? id, Body7 body = null)
+        public ApiResponse< ResourceResponse > UpdateResourceByIdWithHttpInfo (string evAccessToken, string evApiKey, long? id, UpdateResourceByIdRequestBody body = null)
         {
             // verify the required parameter 'evAccessToken' is set
             if (evAccessToken == null)
@@ -3300,7 +3300,7 @@ namespace ExaVault.Api
         /// <param name="id">ID number of the resource</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ResourceResponse</returns>
-        public async System.Threading.Tasks.Task<ResourceResponse> UpdateResourceByIdAsync (string evAccessToken, string evApiKey, int? id, Body7 body = null)
+        public async System.Threading.Tasks.Task<ResourceResponse> UpdateResourceByIdAsync (string evAccessToken, string evApiKey, long? id, UpdateResourceByIdRequestBody body = null)
         {
              ApiResponse<ResourceResponse> localVarResponse = await UpdateResourceByIdAsyncWithHttpInfo(evAccessToken, evApiKey, id, body);
              return localVarResponse.Data;
@@ -3316,7 +3316,7 @@ namespace ExaVault.Api
         /// <param name="id">ID number of the resource</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ResourceResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> UpdateResourceByIdAsyncWithHttpInfo (string evAccessToken, string evApiKey, int? id, Body7 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ResourceResponse>> UpdateResourceByIdAsyncWithHttpInfo (string evAccessToken, string evApiKey, long? id, UpdateResourceByIdRequestBody body = null)
         {
             // verify the required parameter 'evAccessToken' is set
             if (evAccessToken == null)

@@ -51,7 +51,7 @@ namespace ExaVault.Model
         /// <param name="id">id.</param>
         /// <param name="type">type.</param>
         /// <param name="attributes">attributes.</param>
-        public WebhooksActivityEntry(int? id = default(int?), TypeEnum? type = default(TypeEnum?), WebhooksActivityEntryAttributes attributes = default(WebhooksActivityEntryAttributes))
+        public WebhooksActivityEntry(long? id = default(long?), TypeEnum? type = default(TypeEnum?), WebhooksActivityEntryAttributes attributes = default(WebhooksActivityEntryAttributes))
         {
             this.Id = id;
             this.Type = type;
@@ -62,7 +62,7 @@ namespace ExaVault.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
 
 
         /// <summary>

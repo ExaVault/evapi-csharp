@@ -43,7 +43,7 @@ namespace ExaVault.Model
         /// <param name="sessionId">sessionId.</param>
         /// <param name="status">status.</param>
         /// <param name="username">username.</param>
-        public SessionActivityEntryAttributes(int? bytesTransferred = default(int?), string created = default(string), int? duration = default(int?), string fileName = default(string), string fileSource = default(string), string ipAddress = default(string), string operation = default(string), string protocol = default(string), string sessionId = default(string), string status = default(string), string username = default(string))
+        public SessionActivityEntryAttributes(long? bytesTransferred = default(long?), string created = default(string), int? duration = default(int?), string fileName = default(string), string fileSource = default(string), string ipAddress = default(string), string operation = default(string), string protocol = default(string), string sessionId = default(string), string status = default(string), string username = default(string))
         {
             this.BytesTransferred = bytesTransferred;
             this.Created = created;
@@ -62,7 +62,7 @@ namespace ExaVault.Model
         /// Gets or Sets BytesTransferred
         /// </summary>
         [DataMember(Name="bytesTransferred", EmitDefaultValue=false)]
-        public int? BytesTransferred { get; set; }
+        public long? BytesTransferred { get; set; }
 
         /// <summary>
         /// Gets or Sets Created

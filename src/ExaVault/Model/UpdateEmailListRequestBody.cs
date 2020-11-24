@@ -24,41 +24,35 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// Object with preview image properties.
+    /// UpdateEmailListRequestBody
     /// </summary>
     [DataContract]
-        public partial class PreviewFile :  IEquatable<PreviewFile>, IValidatableObject
+        public partial class UpdateEmailListRequestBody :  IEquatable<UpdateEmailListRequestBody>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PreviewFile" /> class.
+        /// Initializes a new instance of the <see cref="UpdateEmailListRequestBody" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="type">type.</param>
-        /// <param name="attributes">attributes.</param>
-        public PreviewFile(long? id = default(long?), string type = default(string), PreviewFileAttributes attributes = default(PreviewFileAttributes))
+        /// <param name="name">Name of the email list..</param>
+        /// <param name="emails">Email addresses that replace existing list..</param>
+        public UpdateEmailListRequestBody(string name = default(string), List<string> emails = default(List<string>))
         {
-            this.Id = id;
-            this.Type = type;
-            this.Attributes = attributes;
+            this.Name = name;
+            this.Emails = emails;
         }
         
         /// <summary>
-        /// Gets or Sets Id
+        /// Name of the email list.
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        /// <value>Name of the email list.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// Email addresses that replace existing list.
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Attributes
-        /// </summary>
-        [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public PreviewFileAttributes Attributes { get; set; }
+        /// <value>Email addresses that replace existing list.</value>
+        [DataMember(Name="emails", EmitDefaultValue=false)]
+        public List<string> Emails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,10 +61,9 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class PreviewFile {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("class UpdateEmailListRequestBody {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Emails: ").Append(Emails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,34 +84,30 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as PreviewFile);
+            return this.Equals(input as UpdateEmailListRequestBody);
         }
 
         /// <summary>
-        /// Returns true if PreviewFile instances are equal
+        /// Returns true if UpdateEmailListRequestBody instances are equal
         /// </summary>
-        /// <param name="input">Instance of PreviewFile to be compared</param>
+        /// <param name="input">Instance of UpdateEmailListRequestBody to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(PreviewFile input)
+        public bool Equals(UpdateEmailListRequestBody input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
-                ) && 
-                (
-                    this.Attributes == input.Attributes ||
-                    (this.Attributes != null &&
-                    this.Attributes.Equals(input.Attributes))
+                    this.Emails == input.Emails ||
+                    this.Emails != null &&
+                    input.Emails != null &&
+                    this.Emails.SequenceEqual(input.Emails)
                 );
         }
 
@@ -131,12 +120,10 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Attributes != null)
-                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Emails != null)
+                    hashCode = hashCode * 59 + this.Emails.GetHashCode();
                 return hashCode;
             }
         }

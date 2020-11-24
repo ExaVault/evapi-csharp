@@ -24,51 +24,51 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// Message, owner, resource, and notification relationships of the share. 
+    /// MoveResourcesRequestBody
     /// </summary>
     [DataContract]
-        public partial class ShareRelationships :  IEquatable<ShareRelationships>, IValidatableObject
+        public partial class MoveResourcesRequestBody :  IEquatable<MoveResourcesRequestBody>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShareRelationships" /> class.
+        /// Initializes a new instance of the <see cref="MoveResourcesRequestBody" /> class.
         /// </summary>
-        /// <param name="messages">null.</param>
-        /// <param name="owner">owner.</param>
-        /// <param name="resources">resources.</param>
-        /// <param name="notifications">null.</param>
-        public ShareRelationships(List<ShareRelationshipsMessage> messages = default(List<ShareRelationshipsMessage>), ShareRelationshipsOwner owner = default(ShareRelationshipsOwner), List<ShareRelationshipsResource> resources = default(List<ShareRelationshipsResource>), List<ShareRelationshipsNotification> notifications = default(List<ShareRelationshipsNotification>))
+        /// <param name="resources">Array containing file/folder paths to move. (required).</param>
+        /// <param name="parentResource">Remote destination path to move files/folders to. (required).</param>
+        public MoveResourcesRequestBody(List<string> resources = default(List<string>), string parentResource = default(string))
         {
-            this.Messages = messages;
-            this.Owner = owner;
-            this.Resources = resources;
-            this.Notifications = notifications;
+            // to ensure "resources" is required (not null)
+            if (resources == null)
+            {
+                throw new InvalidDataException("resources is a required property for MoveResourcesRequestBody and cannot be null");
+            }
+            else
+            {
+                this.Resources = resources;
+            }
+            // to ensure "parentResource" is required (not null)
+            if (parentResource == null)
+            {
+                throw new InvalidDataException("parentResource is a required property for MoveResourcesRequestBody and cannot be null");
+            }
+            else
+            {
+                this.ParentResource = parentResource;
+            }
         }
         
         /// <summary>
-        /// null
+        /// Array containing file/folder paths to move.
         /// </summary>
-        /// <value>null</value>
-        [DataMember(Name="messages", EmitDefaultValue=false)]
-        public List<ShareRelationshipsMessage> Messages { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Owner
-        /// </summary>
-        [DataMember(Name="owner", EmitDefaultValue=false)]
-        public ShareRelationshipsOwner Owner { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Resources
-        /// </summary>
+        /// <value>Array containing file/folder paths to move.</value>
         [DataMember(Name="resources", EmitDefaultValue=false)]
-        public List<ShareRelationshipsResource> Resources { get; set; }
+        public List<string> Resources { get; set; }
 
         /// <summary>
-        /// null
+        /// Remote destination path to move files/folders to.
         /// </summary>
-        /// <value>null</value>
-        [DataMember(Name="notifications", EmitDefaultValue=false)]
-        public List<ShareRelationshipsNotification> Notifications { get; set; }
+        /// <value>Remote destination path to move files/folders to.</value>
+        [DataMember(Name="parentResource", EmitDefaultValue=false)]
+        public string ParentResource { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -77,11 +77,9 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ShareRelationships {\n");
-            sb.Append("  Messages: ").Append(Messages).Append("\n");
-            sb.Append("  Owner: ").Append(Owner).Append("\n");
+            sb.Append("class MoveResourcesRequestBody {\n");
             sb.Append("  Resources: ").Append(Resources).Append("\n");
-            sb.Append("  Notifications: ").Append(Notifications).Append("\n");
+            sb.Append("  ParentResource: ").Append(ParentResource).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -102,31 +100,20 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ShareRelationships);
+            return this.Equals(input as MoveResourcesRequestBody);
         }
 
         /// <summary>
-        /// Returns true if ShareRelationships instances are equal
+        /// Returns true if MoveResourcesRequestBody instances are equal
         /// </summary>
-        /// <param name="input">Instance of ShareRelationships to be compared</param>
+        /// <param name="input">Instance of MoveResourcesRequestBody to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ShareRelationships input)
+        public bool Equals(MoveResourcesRequestBody input)
         {
             if (input == null)
                 return false;
 
             return 
-                (
-                    this.Messages == input.Messages ||
-                    this.Messages != null &&
-                    input.Messages != null &&
-                    this.Messages.SequenceEqual(input.Messages)
-                ) && 
-                (
-                    this.Owner == input.Owner ||
-                    (this.Owner != null &&
-                    this.Owner.Equals(input.Owner))
-                ) && 
                 (
                     this.Resources == input.Resources ||
                     this.Resources != null &&
@@ -134,10 +121,9 @@ namespace ExaVault.Model
                     this.Resources.SequenceEqual(input.Resources)
                 ) && 
                 (
-                    this.Notifications == input.Notifications ||
-                    this.Notifications != null &&
-                    input.Notifications != null &&
-                    this.Notifications.SequenceEqual(input.Notifications)
+                    this.ParentResource == input.ParentResource ||
+                    (this.ParentResource != null &&
+                    this.ParentResource.Equals(input.ParentResource))
                 );
         }
 
@@ -150,14 +136,10 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Messages != null)
-                    hashCode = hashCode * 59 + this.Messages.GetHashCode();
-                if (this.Owner != null)
-                    hashCode = hashCode * 59 + this.Owner.GetHashCode();
                 if (this.Resources != null)
                     hashCode = hashCode * 59 + this.Resources.GetHashCode();
-                if (this.Notifications != null)
-                    hashCode = hashCode * 59 + this.Notifications.GetHashCode();
+                if (this.ParentResource != null)
+                    hashCode = hashCode * 59 + this.ParentResource.GetHashCode();
                 return hashCode;
             }
         }

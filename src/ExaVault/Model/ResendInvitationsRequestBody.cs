@@ -24,41 +24,26 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// Object with preview image properties.
+    /// ResendInvitationsRequestBody
     /// </summary>
     [DataContract]
-        public partial class PreviewFile :  IEquatable<PreviewFile>, IValidatableObject
+        public partial class ResendInvitationsRequestBody :  IEquatable<ResendInvitationsRequestBody>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PreviewFile" /> class.
+        /// Initializes a new instance of the <see cref="ResendInvitationsRequestBody" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="type">type.</param>
-        /// <param name="attributes">attributes.</param>
-        public PreviewFile(long? id = default(long?), string type = default(string), PreviewFileAttributes attributes = default(PreviewFileAttributes))
+        /// <param name="recipientId">ID number of recipient to send a new invitation to..</param>
+        public ResendInvitationsRequestBody(int? recipientId = default(int?))
         {
-            this.Id = id;
-            this.Type = type;
-            this.Attributes = attributes;
+            this.RecipientId = recipientId;
         }
         
         /// <summary>
-        /// Gets or Sets Id
+        /// ID number of recipient to send a new invitation to.
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Attributes
-        /// </summary>
-        [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public PreviewFileAttributes Attributes { get; set; }
+        /// <value>ID number of recipient to send a new invitation to.</value>
+        [DataMember(Name="recipientId", EmitDefaultValue=false)]
+        public int? RecipientId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,10 +52,8 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class PreviewFile {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("class ResendInvitationsRequestBody {\n");
+            sb.Append("  RecipientId: ").Append(RecipientId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,34 +74,24 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as PreviewFile);
+            return this.Equals(input as ResendInvitationsRequestBody);
         }
 
         /// <summary>
-        /// Returns true if PreviewFile instances are equal
+        /// Returns true if ResendInvitationsRequestBody instances are equal
         /// </summary>
-        /// <param name="input">Instance of PreviewFile to be compared</param>
+        /// <param name="input">Instance of ResendInvitationsRequestBody to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(PreviewFile input)
+        public bool Equals(ResendInvitationsRequestBody input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
-                ) && 
-                (
-                    this.Attributes == input.Attributes ||
-                    (this.Attributes != null &&
-                    this.Attributes.Equals(input.Attributes))
+                    this.RecipientId == input.RecipientId ||
+                    (this.RecipientId != null &&
+                    this.RecipientId.Equals(input.RecipientId))
                 );
         }
 
@@ -131,12 +104,8 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Attributes != null)
-                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
+                if (this.RecipientId != null)
+                    hashCode = hashCode * 59 + this.RecipientId.GetHashCode();
                 return hashCode;
             }
         }

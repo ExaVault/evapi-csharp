@@ -35,7 +35,7 @@ namespace ExaVault.Model
         /// <param name="id">Form entry id.</param>
         /// <param name="type">Type of item. \&quot;formEntry\&quot;.</param>
         /// <param name="attributes">attributes.</param>
-        public FormEntry(int? id = default(int?), string type = default(string), FormEntryAttributes attributes = default(FormEntryAttributes))
+        public FormEntry(long? id = default(long?), string type = default(string), FormEntryAttributes attributes = default(FormEntryAttributes))
         {
             this.Id = id;
             this.Type = type;
@@ -47,7 +47,7 @@ namespace ExaVault.Model
         /// </summary>
         /// <value>Form entry id</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
 
         /// <summary>
         /// Type of item. \&quot;formEntry\&quot;

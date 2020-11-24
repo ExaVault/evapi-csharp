@@ -34,7 +34,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>NotificationResponse</returns>
-        NotificationResponse AddNotification (string evApiKey, string evAccessToken, Body4 body = null);
+        NotificationResponse AddNotification (string evApiKey, string evAccessToken, AddNotificationRequestBody body = null);
 
         /// <summary>
         /// Create a new notification
@@ -47,7 +47,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of NotificationResponse</returns>
-        ApiResponse<NotificationResponse> AddNotificationWithHttpInfo (string evApiKey, string evAccessToken, Body4 body = null);
+        ApiResponse<NotificationResponse> AddNotificationWithHttpInfo (string evApiKey, string evAccessToken, AddNotificationRequestBody body = null);
         /// <summary>
         /// Delete a notification
         /// </summary>
@@ -147,7 +147,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>NotificationResponse</returns>
-        NotificationResponse UpdateNotificationById (string evApiKey, string evAccessToken, int? id, Body3 body = null);
+        NotificationResponse UpdateNotificationById (string evApiKey, string evAccessToken, int? id, UpdateNotificationByIdRequestBody body = null);
 
         /// <summary>
         /// Update a notification
@@ -161,7 +161,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of NotificationResponse</returns>
-        ApiResponse<NotificationResponse> UpdateNotificationByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body3 body = null);
+        ApiResponse<NotificationResponse> UpdateNotificationByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateNotificationByIdRequestBody body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -175,7 +175,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of NotificationResponse</returns>
-        System.Threading.Tasks.Task<NotificationResponse> AddNotificationAsync (string evApiKey, string evAccessToken, Body4 body = null);
+        System.Threading.Tasks.Task<NotificationResponse> AddNotificationAsync (string evApiKey, string evAccessToken, AddNotificationRequestBody body = null);
 
         /// <summary>
         /// Create a new notification
@@ -188,7 +188,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (NotificationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NotificationResponse>> AddNotificationAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body4 body = null);
+        System.Threading.Tasks.Task<ApiResponse<NotificationResponse>> AddNotificationAsyncWithHttpInfo (string evApiKey, string evAccessToken, AddNotificationRequestBody body = null);
         /// <summary>
         /// Delete a notification
         /// </summary>
@@ -288,7 +288,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of NotificationResponse</returns>
-        System.Threading.Tasks.Task<NotificationResponse> UpdateNotificationByIdAsync (string evApiKey, string evAccessToken, int? id, Body3 body = null);
+        System.Threading.Tasks.Task<NotificationResponse> UpdateNotificationByIdAsync (string evApiKey, string evAccessToken, int? id, UpdateNotificationByIdRequestBody body = null);
 
         /// <summary>
         /// Update a notification
@@ -302,7 +302,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (NotificationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NotificationResponse>> UpdateNotificationByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body3 body = null);
+        System.Threading.Tasks.Task<ApiResponse<NotificationResponse>> UpdateNotificationByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateNotificationByIdRequestBody body = null);
         #endregion Asynchronous Operations
     }
 
@@ -422,7 +422,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>NotificationResponse</returns>
-        public NotificationResponse AddNotification (string evApiKey, string evAccessToken, Body4 body = null)
+        public NotificationResponse AddNotification (string evApiKey, string evAccessToken, AddNotificationRequestBody body = null)
         {
              ApiResponse<NotificationResponse> localVarResponse = AddNotificationWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -436,7 +436,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of NotificationResponse</returns>
-        public ApiResponse< NotificationResponse > AddNotificationWithHttpInfo (string evApiKey, string evAccessToken, Body4 body = null)
+        public ApiResponse< NotificationResponse > AddNotificationWithHttpInfo (string evApiKey, string evAccessToken, AddNotificationRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -504,7 +504,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of NotificationResponse</returns>
-        public async System.Threading.Tasks.Task<NotificationResponse> AddNotificationAsync (string evApiKey, string evAccessToken, Body4 body = null)
+        public async System.Threading.Tasks.Task<NotificationResponse> AddNotificationAsync (string evApiKey, string evAccessToken, AddNotificationRequestBody body = null)
         {
              ApiResponse<NotificationResponse> localVarResponse = await AddNotificationAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -519,7 +519,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (NotificationResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NotificationResponse>> AddNotificationAsyncWithHttpInfo (string evApiKey, string evAccessToken, Body4 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<NotificationResponse>> AddNotificationAsyncWithHttpInfo (string evApiKey, string evAccessToken, AddNotificationRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1083,7 +1083,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>NotificationResponse</returns>
-        public NotificationResponse UpdateNotificationById (string evApiKey, string evAccessToken, int? id, Body3 body = null)
+        public NotificationResponse UpdateNotificationById (string evApiKey, string evAccessToken, int? id, UpdateNotificationByIdRequestBody body = null)
         {
              ApiResponse<NotificationResponse> localVarResponse = UpdateNotificationByIdWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1098,7 +1098,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of NotificationResponse</returns>
-        public ApiResponse< NotificationResponse > UpdateNotificationByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body3 body = null)
+        public ApiResponse< NotificationResponse > UpdateNotificationByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateNotificationByIdRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1171,7 +1171,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of NotificationResponse</returns>
-        public async System.Threading.Tasks.Task<NotificationResponse> UpdateNotificationByIdAsync (string evApiKey, string evAccessToken, int? id, Body3 body = null)
+        public async System.Threading.Tasks.Task<NotificationResponse> UpdateNotificationByIdAsync (string evApiKey, string evAccessToken, int? id, UpdateNotificationByIdRequestBody body = null)
         {
              ApiResponse<NotificationResponse> localVarResponse = await UpdateNotificationByIdAsyncWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1187,7 +1187,7 @@ namespace ExaVault.Api
         /// <param name="id">ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (NotificationResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NotificationResponse>> UpdateNotificationByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body3 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<NotificationResponse>> UpdateNotificationByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateNotificationByIdRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)

@@ -72,7 +72,7 @@ namespace ExaVault.Model
         /// </summary>
         /// <param name="id">ID of the form element. If you&#x27;re adding a new element to the form, do not include this field..</param>
         /// <param name="name">Name of the form element..</param>
-        /// <param name="order">The order the fields will be displayed to the receipient. Starts at 0. .</param>
+        /// <param name="order">The order the fields will be displayed to the recipient. Starts at 0. .</param>
         /// <param name="type">Type of form field to use..</param>
         /// <param name="settings">settings.</param>
         public FormsidElements(int? id = default(int?), string name = default(string), int? order = default(int?), TypeEnum? type = default(TypeEnum?), FormsidSettings settings = default(FormsidSettings))
@@ -99,9 +99,9 @@ namespace ExaVault.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The order the fields will be displayed to the receipient. Starts at 0. 
+        /// The order the fields will be displayed to the recipient. Starts at 0. 
         /// </summary>
-        /// <value>The order the fields will be displayed to the receipient. Starts at 0. </value>
+        /// <value>The order the fields will be displayed to the recipient. Starts at 0. </value>
         [DataMember(Name="order", EmitDefaultValue=false)]
         public int? Order { get; set; }
 

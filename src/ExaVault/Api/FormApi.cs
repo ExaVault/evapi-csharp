@@ -34,7 +34,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the entry to be deleted data for</param>
         /// <returns>EmptyResponse</returns>
-        EmptyResponse DeleteFormMessageById (string evApiKey, string evAccessToken, string id);
+        EmptyResponse DeleteFormMessageById (string evApiKey, string evAccessToken, long? id);
 
         /// <summary>
         /// Delete a receive form submission
@@ -47,7 +47,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the entry to be deleted data for</param>
         /// <returns>ApiResponse of EmptyResponse</returns>
-        ApiResponse<EmptyResponse> DeleteFormMessageByIdWithHttpInfo (string evApiKey, string evAccessToken, string id);
+        ApiResponse<EmptyResponse> DeleteFormMessageByIdWithHttpInfo (string evApiKey, string evAccessToken, long? id);
         /// <summary>
         /// Get receive folder form by Id
         /// </summary>
@@ -115,7 +115,7 @@ namespace ExaVault.Api
         /// <param name="limit">Limit of records to be returned (for pagination) (optional)</param>
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <returns>FormEntryResponse</returns>
-        FormEntryResponse GetFormEntries (string evApiKey, string evAccessToken, string id, int? limit = null, int? offset = null);
+        FormEntryResponse GetFormEntries (string evApiKey, string evAccessToken, int? id, int? limit = null, int? offset = null);
 
         /// <summary>
         /// Get form data entries for a receive
@@ -130,7 +130,7 @@ namespace ExaVault.Api
         /// <param name="limit">Limit of records to be returned (for pagination) (optional)</param>
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <returns>ApiResponse of FormEntryResponse</returns>
-        ApiResponse<FormEntryResponse> GetFormEntriesWithHttpInfo (string evApiKey, string evAccessToken, string id, int? limit = null, int? offset = null);
+        ApiResponse<FormEntryResponse> GetFormEntriesWithHttpInfo (string evApiKey, string evAccessToken, int? id, int? limit = null, int? offset = null);
         /// <summary>
         /// Updates a form with given parameters
         /// </summary>
@@ -143,7 +143,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>FormResponse</returns>
-        FormResponse UpdateFormById (string evApiKey, string evAccessToken, int? id, Body2 body = null);
+        FormResponse UpdateFormById (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null);
 
         /// <summary>
         /// Updates a form with given parameters
@@ -157,7 +157,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of FormResponse</returns>
-        ApiResponse<FormResponse> UpdateFormByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body2 body = null);
+        ApiResponse<FormResponse> UpdateFormByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -171,7 +171,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the entry to be deleted data for</param>
         /// <returns>Task of EmptyResponse</returns>
-        System.Threading.Tasks.Task<EmptyResponse> DeleteFormMessageByIdAsync (string evApiKey, string evAccessToken, string id);
+        System.Threading.Tasks.Task<EmptyResponse> DeleteFormMessageByIdAsync (string evApiKey, string evAccessToken, long? id);
 
         /// <summary>
         /// Delete a receive form submission
@@ -184,7 +184,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the entry to be deleted data for</param>
         /// <returns>Task of ApiResponse (EmptyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteFormMessageByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, string id);
+        System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteFormMessageByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, long? id);
         /// <summary>
         /// Get receive folder form by Id
         /// </summary>
@@ -252,7 +252,7 @@ namespace ExaVault.Api
         /// <param name="limit">Limit of records to be returned (for pagination) (optional)</param>
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <returns>Task of FormEntryResponse</returns>
-        System.Threading.Tasks.Task<FormEntryResponse> GetFormEntriesAsync (string evApiKey, string evAccessToken, string id, int? limit = null, int? offset = null);
+        System.Threading.Tasks.Task<FormEntryResponse> GetFormEntriesAsync (string evApiKey, string evAccessToken, int? id, int? limit = null, int? offset = null);
 
         /// <summary>
         /// Get form data entries for a receive
@@ -267,7 +267,7 @@ namespace ExaVault.Api
         /// <param name="limit">Limit of records to be returned (for pagination) (optional)</param>
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <returns>Task of ApiResponse (FormEntryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FormEntryResponse>> GetFormEntriesAsyncWithHttpInfo (string evApiKey, string evAccessToken, string id, int? limit = null, int? offset = null);
+        System.Threading.Tasks.Task<ApiResponse<FormEntryResponse>> GetFormEntriesAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, int? limit = null, int? offset = null);
         /// <summary>
         /// Updates a form with given parameters
         /// </summary>
@@ -280,7 +280,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of FormResponse</returns>
-        System.Threading.Tasks.Task<FormResponse> UpdateFormByIdAsync (string evApiKey, string evAccessToken, int? id, Body2 body = null);
+        System.Threading.Tasks.Task<FormResponse> UpdateFormByIdAsync (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null);
 
         /// <summary>
         /// Updates a form with given parameters
@@ -294,7 +294,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (FormResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FormResponse>> UpdateFormByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body2 body = null);
+        System.Threading.Tasks.Task<ApiResponse<FormResponse>> UpdateFormByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null);
         #endregion Asynchronous Operations
     }
 
@@ -414,7 +414,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the entry to be deleted data for</param>
         /// <returns>EmptyResponse</returns>
-        public EmptyResponse DeleteFormMessageById (string evApiKey, string evAccessToken, string id)
+        public EmptyResponse DeleteFormMessageById (string evApiKey, string evAccessToken, long? id)
         {
              ApiResponse<EmptyResponse> localVarResponse = DeleteFormMessageByIdWithHttpInfo(evApiKey, evAccessToken, id);
              return localVarResponse.Data;
@@ -428,7 +428,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the entry to be deleted data for</param>
         /// <returns>ApiResponse of EmptyResponse</returns>
-        public ApiResponse< EmptyResponse > DeleteFormMessageByIdWithHttpInfo (string evApiKey, string evAccessToken, string id)
+        public ApiResponse< EmptyResponse > DeleteFormMessageByIdWithHttpInfo (string evApiKey, string evAccessToken, long? id)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -491,7 +491,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the entry to be deleted data for</param>
         /// <returns>Task of EmptyResponse</returns>
-        public async System.Threading.Tasks.Task<EmptyResponse> DeleteFormMessageByIdAsync (string evApiKey, string evAccessToken, string id)
+        public async System.Threading.Tasks.Task<EmptyResponse> DeleteFormMessageByIdAsync (string evApiKey, string evAccessToken, long? id)
         {
              ApiResponse<EmptyResponse> localVarResponse = await DeleteFormMessageByIdAsyncWithHttpInfo(evApiKey, evAccessToken, id);
              return localVarResponse.Data;
@@ -506,7 +506,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the entry to be deleted data for</param>
         /// <returns>Task of ApiResponse (EmptyResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteFormMessageByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, string id)
+        public async System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteFormMessageByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, long? id)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -893,7 +893,7 @@ namespace ExaVault.Api
         /// <param name="limit">Limit of records to be returned (for pagination) (optional)</param>
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <returns>FormEntryResponse</returns>
-        public FormEntryResponse GetFormEntries (string evApiKey, string evAccessToken, string id, int? limit = null, int? offset = null)
+        public FormEntryResponse GetFormEntries (string evApiKey, string evAccessToken, int? id, int? limit = null, int? offset = null)
         {
              ApiResponse<FormEntryResponse> localVarResponse = GetFormEntriesWithHttpInfo(evApiKey, evAccessToken, id, limit, offset);
              return localVarResponse.Data;
@@ -909,7 +909,7 @@ namespace ExaVault.Api
         /// <param name="limit">Limit of records to be returned (for pagination) (optional)</param>
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <returns>ApiResponse of FormEntryResponse</returns>
-        public ApiResponse< FormEntryResponse > GetFormEntriesWithHttpInfo (string evApiKey, string evAccessToken, string id, int? limit = null, int? offset = null)
+        public ApiResponse< FormEntryResponse > GetFormEntriesWithHttpInfo (string evApiKey, string evAccessToken, int? id, int? limit = null, int? offset = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -976,7 +976,7 @@ namespace ExaVault.Api
         /// <param name="limit">Limit of records to be returned (for pagination) (optional)</param>
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <returns>Task of FormEntryResponse</returns>
-        public async System.Threading.Tasks.Task<FormEntryResponse> GetFormEntriesAsync (string evApiKey, string evAccessToken, string id, int? limit = null, int? offset = null)
+        public async System.Threading.Tasks.Task<FormEntryResponse> GetFormEntriesAsync (string evApiKey, string evAccessToken, int? id, int? limit = null, int? offset = null)
         {
              ApiResponse<FormEntryResponse> localVarResponse = await GetFormEntriesAsyncWithHttpInfo(evApiKey, evAccessToken, id, limit, offset);
              return localVarResponse.Data;
@@ -993,7 +993,7 @@ namespace ExaVault.Api
         /// <param name="limit">Limit of records to be returned (for pagination) (optional)</param>
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <returns>Task of ApiResponse (FormEntryResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<FormEntryResponse>> GetFormEntriesAsyncWithHttpInfo (string evApiKey, string evAccessToken, string id, int? limit = null, int? offset = null)
+        public async System.Threading.Tasks.Task<ApiResponse<FormEntryResponse>> GetFormEntriesAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, int? limit = null, int? offset = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1059,7 +1059,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>FormResponse</returns>
-        public FormResponse UpdateFormById (string evApiKey, string evAccessToken, int? id, Body2 body = null)
+        public FormResponse UpdateFormById (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null)
         {
              ApiResponse<FormResponse> localVarResponse = UpdateFormByIdWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1074,7 +1074,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of FormResponse</returns>
-        public ApiResponse< FormResponse > UpdateFormByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body2 body = null)
+        public ApiResponse< FormResponse > UpdateFormByIdWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1147,7 +1147,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of FormResponse</returns>
-        public async System.Threading.Tasks.Task<FormResponse> UpdateFormByIdAsync (string evApiKey, string evAccessToken, int? id, Body2 body = null)
+        public async System.Threading.Tasks.Task<FormResponse> UpdateFormByIdAsync (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null)
         {
              ApiResponse<FormResponse> localVarResponse = await UpdateFormByIdAsyncWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1163,7 +1163,7 @@ namespace ExaVault.Api
         /// <param name="id">Form unique ID number.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (FormResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<FormResponse>> UpdateFormByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, Body2 body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<FormResponse>> UpdateFormByIdAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateFormByIdRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)

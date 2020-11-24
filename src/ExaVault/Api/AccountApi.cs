@@ -27,7 +27,7 @@ namespace ExaVault.Api
         /// Get account settings
         /// </summary>
         /// <remarks>
-        /// Get setttings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
+        /// Get settings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required for the request</param>
@@ -40,7 +40,7 @@ namespace ExaVault.Api
         /// Get account settings
         /// </summary>
         /// <remarks>
-        /// Get setttings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
+        /// Get settings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required for the request</param>
@@ -59,7 +59,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>AccountResponse</returns>
-        AccountResponse UpdateAccount (string evApiKey, string evAccessToken, UpdateAccountBody body = null);
+        AccountResponse UpdateAccount (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null);
 
         /// <summary>
         /// Update account settings
@@ -72,14 +72,14 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>ApiResponse of AccountResponse</returns>
-        ApiResponse<AccountResponse> UpdateAccountWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountBody body = null);
+        ApiResponse<AccountResponse> UpdateAccountWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
         /// Get account settings
         /// </summary>
         /// <remarks>
-        /// Get setttings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
+        /// Get settings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required for the request</param>
@@ -92,7 +92,7 @@ namespace ExaVault.Api
         /// Get account settings
         /// </summary>
         /// <remarks>
-        /// Get setttings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
+        /// Get settings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required for the request</param>
@@ -111,7 +111,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>Task of AccountResponse</returns>
-        System.Threading.Tasks.Task<AccountResponse> UpdateAccountAsync (string evApiKey, string evAccessToken, UpdateAccountBody body = null);
+        System.Threading.Tasks.Task<AccountResponse> UpdateAccountAsync (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null);
 
         /// <summary>
         /// Update account settings
@@ -124,7 +124,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>Task of ApiResponse (AccountResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccountResponse>> UpdateAccountAsyncWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountBody body = null);
+        System.Threading.Tasks.Task<ApiResponse<AccountResponse>> UpdateAccountAsyncWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null);
         #endregion Asynchronous Operations
     }
 
@@ -237,7 +237,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get account settings Get setttings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
+        /// Get account settings Get settings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required for the request</param>
@@ -251,7 +251,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get account settings Get setttings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
+        /// Get account settings Get settings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required for the request</param>
@@ -311,7 +311,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get account settings Get setttings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
+        /// Get account settings Get settings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required for the request</param>
@@ -326,7 +326,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get account settings Get setttings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
+        /// Get account settings Get settings for your account, such as current space usage, webhooks settings, welcome email content and IP address restrictions.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required for the request</param>
@@ -393,7 +393,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>AccountResponse</returns>
-        public AccountResponse UpdateAccount (string evApiKey, string evAccessToken, UpdateAccountBody body = null)
+        public AccountResponse UpdateAccount (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null)
         {
              ApiResponse<AccountResponse> localVarResponse = UpdateAccountWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -407,7 +407,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>ApiResponse of AccountResponse</returns>
-        public ApiResponse< AccountResponse > UpdateAccountWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountBody body = null)
+        public ApiResponse< AccountResponse > UpdateAccountWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -475,7 +475,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>Task of AccountResponse</returns>
-        public async System.Threading.Tasks.Task<AccountResponse> UpdateAccountAsync (string evApiKey, string evAccessToken, UpdateAccountBody body = null)
+        public async System.Threading.Tasks.Task<AccountResponse> UpdateAccountAsync (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null)
         {
              ApiResponse<AccountResponse> localVarResponse = await UpdateAccountAsyncWithHttpInfo(evApiKey, evAccessToken, body);
              return localVarResponse.Data;
@@ -490,7 +490,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="body">Update Account Settings (optional)</param>
         /// <returns>Task of ApiResponse (AccountResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<AccountResponse>> UpdateAccountAsyncWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountBody body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<AccountResponse>> UpdateAccountAsyncWithHttpInfo (string evApiKey, string evAccessToken, UpdateAccountRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)

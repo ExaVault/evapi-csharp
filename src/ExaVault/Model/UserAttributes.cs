@@ -83,6 +83,7 @@ namespace ExaVault.Model
         /// Initializes a new instance of the <see cref="UserAttributes" /> class.
         /// </summary>
         /// <param name="status">Indicates user activity status. &#x60;0&#x60; means the user is locked and cannot log in. &#x60;1&#x60; means the user is active and can log in. (required).</param>
+        /// <param name="locked">&#x60;true&#x60; if the user is locked and cannot log in..</param>
         /// <param name="expiration">Timestamp of user expiration..</param>
         /// <param name="created">Timestamp of user creation. (required).</param>
         /// <param name="modified">Timestamp of user modification. (required).</param>
@@ -91,13 +92,13 @@ namespace ExaVault.Model
         /// <param name="username">Username of the user. (required).</param>
         /// <param name="nickname">Nickname of the user. (required).</param>
         /// <param name="email">Email address of the user..</param>
-        /// <param name="homeDir">Path to the user&#x27;s home folder. (required).</param>
+        /// <param name="homePath">Path to the user&#x27;s home folder..</param>
         /// <param name="permissions">permissions (required).</param>
         /// <param name="role">User&#x27;s access level (required).</param>
         /// <param name="timeZone">User&#x27;s timezone. See &lt;a href&#x3D;&#x27;https://php.net/manual/en/timezones.php&#x27; target&#x3D;&#x27;blank&#x27;&gt;this page&lt;/a&gt; for allowed values. (required).</param>
         /// <param name="onboarding">Whether the onboarding help system is enabled for this user. &#x60;true&#x60; means that additional help popups are displayed in the web application for this user. (required).</param>
         /// <param name="firstLogin">&#x60;true&#x60; if the user has logged into the system..</param>
-        public UserAttributes(StatusEnum status = default(StatusEnum), string expiration = default(string), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?), string accessTimestamp = default(string), string accountName = default(string), string username = default(string), string nickname = default(string), string email = default(string), string homeDir = default(string), UserPermissions permissions = default(UserPermissions), RoleEnum role = default(RoleEnum), string timeZone = default(string), bool? onboarding = default(bool?), bool? firstLogin = default(bool?))
+        public UserAttributes(StatusEnum status = default(StatusEnum), bool? locked = default(bool?), string expiration = default(string), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?), string accessTimestamp = default(string), string accountName = default(string), string username = default(string), string nickname = default(string), string email = default(string), string homePath = default(string), UserPermissions permissions = default(UserPermissions), RoleEnum role = default(RoleEnum), string timeZone = default(string), bool? onboarding = default(bool?), bool? firstLogin = default(bool?))
         {
             // to ensure "status" is required (not null)
             if (status == null)
@@ -153,15 +154,6 @@ namespace ExaVault.Model
             {
                 this.Nickname = nickname;
             }
-            // to ensure "homeDir" is required (not null)
-            if (homeDir == null)
-            {
-                throw new InvalidDataException("homeDir is a required property for UserAttributes and cannot be null");
-            }
-            else
-            {
-                this.HomeDir = homeDir;
-            }
             // to ensure "permissions" is required (not null)
             if (permissions == null)
             {
@@ -198,12 +190,21 @@ namespace ExaVault.Model
             {
                 this.Onboarding = onboarding;
             }
+            this.Locked = locked;
             this.Expiration = expiration;
             this.AccessTimestamp = accessTimestamp;
             this.Email = email;
+            this.HomePath = homePath;
             this.FirstLogin = firstLogin;
         }
         
+
+        /// <summary>
+        /// &#x60;true&#x60; if the user is locked and cannot log in.
+        /// </summary>
+        /// <value>&#x60;true&#x60; if the user is locked and cannot log in.</value>
+        [DataMember(Name="locked", EmitDefaultValue=false)]
+        public bool? Locked { get; set; }
 
         /// <summary>
         /// Timestamp of user expiration.
@@ -265,8 +266,8 @@ namespace ExaVault.Model
         /// Path to the user&#x27;s home folder.
         /// </summary>
         /// <value>Path to the user&#x27;s home folder.</value>
-        [DataMember(Name="homeDir", EmitDefaultValue=false)]
-        public string HomeDir { get; set; }
+        [DataMember(Name="homePath", EmitDefaultValue=false)]
+        public string HomePath { get; set; }
 
         /// <summary>
         /// Gets or Sets Permissions
@@ -305,6 +306,7 @@ namespace ExaVault.Model
             var sb = new StringBuilder();
             sb.Append("class UserAttributes {\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Locked: ").Append(Locked).Append("\n");
             sb.Append("  Expiration: ").Append(Expiration).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Modified: ").Append(Modified).Append("\n");
@@ -313,7 +315,7 @@ namespace ExaVault.Model
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Nickname: ").Append(Nickname).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  HomeDir: ").Append(HomeDir).Append("\n");
+            sb.Append("  HomePath: ").Append(HomePath).Append("\n");
             sb.Append("  Permissions: ").Append(Permissions).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
@@ -359,6 +361,11 @@ namespace ExaVault.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
+                    this.Locked == input.Locked ||
+                    (this.Locked != null &&
+                    this.Locked.Equals(input.Locked))
+                ) && 
+                (
                     this.Expiration == input.Expiration ||
                     (this.Expiration != null &&
                     this.Expiration.Equals(input.Expiration))
@@ -399,9 +406,9 @@ namespace ExaVault.Model
                     this.Email.Equals(input.Email))
                 ) && 
                 (
-                    this.HomeDir == input.HomeDir ||
-                    (this.HomeDir != null &&
-                    this.HomeDir.Equals(input.HomeDir))
+                    this.HomePath == input.HomePath ||
+                    (this.HomePath != null &&
+                    this.HomePath.Equals(input.HomePath))
                 ) && 
                 (
                     this.Permissions == input.Permissions ||
@@ -441,6 +448,8 @@ namespace ExaVault.Model
                 int hashCode = 41;
                 if (this.Status != null)
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
+                if (this.Locked != null)
+                    hashCode = hashCode * 59 + this.Locked.GetHashCode();
                 if (this.Expiration != null)
                     hashCode = hashCode * 59 + this.Expiration.GetHashCode();
                 if (this.Created != null)
@@ -457,8 +466,8 @@ namespace ExaVault.Model
                     hashCode = hashCode * 59 + this.Nickname.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
-                if (this.HomeDir != null)
-                    hashCode = hashCode * 59 + this.HomeDir.GetHashCode();
+                if (this.HomePath != null)
+                    hashCode = hashCode * 59 + this.HomePath.GetHashCode();
                 if (this.Permissions != null)
                     hashCode = hashCode * 59 + this.Permissions.GetHashCode();
                 if (this.Role != null)

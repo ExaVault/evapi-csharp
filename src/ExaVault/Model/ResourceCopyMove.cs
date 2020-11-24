@@ -24,7 +24,7 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// All properties of the resource delete object
+    /// Resource which was successfully copied or moved.
     /// </summary>
     [DataContract]
         public partial class ResourceCopyMove :  IEquatable<ResourceCopyMove>, IValidatableObject
@@ -33,7 +33,7 @@ namespace ExaVault.Model
         /// Initializes a new instance of the <see cref="ResourceCopyMove" /> class.
         /// </summary>
         /// <param name="data">data.</param>
-        /// <param name="meta">Meta object containing non-standard meta-information about operation..</param>
+        /// <param name="meta">Meta object containing non-standard meta-information about the operation..</param>
         public ResourceCopyMove(Resource data = default(Resource), Object meta = default(Object))
         {
             this.Data = data;
@@ -47,9 +47,9 @@ namespace ExaVault.Model
         public Resource Data { get; set; }
 
         /// <summary>
-        /// Meta object containing non-standard meta-information about operation.
+        /// Meta object containing non-standard meta-information about the operation.
         /// </summary>
-        /// <value>Meta object containing non-standard meta-information about operation.</value>
+        /// <value>Meta object containing non-standard meta-information about the operation.</value>
         [DataMember(Name="meta", EmitDefaultValue=false)]
         public Object Meta { get; set; }
 

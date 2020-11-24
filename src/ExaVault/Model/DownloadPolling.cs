@@ -32,11 +32,11 @@ namespace ExaVault.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DownloadPolling" /> class.
         /// </summary>
-        /// <param name="zip">Name of the zip file..</param>
+        /// <param name="pollingArchiveName">Name of the zip file..</param>
         /// <param name="percent">Indicates archiving process completeness..</param>
-        public DownloadPolling(string zip = default(string), int? percent = default(int?))
+        public DownloadPolling(string pollingArchiveName = default(string), int? percent = default(int?))
         {
-            this.Zip = zip;
+            this.PollingArchiveName = pollingArchiveName;
             this.Percent = percent;
         }
         
@@ -44,8 +44,8 @@ namespace ExaVault.Model
         /// Name of the zip file.
         /// </summary>
         /// <value>Name of the zip file.</value>
-        [DataMember(Name="zip", EmitDefaultValue=false)]
-        public string Zip { get; set; }
+        [DataMember(Name="pollingArchiveName", EmitDefaultValue=false)]
+        public string PollingArchiveName { get; set; }
 
         /// <summary>
         /// Indicates archiving process completeness.
@@ -62,7 +62,7 @@ namespace ExaVault.Model
         {
             var sb = new StringBuilder();
             sb.Append("class DownloadPolling {\n");
-            sb.Append("  Zip: ").Append(Zip).Append("\n");
+            sb.Append("  PollingArchiveName: ").Append(PollingArchiveName).Append("\n");
             sb.Append("  Percent: ").Append(Percent).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -99,9 +99,9 @@ namespace ExaVault.Model
 
             return 
                 (
-                    this.Zip == input.Zip ||
-                    (this.Zip != null &&
-                    this.Zip.Equals(input.Zip))
+                    this.PollingArchiveName == input.PollingArchiveName ||
+                    (this.PollingArchiveName != null &&
+                    this.PollingArchiveName.Equals(input.PollingArchiveName))
                 ) && 
                 (
                     this.Percent == input.Percent ||
@@ -119,8 +119,8 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Zip != null)
-                    hashCode = hashCode * 59 + this.Zip.GetHashCode();
+                if (this.PollingArchiveName != null)
+                    hashCode = hashCode * 59 + this.PollingArchiveName.GetHashCode();
                 if (this.Percent != null)
                     hashCode = hashCode * 59 + this.Percent.GetHashCode();
                 return hashCode;

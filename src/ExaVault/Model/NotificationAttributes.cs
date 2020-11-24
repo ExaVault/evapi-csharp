@@ -30,9 +30,9 @@ namespace ExaVault.Model
         public partial class NotificationAttributes :  IEquatable<NotificationAttributes>, IValidatableObject
     {
         /// <summary>
-        /// Type of the resoucre the notification is attached to. 
+        /// Type of the resource the notification is attached to. 
         /// </summary>
-        /// <value>Type of the resoucre the notification is attached to. </value>
+        /// <value>Type of the resource the notification is attached to. </value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum TypeEnum
         {
@@ -67,9 +67,9 @@ namespace ExaVault.Model
             [EnumMember(Value = "file_drop")]
             Filedrop = 6        }
         /// <summary>
-        /// Type of the resoucre the notification is attached to. 
+        /// Type of the resource the notification is attached to. 
         /// </summary>
-        /// <value>Type of the resoucre the notification is attached to. </value>
+        /// <value>Type of the resource the notification is attached to. </value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
@@ -109,7 +109,7 @@ namespace ExaVault.Model
         /// Initializes a new instance of the <see cref="NotificationAttributes" /> class.
         /// </summary>
         /// <param name="userId">ID of the user that the notification belongs to..</param>
-        /// <param name="type">Type of the resoucre the notification is attached to. .</param>
+        /// <param name="type">Type of the resource the notification is attached to. .</param>
         /// <param name="path">Path to the item that the notification is set on..</param>
         /// <param name="name">Name of the item that the notification is set on..</param>
         /// <param name="action">Action that triggers notification..</param>
