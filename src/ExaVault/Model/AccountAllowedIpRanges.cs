@@ -43,13 +43,13 @@ namespace ExaVault.Model
         /// <summary>
         /// Gets or Sets IpStart
         /// </summary>
-        [DataMember(Name="ip_start", EmitDefaultValue=false)]
+        [DataMember(Name="ipStart", EmitDefaultValue=false)]
         public string IpStart { get; set; }
 
         /// <summary>
         /// Gets or Sets IpEnd
         /// </summary>
-        [DataMember(Name="ip_end", EmitDefaultValue=false)]
+        [DataMember(Name="ipEnd", EmitDefaultValue=false)]
         public string IpEnd { get; set; }
 
         /// <summary>

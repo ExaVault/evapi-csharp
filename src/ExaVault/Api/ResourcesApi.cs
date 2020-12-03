@@ -154,33 +154,29 @@ namespace ExaVault.Api
         /// Download a file
         /// </summary>
         /// <remarks>
-        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
+        /// Downloads a file from the server. Whenever more than one file is being downloaded, the file are first zipped into  a single file before the download starts, and the resulting zip file is named to match the &#x60;downloadArchiveName&#x60; parameter.  **NOTE**: Downloading many files at once  may result in a long delay before the API will return a response. You may need to override default timeout values in your API client, or download files individually.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="downloadArchiveName">When downloading multiple files, this will be used as the name of the zip file that is created. (optional)</param>
         /// <returns>byte[]</returns>
-        byte[] Download (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null);
+        byte[] Download (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null);
 
         /// <summary>
         /// Download a file
         /// </summary>
         /// <remarks>
-        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
+        /// Downloads a file from the server. Whenever more than one file is being downloaded, the file are first zipped into  a single file before the download starts, and the resulting zip file is named to match the &#x60;downloadArchiveName&#x60; parameter.  **NOTE**: Downloading many files at once  may result in a long delay before the API will return a response. You may need to override default timeout values in your API client, or download files individually.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="downloadArchiveName">When downloading multiple files, this will be used as the name of the zip file that is created. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> DownloadWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null);
+        ApiResponse<byte[]> DownloadWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null);
         /// <summary>
         /// Extract resources
         /// </summary>
@@ -332,16 +328,16 @@ namespace ExaVault.Api
         /// Get a list of all resources
         /// </summary>
         /// <remarks>
-        /// Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  You cannot use the &#x60;type&#x60; parameter if you are using the &#x60;name&#x60; parameter to run a search.
+        /// Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  If you are using the &#x60;name&#x60; parameter to run a search, the &#x60;type&#x60; parameter will be ignored by the server.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
         /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
-        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
-        /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
-        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the name parameter to trigger a search. (optional)</param>
+        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
+        /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
+        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
         /// <param name="name">Text to match resource names. This allows you to filter the results returned. For example, to locate only zip archive files, you can enter &#x60;*zip&#x60; and only resources ending in \&quot;zip\&quot; will be included in the list of results. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>ResourceCollectionResponse</returns>
@@ -351,16 +347,16 @@ namespace ExaVault.Api
         /// Get a list of all resources
         /// </summary>
         /// <remarks>
-        /// Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  You cannot use the &#x60;type&#x60; parameter if you are using the &#x60;name&#x60; parameter to run a search.
+        /// Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  If you are using the &#x60;name&#x60; parameter to run a search, the &#x60;type&#x60; parameter will be ignored by the server.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
         /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
-        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
-        /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
-        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the name parameter to trigger a search. (optional)</param>
+        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
+        /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
+        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
         /// <param name="name">Text to match resource names. This allows you to filter the results returned. For example, to locate only zip archive files, you can enter &#x60;*zip&#x60; and only resources ending in \&quot;zip\&quot; will be included in the list of results. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>ApiResponse of ResourceCollectionResponse</returns>
@@ -585,33 +581,29 @@ namespace ExaVault.Api
         /// Download a file
         /// </summary>
         /// <remarks>
-        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
+        /// Downloads a file from the server. Whenever more than one file is being downloaded, the file are first zipped into  a single file before the download starts, and the resulting zip file is named to match the &#x60;downloadArchiveName&#x60; parameter.  **NOTE**: Downloading many files at once  may result in a long delay before the API will return a response. You may need to override default timeout values in your API client, or download files individually.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="downloadArchiveName">When downloading multiple files, this will be used as the name of the zip file that is created. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> DownloadAsync (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null);
+        System.Threading.Tasks.Task<byte[]> DownloadAsync (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null);
 
         /// <summary>
         /// Download a file
         /// </summary>
         /// <remarks>
-        /// Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
+        /// Downloads a file from the server. Whenever more than one file is being downloaded, the file are first zipped into  a single file before the download starts, and the resulting zip file is named to match the &#x60;downloadArchiveName&#x60; parameter.  **NOTE**: Downloading many files at once  may result in a long delay before the API will return a response. You may need to override default timeout values in your API client, or download files individually.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="downloadArchiveName">When downloading multiple files, this will be used as the name of the zip file that is created. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadAsyncWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadAsyncWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null);
         /// <summary>
         /// Extract resources
         /// </summary>
@@ -763,16 +755,16 @@ namespace ExaVault.Api
         /// Get a list of all resources
         /// </summary>
         /// <remarks>
-        /// Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  You cannot use the &#x60;type&#x60; parameter if you are using the &#x60;name&#x60; parameter to run a search.
+        /// Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  If you are using the &#x60;name&#x60; parameter to run a search, the &#x60;type&#x60; parameter will be ignored by the server.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
         /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
-        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
-        /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
-        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the name parameter to trigger a search. (optional)</param>
+        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
+        /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
+        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
         /// <param name="name">Text to match resource names. This allows you to filter the results returned. For example, to locate only zip archive files, you can enter &#x60;*zip&#x60; and only resources ending in \&quot;zip\&quot; will be included in the list of results. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>Task of ResourceCollectionResponse</returns>
@@ -782,16 +774,16 @@ namespace ExaVault.Api
         /// Get a list of all resources
         /// </summary>
         /// <remarks>
-        /// Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  You cannot use the &#x60;type&#x60; parameter if you are using the &#x60;name&#x60; parameter to run a search.
+        /// Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  If you are using the &#x60;name&#x60; parameter to run a search, the &#x60;type&#x60; parameter will be ignored by the server.
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
         /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
-        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
-        /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
-        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the name parameter to trigger a search. (optional)</param>
+        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
+        /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
+        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
         /// <param name="name">Text to match resource names. This allows you to filter the results returned. For example, to locate only zip archive files, you can enter &#x60;*zip&#x60; and only resources ending in \&quot;zip\&quot; will be included in the list of results. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>Task of ApiResponse (ResourceCollectionResponse)</returns>
@@ -1814,34 +1806,30 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
+        /// Download a file Downloads a file from the server. Whenever more than one file is being downloaded, the file are first zipped into  a single file before the download starts, and the resulting zip file is named to match the &#x60;downloadArchiveName&#x60; parameter.  **NOTE**: Downloading many files at once  may result in a long delay before the API will return a response. You may need to override default timeout values in your API client, or download files individually.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="downloadArchiveName">When downloading multiple files, this will be used as the name of the zip file that is created. (optional)</param>
         /// <returns>byte[]</returns>
-        public byte[] Download (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null)
+        public byte[] Download (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null)
         {
-             ApiResponse<byte[]> localVarResponse = DownloadWithHttpInfo(evApiKey, evAccessToken, resources, downloadArchiveName, polling, pollingArchiveName);
+             ApiResponse<byte[]> localVarResponse = DownloadWithHttpInfo(evApiKey, evAccessToken, resources, downloadArchiveName);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
+        /// Download a file Downloads a file from the server. Whenever more than one file is being downloaded, the file are first zipped into  a single file before the download starts, and the resulting zip file is named to match the &#x60;downloadArchiveName&#x60; parameter.  **NOTE**: Downloading many files at once  may result in a long delay before the API will return a response. You may need to override default timeout values in your API client, or download files individually.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="downloadArchiveName">When downloading multiple files, this will be used as the name of the zip file that is created. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > DownloadWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null)
+        public ApiResponse< byte[] > DownloadWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1869,8 +1857,7 @@ namespace ExaVault.Api
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/octet-stream",
-                "application/zip",
-                "application/json"
+                "application/zip"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1878,8 +1865,6 @@ namespace ExaVault.Api
 
             if (resources != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "resources[]", resources)); // query parameter
             if (downloadArchiveName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "downloadArchiveName", downloadArchiveName)); // query parameter
-            if (polling != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "polling", polling)); // query parameter
-            if (pollingArchiveName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pollingArchiveName", pollingArchiveName)); // query parameter
             if (evApiKey != null) localVarHeaderParams.Add("ev-api-key", this.Configuration.ApiClient.ParameterToString(evApiKey)); // header parameter
             if (evAccessToken != null) localVarHeaderParams.Add("ev-access-token", this.Configuration.ApiClient.ParameterToString(evAccessToken)); // header parameter
 
@@ -1902,35 +1887,31 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
+        /// Download a file Downloads a file from the server. Whenever more than one file is being downloaded, the file are first zipped into  a single file before the download starts, and the resulting zip file is named to match the &#x60;downloadArchiveName&#x60; parameter.  **NOTE**: Downloading many files at once  may result in a long delay before the API will return a response. You may need to override default timeout values in your API client, or download files individually.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="downloadArchiveName">When downloading multiple files, this will be used as the name of the zip file that is created. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> DownloadAsync (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null)
+        public async System.Threading.Tasks.Task<byte[]> DownloadAsync (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null)
         {
-             ApiResponse<byte[]> localVarResponse = await DownloadAsyncWithHttpInfo(evApiKey, evAccessToken, resources, downloadArchiveName, polling, pollingArchiveName);
+             ApiResponse<byte[]> localVarResponse = await DownloadAsyncWithHttpInfo(evApiKey, evAccessToken, resources, downloadArchiveName);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Download a file Downloads a file. If more than one path is supplied, the files will be zipped before downloading with the downloadArchiveName parameter if supplied. 
+        /// Download a file Downloads a file from the server. Whenever more than one file is being downloaded, the file are first zipped into  a single file before the download starts, and the resulting zip file is named to match the &#x60;downloadArchiveName&#x60; parameter.  **NOTE**: Downloading many files at once  may result in a long delay before the API will return a response. You may need to override default timeout values in your API client, or download files individually.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resources">Path of file or folder to be downloaded, starting from the root. Can also be an array of paths.</param>
-        /// <param name="downloadArchiveName">If zipping multiple files, the name of the zip file to create and download. (optional)</param>
-        /// <param name="polling">Used when downloading multiple files so url will be polled till zip file is created. (optional)</param>
-        /// <param name="pollingArchiveName">Reference to the previously created zip for polling operation. (optional)</param>
+        /// <param name="downloadArchiveName">When downloading multiple files, this will be used as the name of the zip file that is created. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadAsyncWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null, bool? polling = null, string pollingArchiveName = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadAsyncWithHttpInfo (string evApiKey, string evAccessToken, List<string> resources, string downloadArchiveName = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1958,8 +1939,7 @@ namespace ExaVault.Api
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/octet-stream",
-                "application/zip",
-                "application/json"
+                "application/zip"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1967,8 +1947,6 @@ namespace ExaVault.Api
 
             if (resources != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "resources[]", resources)); // query parameter
             if (downloadArchiveName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "downloadArchiveName", downloadArchiveName)); // query parameter
-            if (polling != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "polling", polling)); // query parameter
-            if (pollingArchiveName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pollingArchiveName", pollingArchiveName)); // query parameter
             if (evApiKey != null) localVarHeaderParams.Add("ev-api-key", this.Configuration.ApiClient.ParameterToString(evApiKey)); // header parameter
             if (evAccessToken != null) localVarHeaderParams.Add("ev-access-token", this.Configuration.ApiClient.ParameterToString(evAccessToken)); // header parameter
 
@@ -2848,16 +2826,16 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get a list of all resources Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  You cannot use the &#x60;type&#x60; parameter if you are using the &#x60;name&#x60; parameter to run a search.
+        /// Get a list of all resources Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  If you are using the &#x60;name&#x60; parameter to run a search, the &#x60;type&#x60; parameter will be ignored by the server.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
         /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
-        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
-        /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
-        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the name parameter to trigger a search. (optional)</param>
+        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
+        /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
+        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
         /// <param name="name">Text to match resource names. This allows you to filter the results returned. For example, to locate only zip archive files, you can enter &#x60;*zip&#x60; and only resources ending in \&quot;zip\&quot; will be included in the list of results. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>ResourceCollectionResponse</returns>
@@ -2868,16 +2846,16 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get a list of all resources Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  You cannot use the &#x60;type&#x60; parameter if you are using the &#x60;name&#x60; parameter to run a search.
+        /// Get a list of all resources Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  If you are using the &#x60;name&#x60; parameter to run a search, the &#x60;type&#x60; parameter will be ignored by the server.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
         /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
-        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
-        /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
-        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the name parameter to trigger a search. (optional)</param>
+        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
+        /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
+        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
         /// <param name="name">Text to match resource names. This allows you to filter the results returned. For example, to locate only zip archive files, you can enter &#x60;*zip&#x60; and only resources ending in \&quot;zip\&quot; will be included in the list of results. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>ApiResponse of ResourceCollectionResponse</returns>
@@ -2943,16 +2921,16 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get a list of all resources Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  You cannot use the &#x60;type&#x60; parameter if you are using the &#x60;name&#x60; parameter to run a search.
+        /// Get a list of all resources Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  If you are using the &#x60;name&#x60; parameter to run a search, the &#x60;type&#x60; parameter will be ignored by the server.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
         /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
-        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
-        /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
-        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the name parameter to trigger a search. (optional)</param>
+        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
+        /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
+        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
         /// <param name="name">Text to match resource names. This allows you to filter the results returned. For example, to locate only zip archive files, you can enter &#x60;*zip&#x60; and only resources ending in \&quot;zip\&quot; will be included in the list of results. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>Task of ResourceCollectionResponse</returns>
@@ -2964,16 +2942,16 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get a list of all resources Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  You cannot use the &#x60;type&#x60; parameter if you are using the &#x60;name&#x60; parameter to run a search.
+        /// Get a list of all resources Returns a list of files and folders in the account. Use the &#x60;resource&#x60; query parameter to indicate the folder you wish to search in (which can be /).   **Searching for Files and Folders**  Using the &#x60;name&#x60; parameter triggers search mode, which will search the entire directory structure under the provided &#x60;resource&#x60; for files or folders with names matching the provided &#x60;name&#x60;. This supports wildcard matching such as:  - \\*Report\\* would find any files or folders with \&quot;Report\&quot; in the name. - Data\\_202?-09-30.xlsx would match items such as \&quot;Data\\_2020-09-30.xlsx\&quot;, \&quot;DATA\\_2021-09-30.xlsx\&quot;, \&quot;data\\_2022-09-30.xlsx\&quot; etc. - sales\\* would find any files or folders starting with the word \&quot;Sales\&quot; - \\*.csv would locate any files ending in \&quot;.csv\&quot; - \\* matches everything within the directory tree starting at your given &#x60;resource&#x60;  The search is not case-sensitive. Searching for Clients\\* or clients\\* or CLIENTS\\*, etc. will provide identical results  If you are using the &#x60;name&#x60; parameter to run a search, the &#x60;type&#x60; parameter will be ignored by the server.
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
         /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
-        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
-        /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
-        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the name parameter to trigger a search. (optional)</param>
+        /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
+        /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
+        /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
         /// <param name="name">Text to match resource names. This allows you to filter the results returned. For example, to locate only zip archive files, you can enter &#x60;*zip&#x60; and only resources ending in \&quot;zip\&quot; will be included in the list of results. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**. (optional)</param>
         /// <returns>Task of ApiResponse (ResourceCollectionResponse)</returns>
