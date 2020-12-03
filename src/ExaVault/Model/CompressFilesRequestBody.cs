@@ -33,7 +33,7 @@ namespace ExaVault.Model
         /// Initializes a new instance of the <see cref="CompressFilesRequestBody" /> class.
         /// </summary>
         /// <param name="resources">Resource identifiers for file(s)/folder(s) to include in new zip file (required).</param>
-        /// <param name="parentResource">Full path to folder new archive will be created in. If left blank, \&quot;/\&quot; will be used..</param>
+        /// <param name="parentResource">Resource identifier of the folder where zip archive should be created..</param>
         /// <param name="archiveName">Name of the zip archive to create. If left blank, current date will be used..</param>
         public CompressFilesRequestBody(List<string> resources = default(List<string>), string parentResource = default(string), string archiveName = default(string))
         {
@@ -58,9 +58,9 @@ namespace ExaVault.Model
         public List<string> Resources { get; set; }
 
         /// <summary>
-        /// Full path to folder new archive will be created in. If left blank, \&quot;/\&quot; will be used.
+        /// Resource identifier of the folder where zip archive should be created.
         /// </summary>
-        /// <value>Full path to folder new archive will be created in. If left blank, \&quot;/\&quot; will be used.</value>
+        /// <value>Resource identifier of the folder where zip archive should be created.</value>
         [DataMember(Name="parentResource", EmitDefaultValue=false)]
         public string ParentResource { get; set; }
 

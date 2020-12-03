@@ -33,7 +33,7 @@ namespace ExaVault.Model
         /// Initializes a new instance of the <see cref="MoveResourcesRequestBody" /> class.
         /// </summary>
         /// <param name="resources">Array containing file/folder paths to move. (required).</param>
-        /// <param name="parentResource">Remote destination path to move files/folders to. (required).</param>
+        /// <param name="parentResource">Resource identifier of folder to move files/folders to. (required).</param>
         public MoveResourcesRequestBody(List<string> resources = default(List<string>), string parentResource = default(string))
         {
             // to ensure "resources" is required (not null)
@@ -64,9 +64,9 @@ namespace ExaVault.Model
         public List<string> Resources { get; set; }
 
         /// <summary>
-        /// Remote destination path to move files/folders to.
+        /// Resource identifier of folder to move files/folders to.
         /// </summary>
-        /// <value>Remote destination path to move files/folders to.</value>
+        /// <value>Resource identifier of folder to move files/folders to.</value>
         [DataMember(Name="parentResource", EmitDefaultValue=false)]
         public string ParentResource { get; set; }
 

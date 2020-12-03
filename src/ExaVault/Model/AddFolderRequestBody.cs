@@ -32,7 +32,7 @@ namespace ExaVault.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AddFolderRequestBody" /> class.
         /// </summary>
-        /// <param name="path">Path to the newly created folder including new ame.</param>
+        /// <param name="path">Fully-qualified path to the new folder including folder&#x27;s name.</param>
         /// <param name="name">Name of the folder to create. Required if **path** is not used.</param>
         /// <param name="parentResource">Resource identifier where to create a folder. Required if **path** is not used.</param>
         public AddFolderRequestBody(string path = default(string), string name = default(string), string parentResource = default(string))
@@ -43,9 +43,9 @@ namespace ExaVault.Model
         }
         
         /// <summary>
-        /// Path to the newly created folder including new ame
+        /// Fully-qualified path to the new folder including folder&#x27;s name
         /// </summary>
-        /// <value>Path to the newly created folder including new ame</value>
+        /// <value>Fully-qualified path to the new folder including folder&#x27;s name</value>
         [DataMember(Name="path", EmitDefaultValue=false)]
         public string Path { get; set; }
 
