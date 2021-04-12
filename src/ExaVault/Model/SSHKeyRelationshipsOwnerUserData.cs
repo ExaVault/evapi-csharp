@@ -24,52 +24,33 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// WebhooksActivityEntry
+    /// SSHKeyRelationshipsOwnerUserData
     /// </summary>
     [DataContract]
-        public partial class WebhooksActivityEntry :  IEquatable<WebhooksActivityEntry>, IValidatableObject
+        public partial class SSHKeyRelationshipsOwnerUserData :  IEquatable<SSHKeyRelationshipsOwnerUserData>, IValidatableObject
     {
         /// <summary>
-        /// Defines Type
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-                public enum TypeEnum
-        {
-            /// <summary>
-            /// Enum WebhookActivity for value: webhookActivity
-            /// </summary>
-            [EnumMember(Value = "webhookActivity")]
-            WebhookActivity = 1        }
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public TypeEnum? Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WebhooksActivityEntry" /> class.
+        /// Initializes a new instance of the <see cref="SSHKeyRelationshipsOwnerUserData" /> class.
         /// </summary>
         /// <param name="id">id.</param>
         /// <param name="type">type.</param>
-        /// <param name="attributes">attributes.</param>
-        public WebhooksActivityEntry(long? id = default(long?), TypeEnum? type = default(TypeEnum?), WebhooksActivityEntryAttributes attributes = default(WebhooksActivityEntryAttributes))
+        public SSHKeyRelationshipsOwnerUserData(int? id = default(int?), string type = default(string))
         {
             this.Id = id;
             this.Type = type;
-            this.Attributes = attributes;
         }
         
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
+        public int? Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Attributes
+        /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public WebhooksActivityEntryAttributes Attributes { get; set; }
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public string Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,10 +59,9 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class WebhooksActivityEntry {\n");
+            sb.Append("class SSHKeyRelationshipsOwnerUserData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -102,15 +82,15 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WebhooksActivityEntry);
+            return this.Equals(input as SSHKeyRelationshipsOwnerUserData);
         }
 
         /// <summary>
-        /// Returns true if WebhooksActivityEntry instances are equal
+        /// Returns true if SSHKeyRelationshipsOwnerUserData instances are equal
         /// </summary>
-        /// <param name="input">Instance of WebhooksActivityEntry to be compared</param>
+        /// <param name="input">Instance of SSHKeyRelationshipsOwnerUserData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WebhooksActivityEntry input)
+        public bool Equals(SSHKeyRelationshipsOwnerUserData input)
         {
             if (input == null)
                 return false;
@@ -125,11 +105,6 @@ namespace ExaVault.Model
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
-                (
-                    this.Attributes == input.Attributes ||
-                    (this.Attributes != null &&
-                    this.Attributes.Equals(input.Attributes))
                 );
         }
 
@@ -146,8 +121,6 @@ namespace ExaVault.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Attributes != null)
-                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
                 return hashCode;
             }
         }

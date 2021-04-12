@@ -59,7 +59,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>EmptyResponse</returns>
-        EmptyResponse DeleteUser (decimal? id, string evApiKey, string evAccessToken);
+        EmptyResponse DeleteUser (int? id, string evApiKey, string evAccessToken);
 
         /// <summary>
         /// Delete a user
@@ -72,7 +72,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>ApiResponse of EmptyResponse</returns>
-        ApiResponse<EmptyResponse> DeleteUserWithHttpInfo (decimal? id, string evApiKey, string evAccessToken);
+        ApiResponse<EmptyResponse> DeleteUserWithHttpInfo (int? id, string evApiKey, string evAccessToken);
         /// <summary>
         /// Get info for a user
         /// </summary>
@@ -85,7 +85,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma-separated list of relationships to include in response. Possible values include **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>UserResponse</returns>
-        UserResponse GetUserById (decimal? id, string evApiKey, string evAccessToken, string include = null);
+        UserResponse GetUserById (int? id, string evApiKey, string evAccessToken, string include = null);
 
         /// <summary>
         /// Get info for a user
@@ -99,7 +99,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma-separated list of relationships to include in response. Possible values include **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>ApiResponse of UserResponse</returns>
-        ApiResponse<UserResponse> GetUserByIdWithHttpInfo (decimal? id, string evApiKey, string evAccessToken, string include = null);
+        ApiResponse<UserResponse> GetUserByIdWithHttpInfo (int? id, string evApiKey, string evAccessToken, string include = null);
         /// <summary>
         /// Get a list of users
         /// </summary>
@@ -110,18 +110,18 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="username">The username of the user you are looking for. Only entries with the same username as this will be in the list of results. Does not support wildcard searches. (optional)</param>
+        /// <param name="homeResource">Resource identifier for user&#x27;s home directory. Does not support wildcard searches. (optional)</param>
         /// <param name="nickname">Nickname to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="email">Email to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches (optional)</param>
         /// <param name="role">Types of users to include the list. Ignored if &#x60;username&#x60; is provided. Valid options are **admin**, **master** and **user** (optional)</param>
         /// <param name="status">Whether a user is locked. Ignored if &#x60;username&#x60; is provided. **0** means user is locked, **1** means user is not locked.  (optional)</param>
-        /// <param name="homeDir">Path for user&#x27;s home directory. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="search">Searches the nickname, email, role and homeDir fields for the provided value. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="offset">Starting user record in the result set. Can be used for pagination. (optional)</param>
         /// <param name="sort">Sort order or matching users. You can sort by multiple columns by separating sort options with a comma; the sort will be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending.  Valid sort fields are: **nickname**, **username**, **email**, **homeDir** and **modified** (optional)</param>
         /// <param name="limit">Number of users to return. Can be used for pagination. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Valid options are **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>UserCollectionResponse</returns>
-        UserCollectionResponse ListUsers (string evApiKey, string evAccessToken, string username = null, string nickname = null, string email = null, string role = null, int? status = null, string homeDir = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null);
+        UserCollectionResponse ListUsers (string evApiKey, string evAccessToken, string username = null, string homeResource = null, string nickname = null, string email = null, string role = null, int? status = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null);
 
         /// <summary>
         /// Get a list of users
@@ -133,18 +133,18 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="username">The username of the user you are looking for. Only entries with the same username as this will be in the list of results. Does not support wildcard searches. (optional)</param>
+        /// <param name="homeResource">Resource identifier for user&#x27;s home directory. Does not support wildcard searches. (optional)</param>
         /// <param name="nickname">Nickname to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="email">Email to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches (optional)</param>
         /// <param name="role">Types of users to include the list. Ignored if &#x60;username&#x60; is provided. Valid options are **admin**, **master** and **user** (optional)</param>
         /// <param name="status">Whether a user is locked. Ignored if &#x60;username&#x60; is provided. **0** means user is locked, **1** means user is not locked.  (optional)</param>
-        /// <param name="homeDir">Path for user&#x27;s home directory. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="search">Searches the nickname, email, role and homeDir fields for the provided value. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="offset">Starting user record in the result set. Can be used for pagination. (optional)</param>
         /// <param name="sort">Sort order or matching users. You can sort by multiple columns by separating sort options with a comma; the sort will be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending.  Valid sort fields are: **nickname**, **username**, **email**, **homeDir** and **modified** (optional)</param>
         /// <param name="limit">Number of users to return. Can be used for pagination. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Valid options are **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>ApiResponse of UserCollectionResponse</returns>
-        ApiResponse<UserCollectionResponse> ListUsersWithHttpInfo (string evApiKey, string evAccessToken, string username = null, string nickname = null, string email = null, string role = null, int? status = null, string homeDir = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null);
+        ApiResponse<UserCollectionResponse> ListUsersWithHttpInfo (string evApiKey, string evAccessToken, string username = null, string homeResource = null, string nickname = null, string email = null, string role = null, int? status = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null);
         /// <summary>
         /// Update a user
         /// </summary>
@@ -157,7 +157,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>UserResponse</returns>
-        UserResponse UpdateUser (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null);
+        UserResponse UpdateUser (string evApiKey, string evAccessToken, int? id, UpdateUserRequestBody body = null);
 
         /// <summary>
         /// Update a user
@@ -171,7 +171,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserResponse</returns>
-        ApiResponse<UserResponse> UpdateUserWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null);
+        ApiResponse<UserResponse> UpdateUserWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateUserRequestBody body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -210,7 +210,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>Task of EmptyResponse</returns>
-        System.Threading.Tasks.Task<EmptyResponse> DeleteUserAsync (decimal? id, string evApiKey, string evAccessToken);
+        System.Threading.Tasks.Task<EmptyResponse> DeleteUserAsync (int? id, string evApiKey, string evAccessToken);
 
         /// <summary>
         /// Delete a user
@@ -223,7 +223,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>Task of ApiResponse (EmptyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteUserAsyncWithHttpInfo (decimal? id, string evApiKey, string evAccessToken);
+        System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteUserAsyncWithHttpInfo (int? id, string evApiKey, string evAccessToken);
         /// <summary>
         /// Get info for a user
         /// </summary>
@@ -236,7 +236,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma-separated list of relationships to include in response. Possible values include **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>Task of UserResponse</returns>
-        System.Threading.Tasks.Task<UserResponse> GetUserByIdAsync (decimal? id, string evApiKey, string evAccessToken, string include = null);
+        System.Threading.Tasks.Task<UserResponse> GetUserByIdAsync (int? id, string evApiKey, string evAccessToken, string include = null);
 
         /// <summary>
         /// Get info for a user
@@ -250,7 +250,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma-separated list of relationships to include in response. Possible values include **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>Task of ApiResponse (UserResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserResponse>> GetUserByIdAsyncWithHttpInfo (decimal? id, string evApiKey, string evAccessToken, string include = null);
+        System.Threading.Tasks.Task<ApiResponse<UserResponse>> GetUserByIdAsyncWithHttpInfo (int? id, string evApiKey, string evAccessToken, string include = null);
         /// <summary>
         /// Get a list of users
         /// </summary>
@@ -261,18 +261,18 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="username">The username of the user you are looking for. Only entries with the same username as this will be in the list of results. Does not support wildcard searches. (optional)</param>
+        /// <param name="homeResource">Resource identifier for user&#x27;s home directory. Does not support wildcard searches. (optional)</param>
         /// <param name="nickname">Nickname to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="email">Email to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches (optional)</param>
         /// <param name="role">Types of users to include the list. Ignored if &#x60;username&#x60; is provided. Valid options are **admin**, **master** and **user** (optional)</param>
         /// <param name="status">Whether a user is locked. Ignored if &#x60;username&#x60; is provided. **0** means user is locked, **1** means user is not locked.  (optional)</param>
-        /// <param name="homeDir">Path for user&#x27;s home directory. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="search">Searches the nickname, email, role and homeDir fields for the provided value. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="offset">Starting user record in the result set. Can be used for pagination. (optional)</param>
         /// <param name="sort">Sort order or matching users. You can sort by multiple columns by separating sort options with a comma; the sort will be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending.  Valid sort fields are: **nickname**, **username**, **email**, **homeDir** and **modified** (optional)</param>
         /// <param name="limit">Number of users to return. Can be used for pagination. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Valid options are **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>Task of UserCollectionResponse</returns>
-        System.Threading.Tasks.Task<UserCollectionResponse> ListUsersAsync (string evApiKey, string evAccessToken, string username = null, string nickname = null, string email = null, string role = null, int? status = null, string homeDir = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null);
+        System.Threading.Tasks.Task<UserCollectionResponse> ListUsersAsync (string evApiKey, string evAccessToken, string username = null, string homeResource = null, string nickname = null, string email = null, string role = null, int? status = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null);
 
         /// <summary>
         /// Get a list of users
@@ -284,18 +284,18 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="username">The username of the user you are looking for. Only entries with the same username as this will be in the list of results. Does not support wildcard searches. (optional)</param>
+        /// <param name="homeResource">Resource identifier for user&#x27;s home directory. Does not support wildcard searches. (optional)</param>
         /// <param name="nickname">Nickname to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="email">Email to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches (optional)</param>
         /// <param name="role">Types of users to include the list. Ignored if &#x60;username&#x60; is provided. Valid options are **admin**, **master** and **user** (optional)</param>
         /// <param name="status">Whether a user is locked. Ignored if &#x60;username&#x60; is provided. **0** means user is locked, **1** means user is not locked.  (optional)</param>
-        /// <param name="homeDir">Path for user&#x27;s home directory. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="search">Searches the nickname, email, role and homeDir fields for the provided value. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="offset">Starting user record in the result set. Can be used for pagination. (optional)</param>
         /// <param name="sort">Sort order or matching users. You can sort by multiple columns by separating sort options with a comma; the sort will be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending.  Valid sort fields are: **nickname**, **username**, **email**, **homeDir** and **modified** (optional)</param>
         /// <param name="limit">Number of users to return. Can be used for pagination. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Valid options are **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>Task of ApiResponse (UserCollectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserCollectionResponse>> ListUsersAsyncWithHttpInfo (string evApiKey, string evAccessToken, string username = null, string nickname = null, string email = null, string role = null, int? status = null, string homeDir = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null);
+        System.Threading.Tasks.Task<ApiResponse<UserCollectionResponse>> ListUsersAsyncWithHttpInfo (string evApiKey, string evAccessToken, string username = null, string homeResource = null, string nickname = null, string email = null, string role = null, int? status = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null);
         /// <summary>
         /// Update a user
         /// </summary>
@@ -308,7 +308,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserResponse</returns>
-        System.Threading.Tasks.Task<UserResponse> UpdateUserAsync (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null);
+        System.Threading.Tasks.Task<UserResponse> UpdateUserAsync (string evApiKey, string evAccessToken, int? id, UpdateUserRequestBody body = null);
 
         /// <summary>
         /// Update a user
@@ -322,7 +322,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserResponse>> UpdateUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null);
+        System.Threading.Tasks.Task<ApiResponse<UserResponse>> UpdateUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateUserRequestBody body = null);
         #endregion Asynchronous Operations
     }
 
@@ -607,7 +607,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>EmptyResponse</returns>
-        public EmptyResponse DeleteUser (decimal? id, string evApiKey, string evAccessToken)
+        public EmptyResponse DeleteUser (int? id, string evApiKey, string evAccessToken)
         {
              ApiResponse<EmptyResponse> localVarResponse = DeleteUserWithHttpInfo(id, evApiKey, evAccessToken);
              return localVarResponse.Data;
@@ -621,7 +621,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>ApiResponse of EmptyResponse</returns>
-        public ApiResponse< EmptyResponse > DeleteUserWithHttpInfo (decimal? id, string evApiKey, string evAccessToken)
+        public ApiResponse< EmptyResponse > DeleteUserWithHttpInfo (int? id, string evApiKey, string evAccessToken)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -684,7 +684,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>Task of EmptyResponse</returns>
-        public async System.Threading.Tasks.Task<EmptyResponse> DeleteUserAsync (decimal? id, string evApiKey, string evAccessToken)
+        public async System.Threading.Tasks.Task<EmptyResponse> DeleteUserAsync (int? id, string evApiKey, string evAccessToken)
         {
              ApiResponse<EmptyResponse> localVarResponse = await DeleteUserAsyncWithHttpInfo(id, evApiKey, evAccessToken);
              return localVarResponse.Data;
@@ -699,7 +699,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <returns>Task of ApiResponse (EmptyResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteUserAsyncWithHttpInfo (decimal? id, string evApiKey, string evAccessToken)
+        public async System.Threading.Tasks.Task<ApiResponse<EmptyResponse>> DeleteUserAsyncWithHttpInfo (int? id, string evApiKey, string evAccessToken)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -763,7 +763,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma-separated list of relationships to include in response. Possible values include **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>UserResponse</returns>
-        public UserResponse GetUserById (decimal? id, string evApiKey, string evAccessToken, string include = null)
+        public UserResponse GetUserById (int? id, string evApiKey, string evAccessToken, string include = null)
         {
              ApiResponse<UserResponse> localVarResponse = GetUserByIdWithHttpInfo(id, evApiKey, evAccessToken, include);
              return localVarResponse.Data;
@@ -778,7 +778,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma-separated list of relationships to include in response. Possible values include **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>ApiResponse of UserResponse</returns>
-        public ApiResponse< UserResponse > GetUserByIdWithHttpInfo (decimal? id, string evApiKey, string evAccessToken, string include = null)
+        public ApiResponse< UserResponse > GetUserByIdWithHttpInfo (int? id, string evApiKey, string evAccessToken, string include = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -843,7 +843,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma-separated list of relationships to include in response. Possible values include **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>Task of UserResponse</returns>
-        public async System.Threading.Tasks.Task<UserResponse> GetUserByIdAsync (decimal? id, string evApiKey, string evAccessToken, string include = null)
+        public async System.Threading.Tasks.Task<UserResponse> GetUserByIdAsync (int? id, string evApiKey, string evAccessToken, string include = null)
         {
              ApiResponse<UserResponse> localVarResponse = await GetUserByIdAsyncWithHttpInfo(id, evApiKey, evAccessToken, include);
              return localVarResponse.Data;
@@ -859,7 +859,7 @@ namespace ExaVault.Api
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="include">Comma-separated list of relationships to include in response. Possible values include **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>Task of ApiResponse (UserResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserResponse>> GetUserByIdAsyncWithHttpInfo (decimal? id, string evApiKey, string evAccessToken, string include = null)
+        public async System.Threading.Tasks.Task<ApiResponse<UserResponse>> GetUserByIdAsyncWithHttpInfo (int? id, string evApiKey, string evAccessToken, string include = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -922,20 +922,20 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="username">The username of the user you are looking for. Only entries with the same username as this will be in the list of results. Does not support wildcard searches. (optional)</param>
+        /// <param name="homeResource">Resource identifier for user&#x27;s home directory. Does not support wildcard searches. (optional)</param>
         /// <param name="nickname">Nickname to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="email">Email to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches (optional)</param>
         /// <param name="role">Types of users to include the list. Ignored if &#x60;username&#x60; is provided. Valid options are **admin**, **master** and **user** (optional)</param>
         /// <param name="status">Whether a user is locked. Ignored if &#x60;username&#x60; is provided. **0** means user is locked, **1** means user is not locked.  (optional)</param>
-        /// <param name="homeDir">Path for user&#x27;s home directory. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="search">Searches the nickname, email, role and homeDir fields for the provided value. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="offset">Starting user record in the result set. Can be used for pagination. (optional)</param>
         /// <param name="sort">Sort order or matching users. You can sort by multiple columns by separating sort options with a comma; the sort will be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending.  Valid sort fields are: **nickname**, **username**, **email**, **homeDir** and **modified** (optional)</param>
         /// <param name="limit">Number of users to return. Can be used for pagination. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Valid options are **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>UserCollectionResponse</returns>
-        public UserCollectionResponse ListUsers (string evApiKey, string evAccessToken, string username = null, string nickname = null, string email = null, string role = null, int? status = null, string homeDir = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null)
+        public UserCollectionResponse ListUsers (string evApiKey, string evAccessToken, string username = null, string homeResource = null, string nickname = null, string email = null, string role = null, int? status = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null)
         {
-             ApiResponse<UserCollectionResponse> localVarResponse = ListUsersWithHttpInfo(evApiKey, evAccessToken, username, nickname, email, role, status, homeDir, search, offset, sort, limit, include);
+             ApiResponse<UserCollectionResponse> localVarResponse = ListUsersWithHttpInfo(evApiKey, evAccessToken, username, homeResource, nickname, email, role, status, search, offset, sort, limit, include);
              return localVarResponse.Data;
         }
 
@@ -946,18 +946,18 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="username">The username of the user you are looking for. Only entries with the same username as this will be in the list of results. Does not support wildcard searches. (optional)</param>
+        /// <param name="homeResource">Resource identifier for user&#x27;s home directory. Does not support wildcard searches. (optional)</param>
         /// <param name="nickname">Nickname to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="email">Email to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches (optional)</param>
         /// <param name="role">Types of users to include the list. Ignored if &#x60;username&#x60; is provided. Valid options are **admin**, **master** and **user** (optional)</param>
         /// <param name="status">Whether a user is locked. Ignored if &#x60;username&#x60; is provided. **0** means user is locked, **1** means user is not locked.  (optional)</param>
-        /// <param name="homeDir">Path for user&#x27;s home directory. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="search">Searches the nickname, email, role and homeDir fields for the provided value. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="offset">Starting user record in the result set. Can be used for pagination. (optional)</param>
         /// <param name="sort">Sort order or matching users. You can sort by multiple columns by separating sort options with a comma; the sort will be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending.  Valid sort fields are: **nickname**, **username**, **email**, **homeDir** and **modified** (optional)</param>
         /// <param name="limit">Number of users to return. Can be used for pagination. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Valid options are **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>ApiResponse of UserCollectionResponse</returns>
-        public ApiResponse< UserCollectionResponse > ListUsersWithHttpInfo (string evApiKey, string evAccessToken, string username = null, string nickname = null, string email = null, string role = null, int? status = null, string homeDir = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null)
+        public ApiResponse< UserCollectionResponse > ListUsersWithHttpInfo (string evApiKey, string evAccessToken, string username = null, string homeResource = null, string nickname = null, string email = null, string role = null, int? status = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -988,11 +988,11 @@ namespace ExaVault.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (username != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "username", username)); // query parameter
+            if (homeResource != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "homeResource", homeResource)); // query parameter
             if (nickname != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nickname", nickname)); // query parameter
             if (email != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "email", email)); // query parameter
             if (role != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "role", role)); // query parameter
             if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
-            if (homeDir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "homeDir", homeDir)); // query parameter
             if (search != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "search", search)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
             if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
@@ -1026,20 +1026,20 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="username">The username of the user you are looking for. Only entries with the same username as this will be in the list of results. Does not support wildcard searches. (optional)</param>
+        /// <param name="homeResource">Resource identifier for user&#x27;s home directory. Does not support wildcard searches. (optional)</param>
         /// <param name="nickname">Nickname to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="email">Email to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches (optional)</param>
         /// <param name="role">Types of users to include the list. Ignored if &#x60;username&#x60; is provided. Valid options are **admin**, **master** and **user** (optional)</param>
         /// <param name="status">Whether a user is locked. Ignored if &#x60;username&#x60; is provided. **0** means user is locked, **1** means user is not locked.  (optional)</param>
-        /// <param name="homeDir">Path for user&#x27;s home directory. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="search">Searches the nickname, email, role and homeDir fields for the provided value. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="offset">Starting user record in the result set. Can be used for pagination. (optional)</param>
         /// <param name="sort">Sort order or matching users. You can sort by multiple columns by separating sort options with a comma; the sort will be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending.  Valid sort fields are: **nickname**, **username**, **email**, **homeDir** and **modified** (optional)</param>
         /// <param name="limit">Number of users to return. Can be used for pagination. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Valid options are **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>Task of UserCollectionResponse</returns>
-        public async System.Threading.Tasks.Task<UserCollectionResponse> ListUsersAsync (string evApiKey, string evAccessToken, string username = null, string nickname = null, string email = null, string role = null, int? status = null, string homeDir = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null)
+        public async System.Threading.Tasks.Task<UserCollectionResponse> ListUsersAsync (string evApiKey, string evAccessToken, string username = null, string homeResource = null, string nickname = null, string email = null, string role = null, int? status = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null)
         {
-             ApiResponse<UserCollectionResponse> localVarResponse = await ListUsersAsyncWithHttpInfo(evApiKey, evAccessToken, username, nickname, email, role, status, homeDir, search, offset, sort, limit, include);
+             ApiResponse<UserCollectionResponse> localVarResponse = await ListUsersAsyncWithHttpInfo(evApiKey, evAccessToken, username, homeResource, nickname, email, role, status, search, offset, sort, limit, include);
              return localVarResponse.Data;
 
         }
@@ -1051,18 +1051,18 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="username">The username of the user you are looking for. Only entries with the same username as this will be in the list of results. Does not support wildcard searches. (optional)</param>
+        /// <param name="homeResource">Resource identifier for user&#x27;s home directory. Does not support wildcard searches. (optional)</param>
         /// <param name="nickname">Nickname to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="email">Email to search for. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches (optional)</param>
         /// <param name="role">Types of users to include the list. Ignored if &#x60;username&#x60; is provided. Valid options are **admin**, **master** and **user** (optional)</param>
         /// <param name="status">Whether a user is locked. Ignored if &#x60;username&#x60; is provided. **0** means user is locked, **1** means user is not locked.  (optional)</param>
-        /// <param name="homeDir">Path for user&#x27;s home directory. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="search">Searches the nickname, email, role and homeDir fields for the provided value. Ignored if &#x60;username&#x60; is provided. Supports wildcard searches. (optional)</param>
         /// <param name="offset">Starting user record in the result set. Can be used for pagination. (optional)</param>
         /// <param name="sort">Sort order or matching users. You can sort by multiple columns by separating sort options with a comma; the sort will be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending.  Valid sort fields are: **nickname**, **username**, **email**, **homeDir** and **modified** (optional)</param>
         /// <param name="limit">Number of users to return. Can be used for pagination. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Valid options are **homeResource** and **ownerAccount**. (optional)</param>
         /// <returns>Task of ApiResponse (UserCollectionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserCollectionResponse>> ListUsersAsyncWithHttpInfo (string evApiKey, string evAccessToken, string username = null, string nickname = null, string email = null, string role = null, int? status = null, string homeDir = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null)
+        public async System.Threading.Tasks.Task<ApiResponse<UserCollectionResponse>> ListUsersAsyncWithHttpInfo (string evApiKey, string evAccessToken, string username = null, string homeResource = null, string nickname = null, string email = null, string role = null, int? status = null, string search = null, int? offset = null, string sort = null, int? limit = null, string include = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1093,11 +1093,11 @@ namespace ExaVault.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (username != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "username", username)); // query parameter
+            if (homeResource != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "homeResource", homeResource)); // query parameter
             if (nickname != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nickname", nickname)); // query parameter
             if (email != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "email", email)); // query parameter
             if (role != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "role", role)); // query parameter
             if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
-            if (homeDir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "homeDir", homeDir)); // query parameter
             if (search != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "search", search)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
             if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
@@ -1133,7 +1133,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>UserResponse</returns>
-        public UserResponse UpdateUser (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null)
+        public UserResponse UpdateUser (string evApiKey, string evAccessToken, int? id, UpdateUserRequestBody body = null)
         {
              ApiResponse<UserResponse> localVarResponse = UpdateUserWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1148,7 +1148,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserResponse</returns>
-        public ApiResponse< UserResponse > UpdateUserWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null)
+        public ApiResponse< UserResponse > UpdateUserWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateUserRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -1221,7 +1221,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserResponse</returns>
-        public async System.Threading.Tasks.Task<UserResponse> UpdateUserAsync (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null)
+        public async System.Threading.Tasks.Task<UserResponse> UpdateUserAsync (string evApiKey, string evAccessToken, int? id, UpdateUserRequestBody body = null)
         {
              ApiResponse<UserResponse> localVarResponse = await UpdateUserAsyncWithHttpInfo(evApiKey, evAccessToken, id, body);
              return localVarResponse.Data;
@@ -1237,7 +1237,7 @@ namespace ExaVault.Api
         /// <param name="id">The user&#x27;s ID. Note that this is our internal ID, and _not the username_. You can obtain it by calling the [GET /users](#operation/listUsers) method.</param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserResponse>> UpdateUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, decimal? id, UpdateUserRequestBody body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<UserResponse>> UpdateUserAsyncWithHttpInfo (string evApiKey, string evAccessToken, int? id, UpdateUserRequestBody body = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)

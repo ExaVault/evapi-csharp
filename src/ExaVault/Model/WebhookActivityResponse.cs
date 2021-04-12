@@ -27,16 +27,16 @@ namespace ExaVault.Model
     /// Session activity list response
     /// </summary>
     [DataContract]
-        public partial class WebhooksActivityResponse :  IEquatable<WebhooksActivityResponse>, IValidatableObject
+        public partial class WebhookActivityResponse :  IEquatable<WebhookActivityResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhooksActivityResponse" /> class.
+        /// Initializes a new instance of the <see cref="WebhookActivityResponse" /> class.
         /// </summary>
         /// <param name="responseStatus">Http status code of the response..</param>
         /// <param name="totalResults">Total results found..</param>
         /// <param name="returnedResults">Number of results returned. .</param>
         /// <param name="data">data.</param>
-        public WebhooksActivityResponse(int? responseStatus = default(int?), int? totalResults = default(int?), int? returnedResults = default(int?), List<WebhooksActivityEntry> data = default(List<WebhooksActivityEntry>))
+        public WebhookActivityResponse(int? responseStatus = default(int?), int? totalResults = default(int?), int? returnedResults = default(int?), List<WebhookActivityEntry> data = default(List<WebhookActivityEntry>))
         {
             this.ResponseStatus = responseStatus;
             this.TotalResults = totalResults;
@@ -69,7 +69,7 @@ namespace ExaVault.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name="data", EmitDefaultValue=false)]
-        public List<WebhooksActivityEntry> Data { get; set; }
+        public List<WebhookActivityEntry> Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,7 +78,7 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class WebhooksActivityResponse {\n");
+            sb.Append("class WebhookActivityResponse {\n");
             sb.Append("  ResponseStatus: ").Append(ResponseStatus).Append("\n");
             sb.Append("  TotalResults: ").Append(TotalResults).Append("\n");
             sb.Append("  ReturnedResults: ").Append(ReturnedResults).Append("\n");
@@ -103,15 +103,15 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WebhooksActivityResponse);
+            return this.Equals(input as WebhookActivityResponse);
         }
 
         /// <summary>
-        /// Returns true if WebhooksActivityResponse instances are equal
+        /// Returns true if WebhookActivityResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of WebhooksActivityResponse to be compared</param>
+        /// <param name="input">Instance of WebhookActivityResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WebhooksActivityResponse input)
+        public bool Equals(WebhookActivityResponse input)
         {
             if (input == null)
                 return false;

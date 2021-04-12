@@ -24,52 +24,69 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// CallbackSettings
+    /// UpdateWebhookRequestBody
     /// </summary>
     [DataContract]
-        public partial class CallbackSettings :  IEquatable<CallbackSettings>, IValidatableObject
+        public partial class UpdateWebhookRequestBody :  IEquatable<UpdateWebhookRequestBody>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CallbackSettings" /> class.
+        /// Version of the webhooks message to send to the endpoint
         /// </summary>
-        /// <param name="accountId">ID of the account these settings belongs to..</param>
-        /// <param name="endpointUrl">Where callback settings object sent to..</param>
-        /// <param name="token">Verification token for the request authentication..</param>
-        /// <param name="triggers">triggers.</param>
-        public CallbackSettings(string accountId = default(string), string endpointUrl = default(string), string token = default(string), CallbackSettingsTriggers triggers = default(CallbackSettingsTriggers))
+        /// <value>Version of the webhooks message to send to the endpoint</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+                public enum ResponseVersionEnum
         {
-            this.AccountId = accountId;
+            /// <summary>
+            /// Enum V2 for value: v2
+            /// </summary>
+            [EnumMember(Value = "v2")]
+            V2 = 1,
+            /// <summary>
+            /// Enum V1 for value: v1
+            /// </summary>
+            [EnumMember(Value = "v1")]
+            V1 = 2        }
+        /// <summary>
+        /// Version of the webhooks message to send to the endpoint
+        /// </summary>
+        /// <value>Version of the webhooks message to send to the endpoint</value>
+        [DataMember(Name="responseVersion", EmitDefaultValue=false)]
+        public ResponseVersionEnum? ResponseVersion { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateWebhookRequestBody" /> class.
+        /// </summary>
+        /// <param name="endpointUrl">New endpoint URL to use for the webhook configuration.</param>
+        /// <param name="triggers">triggers.</param>
+        /// <param name="resource">Resource identifier of the top folder watched by this webhook..</param>
+        /// <param name="responseVersion">Version of the webhooks message to send to the endpoint.</param>
+        public UpdateWebhookRequestBody(string endpointUrl = default(string), WebhookTriggers triggers = default(WebhookTriggers), string resource = default(string), ResponseVersionEnum? responseVersion = default(ResponseVersionEnum?))
+        {
             this.EndpointUrl = endpointUrl;
-            this.Token = token;
             this.Triggers = triggers;
+            this.Resource = resource;
+            this.ResponseVersion = responseVersion;
         }
         
         /// <summary>
-        /// ID of the account these settings belongs to.
+        /// New endpoint URL to use for the webhook configuration
         /// </summary>
-        /// <value>ID of the account these settings belongs to.</value>
-        [DataMember(Name="accountId", EmitDefaultValue=false)]
-        public string AccountId { get; set; }
-
-        /// <summary>
-        /// Where callback settings object sent to.
-        /// </summary>
-        /// <value>Where callback settings object sent to.</value>
+        /// <value>New endpoint URL to use for the webhook configuration</value>
         [DataMember(Name="endpointUrl", EmitDefaultValue=false)]
         public string EndpointUrl { get; set; }
-
-        /// <summary>
-        /// Verification token for the request authentication.
-        /// </summary>
-        /// <value>Verification token for the request authentication.</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
-        public string Token { get; set; }
 
         /// <summary>
         /// Gets or Sets Triggers
         /// </summary>
         [DataMember(Name="triggers", EmitDefaultValue=false)]
-        public CallbackSettingsTriggers Triggers { get; set; }
+        public WebhookTriggers Triggers { get; set; }
+
+        /// <summary>
+        /// Resource identifier of the top folder watched by this webhook.
+        /// </summary>
+        /// <value>Resource identifier of the top folder watched by this webhook.</value>
+        [DataMember(Name="resource", EmitDefaultValue=false)]
+        public string Resource { get; set; }
+
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,11 +95,11 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CallbackSettings {\n");
-            sb.Append("  AccountId: ").Append(AccountId).Append("\n");
+            sb.Append("class UpdateWebhookRequestBody {\n");
             sb.Append("  EndpointUrl: ").Append(EndpointUrl).Append("\n");
-            sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Triggers: ").Append(Triggers).Append("\n");
+            sb.Append("  Resource: ").Append(Resource).Append("\n");
+            sb.Append("  ResponseVersion: ").Append(ResponseVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -103,39 +120,39 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CallbackSettings);
+            return this.Equals(input as UpdateWebhookRequestBody);
         }
 
         /// <summary>
-        /// Returns true if CallbackSettings instances are equal
+        /// Returns true if UpdateWebhookRequestBody instances are equal
         /// </summary>
-        /// <param name="input">Instance of CallbackSettings to be compared</param>
+        /// <param name="input">Instance of UpdateWebhookRequestBody to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CallbackSettings input)
+        public bool Equals(UpdateWebhookRequestBody input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.AccountId == input.AccountId ||
-                    (this.AccountId != null &&
-                    this.AccountId.Equals(input.AccountId))
-                ) && 
-                (
                     this.EndpointUrl == input.EndpointUrl ||
                     (this.EndpointUrl != null &&
                     this.EndpointUrl.Equals(input.EndpointUrl))
                 ) && 
                 (
-                    this.Token == input.Token ||
-                    (this.Token != null &&
-                    this.Token.Equals(input.Token))
-                ) && 
-                (
                     this.Triggers == input.Triggers ||
                     (this.Triggers != null &&
                     this.Triggers.Equals(input.Triggers))
+                ) && 
+                (
+                    this.Resource == input.Resource ||
+                    (this.Resource != null &&
+                    this.Resource.Equals(input.Resource))
+                ) && 
+                (
+                    this.ResponseVersion == input.ResponseVersion ||
+                    (this.ResponseVersion != null &&
+                    this.ResponseVersion.Equals(input.ResponseVersion))
                 );
         }
 
@@ -148,14 +165,14 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AccountId != null)
-                    hashCode = hashCode * 59 + this.AccountId.GetHashCode();
                 if (this.EndpointUrl != null)
                     hashCode = hashCode * 59 + this.EndpointUrl.GetHashCode();
-                if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.Triggers != null)
                     hashCode = hashCode * 59 + this.Triggers.GetHashCode();
+                if (this.Resource != null)
+                    hashCode = hashCode * 59 + this.Resource.GetHashCode();
+                if (this.ResponseVersion != null)
+                    hashCode = hashCode * 59 + this.ResponseVersion.GetHashCode();
                 return hashCode;
             }
         }

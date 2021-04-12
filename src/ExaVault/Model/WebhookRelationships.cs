@@ -24,33 +24,33 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// CallbackSettingsValues
+    /// WebhookRelationships
     /// </summary>
     [DataContract]
-        public partial class CallbackSettingsValues :  IEquatable<CallbackSettingsValues>, IValidatableObject
+        public partial class WebhookRelationships :  IEquatable<WebhookRelationships>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CallbackSettingsValues" /> class.
+        /// Initializes a new instance of the <see cref="WebhookRelationships" /> class.
         /// </summary>
-        /// <param name="endpointUrl">endpointUrl.</param>
-        /// <param name="triggers">triggers.</param>
-        public CallbackSettingsValues(string endpointUrl = default(string), CallbackSettingsValuesTriggers triggers = default(CallbackSettingsValuesTriggers))
+        /// <param name="ownerAccount">ownerAccount.</param>
+        /// <param name="resource">resource.</param>
+        public WebhookRelationships(WebhookRelationshipsOwnerAccount ownerAccount = default(WebhookRelationshipsOwnerAccount), WebhookRelationshipsResource resource = default(WebhookRelationshipsResource))
         {
-            this.EndpointUrl = endpointUrl;
-            this.Triggers = triggers;
+            this.OwnerAccount = ownerAccount;
+            this.Resource = resource;
         }
         
         /// <summary>
-        /// Gets or Sets EndpointUrl
+        /// Gets or Sets OwnerAccount
         /// </summary>
-        [DataMember(Name="endpointUrl", EmitDefaultValue=false)]
-        public string EndpointUrl { get; set; }
+        [DataMember(Name="ownerAccount", EmitDefaultValue=false)]
+        public WebhookRelationshipsOwnerAccount OwnerAccount { get; set; }
 
         /// <summary>
-        /// Gets or Sets Triggers
+        /// Gets or Sets Resource
         /// </summary>
-        [DataMember(Name="triggers", EmitDefaultValue=false)]
-        public CallbackSettingsValuesTriggers Triggers { get; set; }
+        [DataMember(Name="resource", EmitDefaultValue=false)]
+        public WebhookRelationshipsResource Resource { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -59,9 +59,9 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CallbackSettingsValues {\n");
-            sb.Append("  EndpointUrl: ").Append(EndpointUrl).Append("\n");
-            sb.Append("  Triggers: ").Append(Triggers).Append("\n");
+            sb.Append("class WebhookRelationships {\n");
+            sb.Append("  OwnerAccount: ").Append(OwnerAccount).Append("\n");
+            sb.Append("  Resource: ").Append(Resource).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -82,29 +82,29 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CallbackSettingsValues);
+            return this.Equals(input as WebhookRelationships);
         }
 
         /// <summary>
-        /// Returns true if CallbackSettingsValues instances are equal
+        /// Returns true if WebhookRelationships instances are equal
         /// </summary>
-        /// <param name="input">Instance of CallbackSettingsValues to be compared</param>
+        /// <param name="input">Instance of WebhookRelationships to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CallbackSettingsValues input)
+        public bool Equals(WebhookRelationships input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.EndpointUrl == input.EndpointUrl ||
-                    (this.EndpointUrl != null &&
-                    this.EndpointUrl.Equals(input.EndpointUrl))
+                    this.OwnerAccount == input.OwnerAccount ||
+                    (this.OwnerAccount != null &&
+                    this.OwnerAccount.Equals(input.OwnerAccount))
                 ) && 
                 (
-                    this.Triggers == input.Triggers ||
-                    (this.Triggers != null &&
-                    this.Triggers.Equals(input.Triggers))
+                    this.Resource == input.Resource ||
+                    (this.Resource != null &&
+                    this.Resource.Equals(input.Resource))
                 );
         }
 
@@ -117,10 +117,10 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.EndpointUrl != null)
-                    hashCode = hashCode * 59 + this.EndpointUrl.GetHashCode();
-                if (this.Triggers != null)
-                    hashCode = hashCode * 59 + this.Triggers.GetHashCode();
+                if (this.OwnerAccount != null)
+                    hashCode = hashCode * 59 + this.OwnerAccount.GetHashCode();
+                if (this.Resource != null)
+                    hashCode = hashCode * 59 + this.Resource.GetHashCode();
                 return hashCode;
             }
         }

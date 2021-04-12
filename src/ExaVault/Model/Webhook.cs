@@ -24,19 +24,19 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// A single email group list
+    /// Webhook
     /// </summary>
     [DataContract]
-        public partial class EmailList :  IEquatable<EmailList>, IValidatableObject
+        public partial class Webhook :  IEquatable<Webhook>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmailList" /> class.
+        /// Initializes a new instance of the <see cref="Webhook" /> class.
         /// </summary>
-        /// <param name="id">ID of the email list.</param>
-        /// <param name="type">Type of record. \&quot;emailList\&quot;.</param>
+        /// <param name="id">id.</param>
+        /// <param name="type">Type of thing it is. \&quot;webhook\&quot;.</param>
         /// <param name="attributes">attributes.</param>
         /// <param name="relationships">relationships.</param>
-        public EmailList(int? id = default(int?), string type = default(string), EmailListAttributes attributes = default(EmailListAttributes), EmailListRelationships relationships = default(EmailListRelationships))
+        public Webhook(int? id = default(int?), string type = default(string), WebhookAttributes attributes = default(WebhookAttributes), WebhookRelationships relationships = default(WebhookRelationships))
         {
             this.Id = id;
             this.Type = type;
@@ -45,16 +45,15 @@ namespace ExaVault.Model
         }
         
         /// <summary>
-        /// ID of the email list
+        /// Gets or Sets Id
         /// </summary>
-        /// <value>ID of the email list</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public int? Id { get; set; }
 
         /// <summary>
-        /// Type of record. \&quot;emailList\&quot;
+        /// Type of thing it is. \&quot;webhook\&quot;
         /// </summary>
-        /// <value>Type of record. \&quot;emailList\&quot;</value>
+        /// <value>Type of thing it is. \&quot;webhook\&quot;</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public string Type { get; set; }
 
@@ -62,13 +61,13 @@ namespace ExaVault.Model
         /// Gets or Sets Attributes
         /// </summary>
         [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public EmailListAttributes Attributes { get; set; }
+        public WebhookAttributes Attributes { get; set; }
 
         /// <summary>
         /// Gets or Sets Relationships
         /// </summary>
         [DataMember(Name="relationships", EmitDefaultValue=false)]
-        public EmailListRelationships Relationships { get; set; }
+        public WebhookRelationships Relationships { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -77,7 +76,7 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class EmailList {\n");
+            sb.Append("class Webhook {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
@@ -102,15 +101,15 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EmailList);
+            return this.Equals(input as Webhook);
         }
 
         /// <summary>
-        /// Returns true if EmailList instances are equal
+        /// Returns true if Webhook instances are equal
         /// </summary>
-        /// <param name="input">Instance of EmailList to be compared</param>
+        /// <param name="input">Instance of Webhook to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(EmailList input)
+        public bool Equals(Webhook input)
         {
             if (input == null)
                 return false;

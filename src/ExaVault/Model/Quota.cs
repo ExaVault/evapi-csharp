@@ -36,12 +36,22 @@ namespace ExaVault.Model
         /// <param name="diskUsed">Amount of disk space currently in use..</param>
         /// <param name="noticeEnabled">Should a quota warning be sent to the account owner when a threshold level of space utilization is reached?.</param>
         /// <param name="noticeThreshold">Treshold that triggers a quota notification. This represents the \&quot;percent full\&quot; your account must be before the quota notification is generated..</param>
-        public Quota(long? diskLimit = default(long?), long? diskUsed = default(long?), bool? noticeEnabled = default(bool?), int? noticeThreshold = default(int?))
+        /// <param name="bandwidthLimit">Total number of bytes that can be transferred per month..</param>
+        /// <param name="bandwidthUsed">Number of bytes transferred this month..</param>
+        /// <param name="transactionsLimit">Total number of transactions allowed in a 24-hour period..</param>
+        /// <param name="transactionsNoticeEnabled">Whether an email should be sent to the account owner up to once per day if transaction usage exceeds &#x60;transactionsNoticeThreshold&#x60; value..</param>
+        /// <param name="transactionsNoticeThreshold">Percent of daily transactions limit that will trigger an email if activity exceeds it..</param>
+        public Quota(long? diskLimit = default(long?), long? diskUsed = default(long?), bool? noticeEnabled = default(bool?), int? noticeThreshold = default(int?), long? bandwidthLimit = default(long?), long? bandwidthUsed = default(long?), int? transactionsLimit = default(int?), bool? transactionsNoticeEnabled = default(bool?), int? transactionsNoticeThreshold = default(int?))
         {
             this.DiskLimit = diskLimit;
             this.DiskUsed = diskUsed;
             this.NoticeEnabled = noticeEnabled;
             this.NoticeThreshold = noticeThreshold;
+            this.BandwidthLimit = bandwidthLimit;
+            this.BandwidthUsed = bandwidthUsed;
+            this.TransactionsLimit = transactionsLimit;
+            this.TransactionsNoticeEnabled = transactionsNoticeEnabled;
+            this.TransactionsNoticeThreshold = transactionsNoticeThreshold;
         }
         
         /// <summary>
@@ -73,6 +83,41 @@ namespace ExaVault.Model
         public int? NoticeThreshold { get; set; }
 
         /// <summary>
+        /// Total number of bytes that can be transferred per month.
+        /// </summary>
+        /// <value>Total number of bytes that can be transferred per month.</value>
+        [DataMember(Name="bandwidthLimit", EmitDefaultValue=false)]
+        public long? BandwidthLimit { get; set; }
+
+        /// <summary>
+        /// Number of bytes transferred this month.
+        /// </summary>
+        /// <value>Number of bytes transferred this month.</value>
+        [DataMember(Name="bandwidthUsed", EmitDefaultValue=false)]
+        public long? BandwidthUsed { get; set; }
+
+        /// <summary>
+        /// Total number of transactions allowed in a 24-hour period.
+        /// </summary>
+        /// <value>Total number of transactions allowed in a 24-hour period.</value>
+        [DataMember(Name="transactionsLimit", EmitDefaultValue=false)]
+        public int? TransactionsLimit { get; set; }
+
+        /// <summary>
+        /// Whether an email should be sent to the account owner up to once per day if transaction usage exceeds &#x60;transactionsNoticeThreshold&#x60; value.
+        /// </summary>
+        /// <value>Whether an email should be sent to the account owner up to once per day if transaction usage exceeds &#x60;transactionsNoticeThreshold&#x60; value.</value>
+        [DataMember(Name="transactionsNoticeEnabled", EmitDefaultValue=false)]
+        public bool? TransactionsNoticeEnabled { get; set; }
+
+        /// <summary>
+        /// Percent of daily transactions limit that will trigger an email if activity exceeds it.
+        /// </summary>
+        /// <value>Percent of daily transactions limit that will trigger an email if activity exceeds it.</value>
+        [DataMember(Name="transactionsNoticeThreshold", EmitDefaultValue=false)]
+        public int? TransactionsNoticeThreshold { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -84,6 +129,11 @@ namespace ExaVault.Model
             sb.Append("  DiskUsed: ").Append(DiskUsed).Append("\n");
             sb.Append("  NoticeEnabled: ").Append(NoticeEnabled).Append("\n");
             sb.Append("  NoticeThreshold: ").Append(NoticeThreshold).Append("\n");
+            sb.Append("  BandwidthLimit: ").Append(BandwidthLimit).Append("\n");
+            sb.Append("  BandwidthUsed: ").Append(BandwidthUsed).Append("\n");
+            sb.Append("  TransactionsLimit: ").Append(TransactionsLimit).Append("\n");
+            sb.Append("  TransactionsNoticeEnabled: ").Append(TransactionsNoticeEnabled).Append("\n");
+            sb.Append("  TransactionsNoticeThreshold: ").Append(TransactionsNoticeThreshold).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -137,6 +187,31 @@ namespace ExaVault.Model
                     this.NoticeThreshold == input.NoticeThreshold ||
                     (this.NoticeThreshold != null &&
                     this.NoticeThreshold.Equals(input.NoticeThreshold))
+                ) && 
+                (
+                    this.BandwidthLimit == input.BandwidthLimit ||
+                    (this.BandwidthLimit != null &&
+                    this.BandwidthLimit.Equals(input.BandwidthLimit))
+                ) && 
+                (
+                    this.BandwidthUsed == input.BandwidthUsed ||
+                    (this.BandwidthUsed != null &&
+                    this.BandwidthUsed.Equals(input.BandwidthUsed))
+                ) && 
+                (
+                    this.TransactionsLimit == input.TransactionsLimit ||
+                    (this.TransactionsLimit != null &&
+                    this.TransactionsLimit.Equals(input.TransactionsLimit))
+                ) && 
+                (
+                    this.TransactionsNoticeEnabled == input.TransactionsNoticeEnabled ||
+                    (this.TransactionsNoticeEnabled != null &&
+                    this.TransactionsNoticeEnabled.Equals(input.TransactionsNoticeEnabled))
+                ) && 
+                (
+                    this.TransactionsNoticeThreshold == input.TransactionsNoticeThreshold ||
+                    (this.TransactionsNoticeThreshold != null &&
+                    this.TransactionsNoticeThreshold.Equals(input.TransactionsNoticeThreshold))
                 );
         }
 
@@ -157,6 +232,16 @@ namespace ExaVault.Model
                     hashCode = hashCode * 59 + this.NoticeEnabled.GetHashCode();
                 if (this.NoticeThreshold != null)
                     hashCode = hashCode * 59 + this.NoticeThreshold.GetHashCode();
+                if (this.BandwidthLimit != null)
+                    hashCode = hashCode * 59 + this.BandwidthLimit.GetHashCode();
+                if (this.BandwidthUsed != null)
+                    hashCode = hashCode * 59 + this.BandwidthUsed.GetHashCode();
+                if (this.TransactionsLimit != null)
+                    hashCode = hashCode * 59 + this.TransactionsLimit.GetHashCode();
+                if (this.TransactionsNoticeEnabled != null)
+                    hashCode = hashCode * 59 + this.TransactionsNoticeEnabled.GetHashCode();
+                if (this.TransactionsNoticeThreshold != null)
+                    hashCode = hashCode * 59 + this.TransactionsNoticeThreshold.GetHashCode();
                 return hashCode;
             }
         }

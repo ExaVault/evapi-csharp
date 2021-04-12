@@ -24,7 +24,7 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// An object containing name/value pairs for each permission. Any permission that is not passed will be set to &#x60;false&#x60; by default. Note that users will be unable to see any files in the account unless you include &#x60;list&#x60; permission.
+    /// An object containing name/value pairs for each permission. Any permission that is not passed will be set to &#x60;false&#x60; by default. Note that users will be unable to see any files in the account unless you include &#x60;list&#x60; permission. When creating a user with the &#x60;role&#x60; **admin**, you should set all of the permissions to &#x60;true&#x60;
     /// </summary>
     [DataContract]
         public partial class UsersPermissions :  IEquatable<UsersPermissions>, IValidatableObject

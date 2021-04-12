@@ -66,7 +66,7 @@ namespace ExaVault.Model
         /// Initializes a new instance of the <see cref="UpdateNotificationByIdRequestBody" /> class.
         /// </summary>
         /// <param name="action">Type of action be notified about. Notifications will only be sent for the given type of action. Valid choices are **upload**, **download**, **delete** or **all** (upload/download/delete).</param>
-        /// <param name="usernames">Determines which users&#x27; actions should trigger the notification.   Rather than listing  individual users, you can also use 3 special options:  - **notice\\_user\\_all** for activity by any user or share recipient - **notice\\_user\\_all\\_users** for activity only by user accounts - **notice\\_user\\_all\\_recipient** for activity only by share recipients.</param>
+        /// <param name="usernames">Determines which users&#x27; actions should trigger the notification.   Rather than listing  individual users, you can also use 3 special options:  - **notice\\_user\\_all** for activity by any user or share recipient - **notice\\_user\\_all\\_users** for activity only by user accounts - **notice\\_user\\_all\\_recipients** for activity only by share recipients.</param>
         /// <param name="sendEmail">Whether an email should be sent to the recipients when matching activity happens..</param>
         /// <param name="recipients">Email addresses to send notification emails to. If empty, sends to the current user&#x27;s email address..</param>
         /// <param name="message">Custom message to insert into the notification emails, along with the matching activity..</param>
@@ -81,9 +81,9 @@ namespace ExaVault.Model
         
 
         /// <summary>
-        /// Determines which users&#x27; actions should trigger the notification.   Rather than listing  individual users, you can also use 3 special options:  - **notice\\_user\\_all** for activity by any user or share recipient - **notice\\_user\\_all\\_users** for activity only by user accounts - **notice\\_user\\_all\\_recipient** for activity only by share recipients
+        /// Determines which users&#x27; actions should trigger the notification.   Rather than listing  individual users, you can also use 3 special options:  - **notice\\_user\\_all** for activity by any user or share recipient - **notice\\_user\\_all\\_users** for activity only by user accounts - **notice\\_user\\_all\\_recipients** for activity only by share recipients
         /// </summary>
-        /// <value>Determines which users&#x27; actions should trigger the notification.   Rather than listing  individual users, you can also use 3 special options:  - **notice\\_user\\_all** for activity by any user or share recipient - **notice\\_user\\_all\\_users** for activity only by user accounts - **notice\\_user\\_all\\_recipient** for activity only by share recipients</value>
+        /// <value>Determines which users&#x27; actions should trigger the notification.   Rather than listing  individual users, you can also use 3 special options:  - **notice\\_user\\_all** for activity by any user or share recipient - **notice\\_user\\_all\\_users** for activity only by user accounts - **notice\\_user\\_all\\_recipients** for activity only by share recipients</value>
         [DataMember(Name="usernames", EmitDefaultValue=false)]
         public List<string> Usernames { get; set; }
 

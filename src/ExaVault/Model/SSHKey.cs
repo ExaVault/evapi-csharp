@@ -24,19 +24,37 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// A single email group list
+    /// Object representing an SSH Key associated with a user.
     /// </summary>
     [DataContract]
-        public partial class EmailList :  IEquatable<EmailList>, IValidatableObject
+        public partial class SSHKey :  IEquatable<SSHKey>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmailList" /> class.
+        /// Type of the object. 
         /// </summary>
-        /// <param name="id">ID of the email list.</param>
-        /// <param name="type">Type of record. \&quot;emailList\&quot;.</param>
+        /// <value>Type of the object. </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+                public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum SshKey for value: sshKey
+            /// </summary>
+            [EnumMember(Value = "sshKey")]
+            SshKey = 1        }
+        /// <summary>
+        /// Type of the object. 
+        /// </summary>
+        /// <value>Type of the object. </value>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public TypeEnum? Type { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SSHKey" /> class.
+        /// </summary>
+        /// <param name="id">ID of the key..</param>
+        /// <param name="type">Type of the object. .</param>
         /// <param name="attributes">attributes.</param>
         /// <param name="relationships">relationships.</param>
-        public EmailList(int? id = default(int?), string type = default(string), EmailListAttributes attributes = default(EmailListAttributes), EmailListRelationships relationships = default(EmailListRelationships))
+        public SSHKey(int? id = default(int?), TypeEnum? type = default(TypeEnum?), SSHKeyAttributes attributes = default(SSHKeyAttributes), SSHKeyRelationships relationships = default(SSHKeyRelationships))
         {
             this.Id = id;
             this.Type = type;
@@ -45,30 +63,24 @@ namespace ExaVault.Model
         }
         
         /// <summary>
-        /// ID of the email list
+        /// ID of the key.
         /// </summary>
-        /// <value>ID of the email list</value>
+        /// <value>ID of the key.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public int? Id { get; set; }
 
-        /// <summary>
-        /// Type of record. \&quot;emailList\&quot;
-        /// </summary>
-        /// <value>Type of record. \&quot;emailList\&quot;</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public string Type { get; set; }
 
         /// <summary>
         /// Gets or Sets Attributes
         /// </summary>
         [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public EmailListAttributes Attributes { get; set; }
+        public SSHKeyAttributes Attributes { get; set; }
 
         /// <summary>
         /// Gets or Sets Relationships
         /// </summary>
         [DataMember(Name="relationships", EmitDefaultValue=false)]
-        public EmailListRelationships Relationships { get; set; }
+        public SSHKeyRelationships Relationships { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -77,7 +89,7 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class EmailList {\n");
+            sb.Append("class SSHKey {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
@@ -102,15 +114,15 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EmailList);
+            return this.Equals(input as SSHKey);
         }
 
         /// <summary>
-        /// Returns true if EmailList instances are equal
+        /// Returns true if SSHKey instances are equal
         /// </summary>
-        /// <param name="input">Instance of EmailList to be compared</param>
+        /// <param name="input">Instance of SSHKey to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(EmailList input)
+        public bool Equals(SSHKey input)
         {
             if (input == null)
                 return false;

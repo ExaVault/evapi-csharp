@@ -30,34 +30,24 @@ namespace ExaVault.Model
         public partial class ShareMessage :  IEquatable<ShareMessage>, IValidatableObject
     {
         /// <summary>
-        /// Resource type
-        /// </summary>
-        /// <value>Resource type</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-                public enum TypeEnum
-        {
-            /// <summary>
-            /// Enum Message for value: message
-            /// </summary>
-            [EnumMember(Value = "message")]
-            Message = 1        }
-        /// <summary>
-        /// Resource type
-        /// </summary>
-        /// <value>Resource type</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public TypeEnum? Type { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="ShareMessage" /> class.
         /// </summary>
         /// <param name="id">Message id..</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="attributes">attributes.</param>
-        public ShareMessage(int? id = default(int?), TypeEnum? type = default(TypeEnum?), ShareMessageAttributes attributes = default(ShareMessageAttributes))
+        /// <param name="userId">User ID who generated share invite.</param>
+        /// <param name="shareId">ID of associated share.</param>
+        /// <param name="subject">Share invitation message subject..</param>
+        /// <param name="body">Share invitation message text..</param>
+        /// <param name="created">Timestamp of message creation..</param>
+        /// <param name="modified">Timestamp of message modification..</param>
+        public ShareMessage(int? id = default(int?), int? userId = default(int?), int? shareId = default(int?), string subject = default(string), string body = default(string), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
         {
             this.Id = id;
-            this.Type = type;
-            this.Attributes = attributes;
+            this.UserId = userId;
+            this.ShareId = shareId;
+            this.Subject = subject;
+            this.Body = body;
+            this.Created = created;
+            this.Modified = modified;
         }
         
         /// <summary>
@@ -67,12 +57,47 @@ namespace ExaVault.Model
         [DataMember(Name="id", EmitDefaultValue=false)]
         public int? Id { get; set; }
 
+        /// <summary>
+        /// User ID who generated share invite
+        /// </summary>
+        /// <value>User ID who generated share invite</value>
+        [DataMember(Name="userId", EmitDefaultValue=false)]
+        public int? UserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Attributes
+        /// ID of associated share
         /// </summary>
-        [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public ShareMessageAttributes Attributes { get; set; }
+        /// <value>ID of associated share</value>
+        [DataMember(Name="shareId", EmitDefaultValue=false)]
+        public int? ShareId { get; set; }
+
+        /// <summary>
+        /// Share invitation message subject.
+        /// </summary>
+        /// <value>Share invitation message subject.</value>
+        [DataMember(Name="subject", EmitDefaultValue=false)]
+        public string Subject { get; set; }
+
+        /// <summary>
+        /// Share invitation message text.
+        /// </summary>
+        /// <value>Share invitation message text.</value>
+        [DataMember(Name="body", EmitDefaultValue=false)]
+        public string Body { get; set; }
+
+        /// <summary>
+        /// Timestamp of message creation.
+        /// </summary>
+        /// <value>Timestamp of message creation.</value>
+        [DataMember(Name="created", EmitDefaultValue=false)]
+        public DateTime? Created { get; set; }
+
+        /// <summary>
+        /// Timestamp of message modification.
+        /// </summary>
+        /// <value>Timestamp of message modification.</value>
+        [DataMember(Name="modified", EmitDefaultValue=false)]
+        public DateTime? Modified { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,8 +108,12 @@ namespace ExaVault.Model
             var sb = new StringBuilder();
             sb.Append("class ShareMessage {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  ShareId: ").Append(ShareId).Append("\n");
+            sb.Append("  Subject: ").Append(Subject).Append("\n");
+            sb.Append("  Body: ").Append(Body).Append("\n");
+            sb.Append("  Created: ").Append(Created).Append("\n");
+            sb.Append("  Modified: ").Append(Modified).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -125,14 +154,34 @@ namespace ExaVault.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.UserId == input.UserId ||
+                    (this.UserId != null &&
+                    this.UserId.Equals(input.UserId))
                 ) && 
                 (
-                    this.Attributes == input.Attributes ||
-                    (this.Attributes != null &&
-                    this.Attributes.Equals(input.Attributes))
+                    this.ShareId == input.ShareId ||
+                    (this.ShareId != null &&
+                    this.ShareId.Equals(input.ShareId))
+                ) && 
+                (
+                    this.Subject == input.Subject ||
+                    (this.Subject != null &&
+                    this.Subject.Equals(input.Subject))
+                ) && 
+                (
+                    this.Body == input.Body ||
+                    (this.Body != null &&
+                    this.Body.Equals(input.Body))
+                ) && 
+                (
+                    this.Created == input.Created ||
+                    (this.Created != null &&
+                    this.Created.Equals(input.Created))
+                ) && 
+                (
+                    this.Modified == input.Modified ||
+                    (this.Modified != null &&
+                    this.Modified.Equals(input.Modified))
                 );
         }
 
@@ -147,10 +196,18 @@ namespace ExaVault.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Attributes != null)
-                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
+                if (this.UserId != null)
+                    hashCode = hashCode * 59 + this.UserId.GetHashCode();
+                if (this.ShareId != null)
+                    hashCode = hashCode * 59 + this.ShareId.GetHashCode();
+                if (this.Subject != null)
+                    hashCode = hashCode * 59 + this.Subject.GetHashCode();
+                if (this.Body != null)
+                    hashCode = hashCode * 59 + this.Body.GetHashCode();
+                if (this.Created != null)
+                    hashCode = hashCode * 59 + this.Created.GetHashCode();
+                if (this.Modified != null)
+                    hashCode = hashCode * 59 + this.Modified.GetHashCode();
                 return hashCode;
             }
         }

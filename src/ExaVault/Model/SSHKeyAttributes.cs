@@ -24,53 +24,44 @@ using SwaggerDateConverter = ExaVault.Client.SwaggerDateConverter;
 namespace ExaVault.Model
 {
     /// <summary>
-    /// ShareMessageAttributes
+    /// SSHKeyAttributes
     /// </summary>
     [DataContract]
-        public partial class ShareMessageAttributes :  IEquatable<ShareMessageAttributes>, IValidatableObject
+        public partial class SSHKeyAttributes :  IEquatable<SSHKeyAttributes>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShareMessageAttributes" /> class.
+        /// Initializes a new instance of the <see cref="SSHKeyAttributes" /> class.
         /// </summary>
-        /// <param name="subject">Message subject..</param>
-        /// <param name="body">Message text..</param>
-        /// <param name="created">Timestamp of message creation..</param>
-        /// <param name="modified">Timestamp of message modification..</param>
-        public ShareMessageAttributes(string subject = default(string), string body = default(string), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
+        /// <param name="fingerprint">The Key Fingerprint. The fingerprint can be used to identify and keep track of the key without exposing the actual credential. .</param>
+        /// <param name="lastLogin">The date-time the SSH Key was last used to access ExaVault. .</param>
+        /// <param name="created">The date-time the SSH Key was created..</param>
+        public SSHKeyAttributes(string fingerprint = default(string), DateTime? lastLogin = default(DateTime?), DateTime? created = default(DateTime?))
         {
-            this.Subject = subject;
-            this.Body = body;
+            this.Fingerprint = fingerprint;
+            this.LastLogin = lastLogin;
             this.Created = created;
-            this.Modified = modified;
         }
         
         /// <summary>
-        /// Message subject.
+        /// The Key Fingerprint. The fingerprint can be used to identify and keep track of the key without exposing the actual credential. 
         /// </summary>
-        /// <value>Message subject.</value>
-        [DataMember(Name="subject", EmitDefaultValue=false)]
-        public string Subject { get; set; }
+        /// <value>The Key Fingerprint. The fingerprint can be used to identify and keep track of the key without exposing the actual credential. </value>
+        [DataMember(Name="fingerprint", EmitDefaultValue=false)]
+        public string Fingerprint { get; set; }
 
         /// <summary>
-        /// Message text.
+        /// The date-time the SSH Key was last used to access ExaVault. 
         /// </summary>
-        /// <value>Message text.</value>
-        [DataMember(Name="body", EmitDefaultValue=false)]
-        public string Body { get; set; }
+        /// <value>The date-time the SSH Key was last used to access ExaVault. </value>
+        [DataMember(Name="lastLogin", EmitDefaultValue=false)]
+        public DateTime? LastLogin { get; set; }
 
         /// <summary>
-        /// Timestamp of message creation.
+        /// The date-time the SSH Key was created.
         /// </summary>
-        /// <value>Timestamp of message creation.</value>
+        /// <value>The date-time the SSH Key was created.</value>
         [DataMember(Name="created", EmitDefaultValue=false)]
         public DateTime? Created { get; set; }
-
-        /// <summary>
-        /// Timestamp of message modification.
-        /// </summary>
-        /// <value>Timestamp of message modification.</value>
-        [DataMember(Name="modified", EmitDefaultValue=false)]
-        public DateTime? Modified { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,11 +70,10 @@ namespace ExaVault.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ShareMessageAttributes {\n");
-            sb.Append("  Subject: ").Append(Subject).Append("\n");
-            sb.Append("  Body: ").Append(Body).Append("\n");
+            sb.Append("class SSHKeyAttributes {\n");
+            sb.Append("  Fingerprint: ").Append(Fingerprint).Append("\n");
+            sb.Append("  LastLogin: ").Append(LastLogin).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
-            sb.Append("  Modified: ").Append(Modified).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -104,39 +94,34 @@ namespace ExaVault.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ShareMessageAttributes);
+            return this.Equals(input as SSHKeyAttributes);
         }
 
         /// <summary>
-        /// Returns true if ShareMessageAttributes instances are equal
+        /// Returns true if SSHKeyAttributes instances are equal
         /// </summary>
-        /// <param name="input">Instance of ShareMessageAttributes to be compared</param>
+        /// <param name="input">Instance of SSHKeyAttributes to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ShareMessageAttributes input)
+        public bool Equals(SSHKeyAttributes input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Subject == input.Subject ||
-                    (this.Subject != null &&
-                    this.Subject.Equals(input.Subject))
+                    this.Fingerprint == input.Fingerprint ||
+                    (this.Fingerprint != null &&
+                    this.Fingerprint.Equals(input.Fingerprint))
                 ) && 
                 (
-                    this.Body == input.Body ||
-                    (this.Body != null &&
-                    this.Body.Equals(input.Body))
+                    this.LastLogin == input.LastLogin ||
+                    (this.LastLogin != null &&
+                    this.LastLogin.Equals(input.LastLogin))
                 ) && 
                 (
                     this.Created == input.Created ||
                     (this.Created != null &&
                     this.Created.Equals(input.Created))
-                ) && 
-                (
-                    this.Modified == input.Modified ||
-                    (this.Modified != null &&
-                    this.Modified.Equals(input.Modified))
                 );
         }
 
@@ -149,14 +134,12 @@ namespace ExaVault.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Subject != null)
-                    hashCode = hashCode * 59 + this.Subject.GetHashCode();
-                if (this.Body != null)
-                    hashCode = hashCode * 59 + this.Body.GetHashCode();
+                if (this.Fingerprint != null)
+                    hashCode = hashCode * 59 + this.Fingerprint.GetHashCode();
+                if (this.LastLogin != null)
+                    hashCode = hashCode * 59 + this.LastLogin.GetHashCode();
                 if (this.Created != null)
                     hashCode = hashCode * 59 + this.Created.GetHashCode();
-                if (this.Modified != null)
-                    hashCode = hashCode * 59 + this.Modified.GetHashCode();
                 return hashCode;
             }
         }

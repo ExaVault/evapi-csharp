@@ -55,7 +55,6 @@ namespace ExaVault.Model
         /// Initializes a new instance of the <see cref="AccountAttributes" /> class.
         /// </summary>
         /// <param name="accountName">Name of the account.</param>
-        /// <param name="username">Name of account&#x27;s master user.</param>
         /// <param name="maxUsers">Maximum number of users the account can have. This can be increased by contacting ExaVault Support..</param>
         /// <param name="userCount">Current number of users on the account..</param>
         /// <param name="status">Account status flag. A one (1) means the account is active; zero (0) means it is suspended..</param>
@@ -67,8 +66,8 @@ namespace ExaVault.Model
         /// <param name="showReferralLinks">Flag to indicate showing of referrals links in the account. Set to &#x60;true&#x60; to include marketing messages in share invitations..</param>
         /// <param name="externalDomains">Custom domain used to brand this account..</param>
         /// <param name="allowedIp">Range of IP addresses allowed to access this account..</param>
-        /// <param name="callbackSettings">callbackSettings.</param>
         /// <param name="brandingSettings">brandingSettings.</param>
+        /// <param name="planDetails">planDetails.</param>
         /// <param name="clientId">(ExaVault Use Only) Internal ID of the account in CMS..</param>
         /// <param name="welcomeEmailContent">Content of welcome email each new user will receive..</param>
         /// <param name="welcomeEmailSubject">Subject of welcome email each new user will receive..</param>
@@ -76,10 +75,9 @@ namespace ExaVault.Model
         /// <param name="accountOnboarding">Whether the web application onboarding help is enabled for new users in the account..</param>
         /// <param name="created">Timestamp of account creation..</param>
         /// <param name="modified">Timestamp of account modification..</param>
-        public AccountAttributes(string accountName = default(string), string username = default(string), int? maxUsers = default(int?), int? userCount = default(int?), StatusEnum? status = default(StatusEnum?), bool? branding = default(bool?), bool? customDomain = default(bool?), Quota quota = default(Quota), bool? secureOnly = default(bool?), bool? complexPasswords = default(bool?), bool? showReferralLinks = default(bool?), List<string> externalDomains = default(List<string>), List<AccountAttributesAllowedIp> allowedIp = default(List<AccountAttributesAllowedIp>), CallbackSettings callbackSettings = default(CallbackSettings), BrandingSettings brandingSettings = default(BrandingSettings), int? clientId = default(int?), string welcomeEmailContent = default(string), string welcomeEmailSubject = default(string), string customSignature = default(string), bool? accountOnboarding = default(bool?), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
+        public AccountAttributes(string accountName = default(string), int? maxUsers = default(int?), int? userCount = default(int?), StatusEnum? status = default(StatusEnum?), bool? branding = default(bool?), bool? customDomain = default(bool?), Quota quota = default(Quota), bool? secureOnly = default(bool?), bool? complexPasswords = default(bool?), bool? showReferralLinks = default(bool?), List<string> externalDomains = default(List<string>), List<AccountAttributesAllowedIp> allowedIp = default(List<AccountAttributesAllowedIp>), BrandingSettings brandingSettings = default(BrandingSettings), PlanDetails planDetails = default(PlanDetails), int? clientId = default(int?), string welcomeEmailContent = default(string), string welcomeEmailSubject = default(string), string customSignature = default(string), bool? accountOnboarding = default(bool?), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
         {
             this.AccountName = accountName;
-            this.Username = username;
             this.MaxUsers = maxUsers;
             this.UserCount = userCount;
             this.Status = status;
@@ -91,8 +89,8 @@ namespace ExaVault.Model
             this.ShowReferralLinks = showReferralLinks;
             this.ExternalDomains = externalDomains;
             this.AllowedIp = allowedIp;
-            this.CallbackSettings = callbackSettings;
             this.BrandingSettings = brandingSettings;
+            this.PlanDetails = planDetails;
             this.ClientId = clientId;
             this.WelcomeEmailContent = welcomeEmailContent;
             this.WelcomeEmailSubject = welcomeEmailSubject;
@@ -108,13 +106,6 @@ namespace ExaVault.Model
         /// <value>Name of the account</value>
         [DataMember(Name="accountName", EmitDefaultValue=false)]
         public string AccountName { get; set; }
-
-        /// <summary>
-        /// Name of account&#x27;s master user
-        /// </summary>
-        /// <value>Name of account&#x27;s master user</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
-        public string Username { get; set; }
 
         /// <summary>
         /// Maximum number of users the account can have. This can be increased by contacting ExaVault Support.
@@ -187,16 +178,16 @@ namespace ExaVault.Model
         public List<AccountAttributesAllowedIp> AllowedIp { get; set; }
 
         /// <summary>
-        /// Gets or Sets CallbackSettings
-        /// </summary>
-        [DataMember(Name="callbackSettings", EmitDefaultValue=false)]
-        public CallbackSettings CallbackSettings { get; set; }
-
-        /// <summary>
         /// Gets or Sets BrandingSettings
         /// </summary>
         [DataMember(Name="brandingSettings", EmitDefaultValue=false)]
         public BrandingSettings BrandingSettings { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PlanDetails
+        /// </summary>
+        [DataMember(Name="planDetails", EmitDefaultValue=false)]
+        public PlanDetails PlanDetails { get; set; }
 
         /// <summary>
         /// (ExaVault Use Only) Internal ID of the account in CMS.
@@ -256,7 +247,6 @@ namespace ExaVault.Model
             var sb = new StringBuilder();
             sb.Append("class AccountAttributes {\n");
             sb.Append("  AccountName: ").Append(AccountName).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  MaxUsers: ").Append(MaxUsers).Append("\n");
             sb.Append("  UserCount: ").Append(UserCount).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -268,8 +258,8 @@ namespace ExaVault.Model
             sb.Append("  ShowReferralLinks: ").Append(ShowReferralLinks).Append("\n");
             sb.Append("  ExternalDomains: ").Append(ExternalDomains).Append("\n");
             sb.Append("  AllowedIp: ").Append(AllowedIp).Append("\n");
-            sb.Append("  CallbackSettings: ").Append(CallbackSettings).Append("\n");
             sb.Append("  BrandingSettings: ").Append(BrandingSettings).Append("\n");
+            sb.Append("  PlanDetails: ").Append(PlanDetails).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  WelcomeEmailContent: ").Append(WelcomeEmailContent).Append("\n");
             sb.Append("  WelcomeEmailSubject: ").Append(WelcomeEmailSubject).Append("\n");
@@ -315,11 +305,6 @@ namespace ExaVault.Model
                     this.AccountName == input.AccountName ||
                     (this.AccountName != null &&
                     this.AccountName.Equals(input.AccountName))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 ) && 
                 (
                     this.MaxUsers == input.MaxUsers ||
@@ -379,14 +364,14 @@ namespace ExaVault.Model
                     this.AllowedIp.SequenceEqual(input.AllowedIp)
                 ) && 
                 (
-                    this.CallbackSettings == input.CallbackSettings ||
-                    (this.CallbackSettings != null &&
-                    this.CallbackSettings.Equals(input.CallbackSettings))
-                ) && 
-                (
                     this.BrandingSettings == input.BrandingSettings ||
                     (this.BrandingSettings != null &&
                     this.BrandingSettings.Equals(input.BrandingSettings))
+                ) && 
+                (
+                    this.PlanDetails == input.PlanDetails ||
+                    (this.PlanDetails != null &&
+                    this.PlanDetails.Equals(input.PlanDetails))
                 ) && 
                 (
                     this.ClientId == input.ClientId ||
@@ -436,8 +421,6 @@ namespace ExaVault.Model
                 int hashCode = 41;
                 if (this.AccountName != null)
                     hashCode = hashCode * 59 + this.AccountName.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 if (this.MaxUsers != null)
                     hashCode = hashCode * 59 + this.MaxUsers.GetHashCode();
                 if (this.UserCount != null)
@@ -460,10 +443,10 @@ namespace ExaVault.Model
                     hashCode = hashCode * 59 + this.ExternalDomains.GetHashCode();
                 if (this.AllowedIp != null)
                     hashCode = hashCode * 59 + this.AllowedIp.GetHashCode();
-                if (this.CallbackSettings != null)
-                    hashCode = hashCode * 59 + this.CallbackSettings.GetHashCode();
                 if (this.BrandingSettings != null)
                     hashCode = hashCode * 59 + this.BrandingSettings.GetHashCode();
+                if (this.PlanDetails != null)
+                    hashCode = hashCode * 59 + this.PlanDetails.GetHashCode();
                 if (this.ClientId != null)
                     hashCode = hashCode * 59 + this.ClientId.GetHashCode();
                 if (this.WelcomeEmailContent != null)

@@ -37,13 +37,19 @@ namespace ExaVault.Model
         /// <param name="logo">null.</param>
         /// <param name="logoExt">null.</param>
         /// <param name="theme">null.</param>
-        public BrandingSettings(string companyName = default(string), string customEmail = default(string), string logo = default(string), string logoExt = default(string), string theme = default(string))
+        /// <param name="verifiedDomain">verifiedDomain.</param>
+        /// <param name="verifiedDomainId">verifiedDomainId.</param>
+        /// <param name="verifiedDomainValid">verifiedDomainValid.</param>
+        public BrandingSettings(string companyName = default(string), string customEmail = default(string), string logo = default(string), string logoExt = default(string), string theme = default(string), string verifiedDomain = default(string), string verifiedDomainId = default(string), bool? verifiedDomainValid = default(bool?))
         {
             this.CompanyName = companyName;
             this.CustomEmail = customEmail;
             this.Logo = logo;
             this.LogoExt = logoExt;
             this.Theme = theme;
+            this.VerifiedDomain = verifiedDomain;
+            this.VerifiedDomainId = verifiedDomainId;
+            this.VerifiedDomainValid = verifiedDomainValid;
         }
         
         /// <summary>
@@ -82,6 +88,24 @@ namespace ExaVault.Model
         public string Theme { get; set; }
 
         /// <summary>
+        /// Gets or Sets VerifiedDomain
+        /// </summary>
+        [DataMember(Name="verifiedDomain", EmitDefaultValue=false)]
+        public string VerifiedDomain { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VerifiedDomainId
+        /// </summary>
+        [DataMember(Name="verifiedDomainId", EmitDefaultValue=false)]
+        public string VerifiedDomainId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VerifiedDomainValid
+        /// </summary>
+        [DataMember(Name="verifiedDomainValid", EmitDefaultValue=false)]
+        public bool? VerifiedDomainValid { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -94,6 +118,9 @@ namespace ExaVault.Model
             sb.Append("  Logo: ").Append(Logo).Append("\n");
             sb.Append("  LogoExt: ").Append(LogoExt).Append("\n");
             sb.Append("  Theme: ").Append(Theme).Append("\n");
+            sb.Append("  VerifiedDomain: ").Append(VerifiedDomain).Append("\n");
+            sb.Append("  VerifiedDomainId: ").Append(VerifiedDomainId).Append("\n");
+            sb.Append("  VerifiedDomainValid: ").Append(VerifiedDomainValid).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -152,6 +179,21 @@ namespace ExaVault.Model
                     this.Theme == input.Theme ||
                     (this.Theme != null &&
                     this.Theme.Equals(input.Theme))
+                ) && 
+                (
+                    this.VerifiedDomain == input.VerifiedDomain ||
+                    (this.VerifiedDomain != null &&
+                    this.VerifiedDomain.Equals(input.VerifiedDomain))
+                ) && 
+                (
+                    this.VerifiedDomainId == input.VerifiedDomainId ||
+                    (this.VerifiedDomainId != null &&
+                    this.VerifiedDomainId.Equals(input.VerifiedDomainId))
+                ) && 
+                (
+                    this.VerifiedDomainValid == input.VerifiedDomainValid ||
+                    (this.VerifiedDomainValid != null &&
+                    this.VerifiedDomainValid.Equals(input.VerifiedDomainValid))
                 );
         }
 
@@ -174,6 +216,12 @@ namespace ExaVault.Model
                     hashCode = hashCode * 59 + this.LogoExt.GetHashCode();
                 if (this.Theme != null)
                     hashCode = hashCode * 59 + this.Theme.GetHashCode();
+                if (this.VerifiedDomain != null)
+                    hashCode = hashCode * 59 + this.VerifiedDomain.GetHashCode();
+                if (this.VerifiedDomainId != null)
+                    hashCode = hashCode * 59 + this.VerifiedDomainId.GetHashCode();
+                if (this.VerifiedDomainValid != null)
+                    hashCode = hashCode * 59 + this.VerifiedDomainValid.GetHashCode();
                 return hashCode;
             }
         }

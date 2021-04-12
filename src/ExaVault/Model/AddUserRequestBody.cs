@@ -30,9 +30,9 @@ namespace ExaVault.Model
         public partial class AddUserRequestBody :  IEquatable<AddUserRequestBody>, IValidatableObject
     {
         /// <summary>
-        /// The type of user to create. Note that admin users cannot have a &#x60;homeResource&#x60; other than &#x27;/&#x27;, and will have full permissions, but you must provide at least \&quot;download,upload,list,delete\&quot; in the &#x60;permissions&#x60; parameter.
+        /// The type of user to create, either **user** or **admin**.
         /// </summary>
-        /// <value>The type of user to create. Note that admin users cannot have a &#x60;homeResource&#x60; other than &#x27;/&#x27;, and will have full permissions, but you must provide at least \&quot;download,upload,list,delete\&quot; in the &#x60;permissions&#x60; parameter.</value>
+        /// <value>The type of user to create, either **user** or **admin**.</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum RoleEnum
         {
@@ -47,9 +47,9 @@ namespace ExaVault.Model
             [EnumMember(Value = "admin")]
             Admin = 2        }
         /// <summary>
-        /// The type of user to create. Note that admin users cannot have a &#x60;homeResource&#x60; other than &#x27;/&#x27;, and will have full permissions, but you must provide at least \&quot;download,upload,list,delete\&quot; in the &#x60;permissions&#x60; parameter.
+        /// The type of user to create, either **user** or **admin**.
         /// </summary>
-        /// <value>The type of user to create. Note that admin users cannot have a &#x60;homeResource&#x60; other than &#x27;/&#x27;, and will have full permissions, but you must provide at least \&quot;download,upload,list,delete\&quot; in the &#x60;permissions&#x60; parameter.</value>
+        /// <value>The type of user to create, either **user** or **admin**.</value>
         [DataMember(Name="role", EmitDefaultValue=false)]
         public RoleEnum Role { get; set; }
         /// <summary>
@@ -57,10 +57,10 @@ namespace ExaVault.Model
         /// </summary>
         /// <param name="username">Username of the user to create. This should follow standard username conventions - spaces are not allowed, etc. We do allow email addresses as usernames.  **Note** Usernames must be unique across all ExaVault accounts. (required).</param>
         /// <param name="nickname">An optional nickname (e.g. &#x27;David from Sales&#x27;)..</param>
-        /// <param name="homeResource">Resource identifier for the user&#x27;s home folder. See details on [how to specify resources](#section/Identifying-Resources) above.  The user will be locked to this directory and unable to move &#x27;up&#x27; in the account. If the folder does not exist in the account, it will be created when the user is created.   This setting is ignored for users with the &#x60;role&#x60; **admin**. (required).</param>
+        /// <param name="homeResource">Resource identifier for the user&#x27;s home folder. See details on [how to specify resources](#section/Identifying-Resources) above.  The user will be locked to this directory and unable to move &#x27;up&#x27; in the account. If the folder does not exist in the account, it will be created when the user is created.   Users with the &#x60;role&#x60; **admin** should have their homeResource set to &#x27;/&#x27; (required).</param>
         /// <param name="email">Email address for the user (required).</param>
         /// <param name="password">Password for the user (required).</param>
-        /// <param name="role">The type of user to create. Note that admin users cannot have a &#x60;homeResource&#x60; other than &#x27;/&#x27;, and will have full permissions, but you must provide at least \&quot;download,upload,list,delete\&quot; in the &#x60;permissions&#x60; parameter. (required).</param>
+        /// <param name="role">The type of user to create, either **user** or **admin**. (required).</param>
         /// <param name="permissions">permissions (required).</param>
         /// <param name="timeZone">Time zone, used for accurate time display within the application. See &lt;a href&#x3D;&#x27;https://php.net/manual/en/timezones.php&#x27; target&#x3D;&#x27;blank&#x27;&gt;this page&lt;/a&gt; for allowed values.  (required).</param>
         /// <param name="expiration">Optional timestamp when the user should expire, formatted in date-time..</param>
@@ -154,9 +154,9 @@ namespace ExaVault.Model
         public string Nickname { get; set; }
 
         /// <summary>
-        /// Resource identifier for the user&#x27;s home folder. See details on [how to specify resources](#section/Identifying-Resources) above.  The user will be locked to this directory and unable to move &#x27;up&#x27; in the account. If the folder does not exist in the account, it will be created when the user is created.   This setting is ignored for users with the &#x60;role&#x60; **admin**.
+        /// Resource identifier for the user&#x27;s home folder. See details on [how to specify resources](#section/Identifying-Resources) above.  The user will be locked to this directory and unable to move &#x27;up&#x27; in the account. If the folder does not exist in the account, it will be created when the user is created.   Users with the &#x60;role&#x60; **admin** should have their homeResource set to &#x27;/&#x27;
         /// </summary>
-        /// <value>Resource identifier for the user&#x27;s home folder. See details on [how to specify resources](#section/Identifying-Resources) above.  The user will be locked to this directory and unable to move &#x27;up&#x27; in the account. If the folder does not exist in the account, it will be created when the user is created.   This setting is ignored for users with the &#x60;role&#x60; **admin**.</value>
+        /// <value>Resource identifier for the user&#x27;s home folder. See details on [how to specify resources](#section/Identifying-Resources) above.  The user will be locked to this directory and unable to move &#x27;up&#x27; in the account. If the folder does not exist in the account, it will be created when the user is created.   Users with the &#x60;role&#x60; **admin** should have their homeResource set to &#x27;/&#x27;</value>
         [DataMember(Name="homeResource", EmitDefaultValue=false)]
         public string HomeResource { get; set; }
 

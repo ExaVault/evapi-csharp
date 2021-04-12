@@ -27,7 +27,7 @@ namespace ExaVault.Api
         /// Get activity logs
         /// </summary>
         /// <remarks>
-        /// Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
+        /// Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.   **NOTE:** Total Results will always return as 0 to avoid quering data you&#x27;re not using and stay as performant as possible.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
@@ -35,20 +35,20 @@ namespace ExaVault.Api
         /// <param name="startDate">Start date of the filter data range (optional)</param>
         /// <param name="endDate">End date of the filter data range (optional)</param>
         /// <param name="ipAddress">Used to filter session logs by ip address. (optional)</param>
-        /// <param name="userName">Username used for filtering a list (optional)</param>
+        /// <param name="username">Username used for filtering a list (optional)</param>
         /// <param name="path">Path used to filter records (optional)</param>
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
         /// <returns>SessionActivityResponse</returns>
-        SessionActivityResponse GetSessionLogs (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string userName = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
+        SessionActivityResponse GetSessionLogs (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
 
         /// <summary>
         /// Get activity logs
         /// </summary>
         /// <remarks>
-        /// Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
+        /// Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.   **NOTE:** Total Results will always return as 0 to avoid quering data you&#x27;re not using and stay as performant as possible.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
@@ -56,58 +56,64 @@ namespace ExaVault.Api
         /// <param name="startDate">Start date of the filter data range (optional)</param>
         /// <param name="endDate">End date of the filter data range (optional)</param>
         /// <param name="ipAddress">Used to filter session logs by ip address. (optional)</param>
-        /// <param name="userName">Username used for filtering a list (optional)</param>
+        /// <param name="username">Username used for filtering a list (optional)</param>
         /// <param name="path">Path used to filter records (optional)</param>
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
         /// <returns>ApiResponse of SessionActivityResponse</returns>
-        ApiResponse<SessionActivityResponse> GetSessionLogsWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string userName = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
+        ApiResponse<SessionActivityResponse> GetSessionLogsWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
         /// <summary>
         /// Get webhook logs
         /// </summary>
         /// <remarks>
-        /// Returns the webhook logs for your account. Optional query paramaters will filter the returned results based on a number of options including path, tpye of event, or status code.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). These are the valid options for event types:  - Upload - Download - Delete File - Delete Folder - Create Folder - Rename - Move - Copy - Compress - Extract - Share Folder - Send Files - Receive Files - Update Share - Update Receive - Delete Send - Delete Receive - Delete Share - Create Notification - Update Notification - Delete Notification - Create User - Update User  - Delete User - Connect - Disconnect
+        /// Returns the webhook logs for your account. Use the available query parameters to filter the listing of activity that is returned.  **NOTE:** Total Results will always return as 0 to avoid querying data you&#x27;re not using and stay as performant as possible.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). Not all event types may be allowed for your account type. These are the valid options for event types:  - resources.upload - resources.download - resources.delete - resources.createFolder - resources.rename - resources.move - resources.copy - resources.compress - resources.extract - shares.formSubmit 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
         /// <param name="evAccessToken">Access Token</param>
-        /// <param name="_event">Filter by triggered event (optional)</param>
-        /// <param name="statusCode">Filter by webhook response status code (optional)</param>
-        /// <param name="path">Path used to filter records (optional)</param>
+        /// <param name="startDate">Earliest date of entries to include in list (optional)</param>
+        /// <param name="endDate">Latest date of entries to include in list (optional)</param>
+        /// <param name="endpointUrl">Webhook listener endpoint (optional)</param>
+        /// <param name="_event">Type of activity that triggered the webhook attempt (optional)</param>
+        /// <param name="statusCode">Response code from the webhook endpoint (optional)</param>
+        /// <param name="resourcePath">Path of the resource that triggered the webhook attempt (optional)</param>
         /// <param name="username">Filter by triggering username. (optional)</param>
-        /// <param name="offset">Records to skip before returning results (optional)</param>
+        /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
-        /// <returns>WebhooksActivityResponse</returns>
-        WebhooksActivityResponse GetWebhookLogs (string evApiKey, string evAccessToken, string _event = null, int? statusCode = null, string path = null, string username = null, int? offset = null, int? limit = null, string sort = null);
+        /// <returns>WebhookActivityResponse</returns>
+        WebhookActivityResponse GetWebhookLogs (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null);
 
         /// <summary>
         /// Get webhook logs
         /// </summary>
         /// <remarks>
-        /// Returns the webhook logs for your account. Optional query paramaters will filter the returned results based on a number of options including path, tpye of event, or status code.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). These are the valid options for event types:  - Upload - Download - Delete File - Delete Folder - Create Folder - Rename - Move - Copy - Compress - Extract - Share Folder - Send Files - Receive Files - Update Share - Update Receive - Delete Send - Delete Receive - Delete Share - Create Notification - Update Notification - Delete Notification - Create User - Update User  - Delete User - Connect - Disconnect
+        /// Returns the webhook logs for your account. Use the available query parameters to filter the listing of activity that is returned.  **NOTE:** Total Results will always return as 0 to avoid querying data you&#x27;re not using and stay as performant as possible.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). Not all event types may be allowed for your account type. These are the valid options for event types:  - resources.upload - resources.download - resources.delete - resources.createFolder - resources.rename - resources.move - resources.copy - resources.compress - resources.extract - shares.formSubmit 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
         /// <param name="evAccessToken">Access Token</param>
-        /// <param name="_event">Filter by triggered event (optional)</param>
-        /// <param name="statusCode">Filter by webhook response status code (optional)</param>
-        /// <param name="path">Path used to filter records (optional)</param>
+        /// <param name="startDate">Earliest date of entries to include in list (optional)</param>
+        /// <param name="endDate">Latest date of entries to include in list (optional)</param>
+        /// <param name="endpointUrl">Webhook listener endpoint (optional)</param>
+        /// <param name="_event">Type of activity that triggered the webhook attempt (optional)</param>
+        /// <param name="statusCode">Response code from the webhook endpoint (optional)</param>
+        /// <param name="resourcePath">Path of the resource that triggered the webhook attempt (optional)</param>
         /// <param name="username">Filter by triggering username. (optional)</param>
-        /// <param name="offset">Records to skip before returning results (optional)</param>
+        /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
-        /// <returns>ApiResponse of WebhooksActivityResponse</returns>
-        ApiResponse<WebhooksActivityResponse> GetWebhookLogsWithHttpInfo (string evApiKey, string evAccessToken, string _event = null, int? statusCode = null, string path = null, string username = null, int? offset = null, int? limit = null, string sort = null);
+        /// <returns>ApiResponse of WebhookActivityResponse</returns>
+        ApiResponse<WebhookActivityResponse> GetWebhookLogsWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
         /// Get activity logs
         /// </summary>
         /// <remarks>
-        /// Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
+        /// Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.   **NOTE:** Total Results will always return as 0 to avoid quering data you&#x27;re not using and stay as performant as possible.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
@@ -115,20 +121,20 @@ namespace ExaVault.Api
         /// <param name="startDate">Start date of the filter data range (optional)</param>
         /// <param name="endDate">End date of the filter data range (optional)</param>
         /// <param name="ipAddress">Used to filter session logs by ip address. (optional)</param>
-        /// <param name="userName">Username used for filtering a list (optional)</param>
+        /// <param name="username">Username used for filtering a list (optional)</param>
         /// <param name="path">Path used to filter records (optional)</param>
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
         /// <returns>Task of SessionActivityResponse</returns>
-        System.Threading.Tasks.Task<SessionActivityResponse> GetSessionLogsAsync (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string userName = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
+        System.Threading.Tasks.Task<SessionActivityResponse> GetSessionLogsAsync (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
 
         /// <summary>
         /// Get activity logs
         /// </summary>
         /// <remarks>
-        /// Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
+        /// Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.   **NOTE:** Total Results will always return as 0 to avoid quering data you&#x27;re not using and stay as performant as possible.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
@@ -136,51 +142,57 @@ namespace ExaVault.Api
         /// <param name="startDate">Start date of the filter data range (optional)</param>
         /// <param name="endDate">End date of the filter data range (optional)</param>
         /// <param name="ipAddress">Used to filter session logs by ip address. (optional)</param>
-        /// <param name="userName">Username used for filtering a list (optional)</param>
+        /// <param name="username">Username used for filtering a list (optional)</param>
         /// <param name="path">Path used to filter records (optional)</param>
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
         /// <returns>Task of ApiResponse (SessionActivityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SessionActivityResponse>> GetSessionLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string userName = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
+        System.Threading.Tasks.Task<ApiResponse<SessionActivityResponse>> GetSessionLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
         /// <summary>
         /// Get webhook logs
         /// </summary>
         /// <remarks>
-        /// Returns the webhook logs for your account. Optional query paramaters will filter the returned results based on a number of options including path, tpye of event, or status code.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). These are the valid options for event types:  - Upload - Download - Delete File - Delete Folder - Create Folder - Rename - Move - Copy - Compress - Extract - Share Folder - Send Files - Receive Files - Update Share - Update Receive - Delete Send - Delete Receive - Delete Share - Create Notification - Update Notification - Delete Notification - Create User - Update User  - Delete User - Connect - Disconnect
+        /// Returns the webhook logs for your account. Use the available query parameters to filter the listing of activity that is returned.  **NOTE:** Total Results will always return as 0 to avoid querying data you&#x27;re not using and stay as performant as possible.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). Not all event types may be allowed for your account type. These are the valid options for event types:  - resources.upload - resources.download - resources.delete - resources.createFolder - resources.rename - resources.move - resources.copy - resources.compress - resources.extract - shares.formSubmit 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
         /// <param name="evAccessToken">Access Token</param>
-        /// <param name="_event">Filter by triggered event (optional)</param>
-        /// <param name="statusCode">Filter by webhook response status code (optional)</param>
-        /// <param name="path">Path used to filter records (optional)</param>
+        /// <param name="startDate">Earliest date of entries to include in list (optional)</param>
+        /// <param name="endDate">Latest date of entries to include in list (optional)</param>
+        /// <param name="endpointUrl">Webhook listener endpoint (optional)</param>
+        /// <param name="_event">Type of activity that triggered the webhook attempt (optional)</param>
+        /// <param name="statusCode">Response code from the webhook endpoint (optional)</param>
+        /// <param name="resourcePath">Path of the resource that triggered the webhook attempt (optional)</param>
         /// <param name="username">Filter by triggering username. (optional)</param>
-        /// <param name="offset">Records to skip before returning results (optional)</param>
+        /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
-        /// <returns>Task of WebhooksActivityResponse</returns>
-        System.Threading.Tasks.Task<WebhooksActivityResponse> GetWebhookLogsAsync (string evApiKey, string evAccessToken, string _event = null, int? statusCode = null, string path = null, string username = null, int? offset = null, int? limit = null, string sort = null);
+        /// <returns>Task of WebhookActivityResponse</returns>
+        System.Threading.Tasks.Task<WebhookActivityResponse> GetWebhookLogsAsync (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null);
 
         /// <summary>
         /// Get webhook logs
         /// </summary>
         /// <remarks>
-        /// Returns the webhook logs for your account. Optional query paramaters will filter the returned results based on a number of options including path, tpye of event, or status code.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). These are the valid options for event types:  - Upload - Download - Delete File - Delete Folder - Create Folder - Rename - Move - Copy - Compress - Extract - Share Folder - Send Files - Receive Files - Update Share - Update Receive - Delete Send - Delete Receive - Delete Share - Create Notification - Update Notification - Delete Notification - Create User - Update User  - Delete User - Connect - Disconnect
+        /// Returns the webhook logs for your account. Use the available query parameters to filter the listing of activity that is returned.  **NOTE:** Total Results will always return as 0 to avoid querying data you&#x27;re not using and stay as performant as possible.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). Not all event types may be allowed for your account type. These are the valid options for event types:  - resources.upload - resources.download - resources.delete - resources.createFolder - resources.rename - resources.move - resources.copy - resources.compress - resources.extract - shares.formSubmit 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
         /// <param name="evAccessToken">Access Token</param>
-        /// <param name="_event">Filter by triggered event (optional)</param>
-        /// <param name="statusCode">Filter by webhook response status code (optional)</param>
-        /// <param name="path">Path used to filter records (optional)</param>
+        /// <param name="startDate">Earliest date of entries to include in list (optional)</param>
+        /// <param name="endDate">Latest date of entries to include in list (optional)</param>
+        /// <param name="endpointUrl">Webhook listener endpoint (optional)</param>
+        /// <param name="_event">Type of activity that triggered the webhook attempt (optional)</param>
+        /// <param name="statusCode">Response code from the webhook endpoint (optional)</param>
+        /// <param name="resourcePath">Path of the resource that triggered the webhook attempt (optional)</param>
         /// <param name="username">Filter by triggering username. (optional)</param>
-        /// <param name="offset">Records to skip before returning results (optional)</param>
+        /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
-        /// <returns>Task of ApiResponse (WebhooksActivityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WebhooksActivityResponse>> GetWebhookLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, string _event = null, int? statusCode = null, string path = null, string username = null, int? offset = null, int? limit = null, string sort = null);
+        /// <returns>Task of ApiResponse (WebhookActivityResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<WebhookActivityResponse>> GetWebhookLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null);
         #endregion Asynchronous Operations
     }
 
@@ -293,7 +305,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get activity logs Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
+        /// Get activity logs Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.   **NOTE:** Total Results will always return as 0 to avoid quering data you&#x27;re not using and stay as performant as possible.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
@@ -301,21 +313,21 @@ namespace ExaVault.Api
         /// <param name="startDate">Start date of the filter data range (optional)</param>
         /// <param name="endDate">End date of the filter data range (optional)</param>
         /// <param name="ipAddress">Used to filter session logs by ip address. (optional)</param>
-        /// <param name="userName">Username used for filtering a list (optional)</param>
+        /// <param name="username">Username used for filtering a list (optional)</param>
         /// <param name="path">Path used to filter records (optional)</param>
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
         /// <returns>SessionActivityResponse</returns>
-        public SessionActivityResponse GetSessionLogs (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string userName = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
+        public SessionActivityResponse GetSessionLogs (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
         {
-             ApiResponse<SessionActivityResponse> localVarResponse = GetSessionLogsWithHttpInfo(evApiKey, evAccessToken, startDate, endDate, ipAddress, userName, path, type, offset, limit, sort);
+             ApiResponse<SessionActivityResponse> localVarResponse = GetSessionLogsWithHttpInfo(evApiKey, evAccessToken, startDate, endDate, ipAddress, username, path, type, offset, limit, sort);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get activity logs Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
+        /// Get activity logs Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.   **NOTE:** Total Results will always return as 0 to avoid quering data you&#x27;re not using and stay as performant as possible.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
@@ -323,14 +335,14 @@ namespace ExaVault.Api
         /// <param name="startDate">Start date of the filter data range (optional)</param>
         /// <param name="endDate">End date of the filter data range (optional)</param>
         /// <param name="ipAddress">Used to filter session logs by ip address. (optional)</param>
-        /// <param name="userName">Username used for filtering a list (optional)</param>
+        /// <param name="username">Username used for filtering a list (optional)</param>
         /// <param name="path">Path used to filter records (optional)</param>
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
         /// <returns>ApiResponse of SessionActivityResponse</returns>
-        public ApiResponse< SessionActivityResponse > GetSessionLogsWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string userName = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
+        public ApiResponse< SessionActivityResponse > GetSessionLogsWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -363,7 +375,7 @@ namespace ExaVault.Api
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (ipAddress != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ipAddress", ipAddress)); // query parameter
-            if (userName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "userName", userName)); // query parameter
+            if (username != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "username", username)); // query parameter
             if (path != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "path", path)); // query parameter
             if (type != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
@@ -391,7 +403,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get activity logs Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
+        /// Get activity logs Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.   **NOTE:** Total Results will always return as 0 to avoid quering data you&#x27;re not using and stay as performant as possible.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
@@ -399,22 +411,22 @@ namespace ExaVault.Api
         /// <param name="startDate">Start date of the filter data range (optional)</param>
         /// <param name="endDate">End date of the filter data range (optional)</param>
         /// <param name="ipAddress">Used to filter session logs by ip address. (optional)</param>
-        /// <param name="userName">Username used for filtering a list (optional)</param>
+        /// <param name="username">Username used for filtering a list (optional)</param>
         /// <param name="path">Path used to filter records (optional)</param>
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
         /// <returns>Task of SessionActivityResponse</returns>
-        public async System.Threading.Tasks.Task<SessionActivityResponse> GetSessionLogsAsync (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string userName = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
+        public async System.Threading.Tasks.Task<SessionActivityResponse> GetSessionLogsAsync (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
         {
-             ApiResponse<SessionActivityResponse> localVarResponse = await GetSessionLogsAsyncWithHttpInfo(evApiKey, evAccessToken, startDate, endDate, ipAddress, userName, path, type, offset, limit, sort);
+             ApiResponse<SessionActivityResponse> localVarResponse = await GetSessionLogsAsyncWithHttpInfo(evApiKey, evAccessToken, startDate, endDate, ipAddress, username, path, type, offset, limit, sort);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Get activity logs Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
+        /// Get activity logs Returns the detailed activity logs for your account. Optional query paramaters will filter the returned results based on a number of options including usernames, activity types, or date ranges.   **NOTE:** Total Results will always return as 0 to avoid quering data you&#x27;re not using and stay as performant as possible.     **Operation Types** Session activity is logged with an operation type that is different from what is visible through the [activity log interface in the web file manager](/docs/account/10-activity-logs/00-activity-logs). Consult the table below to compare the two:  | File Manager Value | API Value | Notes | |- -- --|- -- -|- --| | Connect | PASS | | | Disconnect | EXIT | | | Upload | STOR | | | Download | RETR | | | Delete | DELE | | | Create Folder | MKD | | | Rename | RNTO | | | Move | MOVE | | | Copy | COPY | | | Compress | COMPR | | | Extract | EXTRACT | | | Shared Folders | SHARE | | | Send Files | SEND | | | Receive Files | RECV | | | _N/A_ | EDIT\\_SEND | Update send. Not shown in file manager | | Update Share | EDIT\\_SHARE| |  | Update Receive | EDIT\\_RECV | | | Delete Send | DELE\\_SEND | | | Delete Receive | DELE\\_RECV | | | Delete Share | DELE\\_SHARE | | | Create Notification | NOTIFY | | | Update Notification | EDIT\\_NTFY| | | Delete Notification | DELE\\_NTFY | | | Create User | USER | | | Update User | EDIT\\_USER | | | Delete User | DELE\\_USER | | | _N/A_ | DFA | Create direct link. Not shown in file manager | | _N/A_ | EDIT\\_DFA | Update direct link options. Not shown in file manager | | _N/A_ | DELE\\_DFA | Deactivate direct link. Not shown in file manager| 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
@@ -422,14 +434,14 @@ namespace ExaVault.Api
         /// <param name="startDate">Start date of the filter data range (optional)</param>
         /// <param name="endDate">End date of the filter data range (optional)</param>
         /// <param name="ipAddress">Used to filter session logs by ip address. (optional)</param>
-        /// <param name="userName">Username used for filtering a list (optional)</param>
+        /// <param name="username">Username used for filtering a list (optional)</param>
         /// <param name="path">Path used to filter records (optional)</param>
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
         /// <returns>Task of ApiResponse (SessionActivityResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SessionActivityResponse>> GetSessionLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string userName = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SessionActivityResponse>> GetSessionLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -462,7 +474,7 @@ namespace ExaVault.Api
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (ipAddress != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ipAddress", ipAddress)); // query parameter
-            if (userName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "userName", userName)); // query parameter
+            if (username != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "username", username)); // query parameter
             if (path != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "path", path)); // query parameter
             if (type != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
@@ -490,40 +502,46 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Get webhook logs Returns the webhook logs for your account. Optional query paramaters will filter the returned results based on a number of options including path, tpye of event, or status code.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). These are the valid options for event types:  - Upload - Download - Delete File - Delete Folder - Create Folder - Rename - Move - Copy - Compress - Extract - Share Folder - Send Files - Receive Files - Update Share - Update Receive - Delete Send - Delete Receive - Delete Share - Create Notification - Update Notification - Delete Notification - Create User - Update User  - Delete User - Connect - Disconnect
+        /// Get webhook logs Returns the webhook logs for your account. Use the available query parameters to filter the listing of activity that is returned.  **NOTE:** Total Results will always return as 0 to avoid querying data you&#x27;re not using and stay as performant as possible.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). Not all event types may be allowed for your account type. These are the valid options for event types:  - resources.upload - resources.download - resources.delete - resources.createFolder - resources.rename - resources.move - resources.copy - resources.compress - resources.extract - shares.formSubmit 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
         /// <param name="evAccessToken">Access Token</param>
-        /// <param name="_event">Filter by triggered event (optional)</param>
-        /// <param name="statusCode">Filter by webhook response status code (optional)</param>
-        /// <param name="path">Path used to filter records (optional)</param>
+        /// <param name="startDate">Earliest date of entries to include in list (optional)</param>
+        /// <param name="endDate">Latest date of entries to include in list (optional)</param>
+        /// <param name="endpointUrl">Webhook listener endpoint (optional)</param>
+        /// <param name="_event">Type of activity that triggered the webhook attempt (optional)</param>
+        /// <param name="statusCode">Response code from the webhook endpoint (optional)</param>
+        /// <param name="resourcePath">Path of the resource that triggered the webhook attempt (optional)</param>
         /// <param name="username">Filter by triggering username. (optional)</param>
-        /// <param name="offset">Records to skip before returning results (optional)</param>
+        /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
-        /// <returns>WebhooksActivityResponse</returns>
-        public WebhooksActivityResponse GetWebhookLogs (string evApiKey, string evAccessToken, string _event = null, int? statusCode = null, string path = null, string username = null, int? offset = null, int? limit = null, string sort = null)
+        /// <returns>WebhookActivityResponse</returns>
+        public WebhookActivityResponse GetWebhookLogs (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null)
         {
-             ApiResponse<WebhooksActivityResponse> localVarResponse = GetWebhookLogsWithHttpInfo(evApiKey, evAccessToken, _event, statusCode, path, username, offset, limit, sort);
+             ApiResponse<WebhookActivityResponse> localVarResponse = GetWebhookLogsWithHttpInfo(evApiKey, evAccessToken, startDate, endDate, endpointUrl, _event, statusCode, resourcePath, username, offset, limit, sort);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get webhook logs Returns the webhook logs for your account. Optional query paramaters will filter the returned results based on a number of options including path, tpye of event, or status code.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). These are the valid options for event types:  - Upload - Download - Delete File - Delete Folder - Create Folder - Rename - Move - Copy - Compress - Extract - Share Folder - Send Files - Receive Files - Update Share - Update Receive - Delete Send - Delete Receive - Delete Share - Create Notification - Update Notification - Delete Notification - Create User - Update User  - Delete User - Connect - Disconnect
+        /// Get webhook logs Returns the webhook logs for your account. Use the available query parameters to filter the listing of activity that is returned.  **NOTE:** Total Results will always return as 0 to avoid querying data you&#x27;re not using and stay as performant as possible.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). Not all event types may be allowed for your account type. These are the valid options for event types:  - resources.upload - resources.download - resources.delete - resources.createFolder - resources.rename - resources.move - resources.copy - resources.compress - resources.extract - shares.formSubmit 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
         /// <param name="evAccessToken">Access Token</param>
-        /// <param name="_event">Filter by triggered event (optional)</param>
-        /// <param name="statusCode">Filter by webhook response status code (optional)</param>
-        /// <param name="path">Path used to filter records (optional)</param>
+        /// <param name="startDate">Earliest date of entries to include in list (optional)</param>
+        /// <param name="endDate">Latest date of entries to include in list (optional)</param>
+        /// <param name="endpointUrl">Webhook listener endpoint (optional)</param>
+        /// <param name="_event">Type of activity that triggered the webhook attempt (optional)</param>
+        /// <param name="statusCode">Response code from the webhook endpoint (optional)</param>
+        /// <param name="resourcePath">Path of the resource that triggered the webhook attempt (optional)</param>
         /// <param name="username">Filter by triggering username. (optional)</param>
-        /// <param name="offset">Records to skip before returning results (optional)</param>
+        /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
-        /// <returns>ApiResponse of WebhooksActivityResponse</returns>
-        public ApiResponse< WebhooksActivityResponse > GetWebhookLogsWithHttpInfo (string evApiKey, string evAccessToken, string _event = null, int? statusCode = null, string path = null, string username = null, int? offset = null, int? limit = null, string sort = null)
+        /// <returns>ApiResponse of WebhookActivityResponse</returns>
+        public ApiResponse< WebhookActivityResponse > GetWebhookLogsWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -553,9 +571,12 @@ namespace ExaVault.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (endpointUrl != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endpointUrl", endpointUrl)); // query parameter
             if (_event != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "event", _event)); // query parameter
             if (statusCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "statusCode", statusCode)); // query parameter
-            if (path != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "path", path)); // query parameter
+            if (resourcePath != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "resourcePath", resourcePath)); // query parameter
             if (username != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "username", username)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
@@ -576,47 +597,53 @@ namespace ExaVault.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<WebhooksActivityResponse>(localVarStatusCode,
+            return new ApiResponse<WebhookActivityResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WebhooksActivityResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhooksActivityResponse)));
+                (WebhookActivityResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookActivityResponse)));
         }
 
         /// <summary>
-        /// Get webhook logs Returns the webhook logs for your account. Optional query paramaters will filter the returned results based on a number of options including path, tpye of event, or status code.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). These are the valid options for event types:  - Upload - Download - Delete File - Delete Folder - Create Folder - Rename - Move - Copy - Compress - Extract - Share Folder - Send Files - Receive Files - Update Share - Update Receive - Delete Send - Delete Receive - Delete Share - Create Notification - Update Notification - Delete Notification - Create User - Update User  - Delete User - Connect - Disconnect
+        /// Get webhook logs Returns the webhook logs for your account. Use the available query parameters to filter the listing of activity that is returned.  **NOTE:** Total Results will always return as 0 to avoid querying data you&#x27;re not using and stay as performant as possible.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). Not all event types may be allowed for your account type. These are the valid options for event types:  - resources.upload - resources.download - resources.delete - resources.createFolder - resources.rename - resources.move - resources.copy - resources.compress - resources.extract - shares.formSubmit 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
         /// <param name="evAccessToken">Access Token</param>
-        /// <param name="_event">Filter by triggered event (optional)</param>
-        /// <param name="statusCode">Filter by webhook response status code (optional)</param>
-        /// <param name="path">Path used to filter records (optional)</param>
+        /// <param name="startDate">Earliest date of entries to include in list (optional)</param>
+        /// <param name="endDate">Latest date of entries to include in list (optional)</param>
+        /// <param name="endpointUrl">Webhook listener endpoint (optional)</param>
+        /// <param name="_event">Type of activity that triggered the webhook attempt (optional)</param>
+        /// <param name="statusCode">Response code from the webhook endpoint (optional)</param>
+        /// <param name="resourcePath">Path of the resource that triggered the webhook attempt (optional)</param>
         /// <param name="username">Filter by triggering username. (optional)</param>
-        /// <param name="offset">Records to skip before returning results (optional)</param>
+        /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
-        /// <returns>Task of WebhooksActivityResponse</returns>
-        public async System.Threading.Tasks.Task<WebhooksActivityResponse> GetWebhookLogsAsync (string evApiKey, string evAccessToken, string _event = null, int? statusCode = null, string path = null, string username = null, int? offset = null, int? limit = null, string sort = null)
+        /// <returns>Task of WebhookActivityResponse</returns>
+        public async System.Threading.Tasks.Task<WebhookActivityResponse> GetWebhookLogsAsync (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null)
         {
-             ApiResponse<WebhooksActivityResponse> localVarResponse = await GetWebhookLogsAsyncWithHttpInfo(evApiKey, evAccessToken, _event, statusCode, path, username, offset, limit, sort);
+             ApiResponse<WebhookActivityResponse> localVarResponse = await GetWebhookLogsAsyncWithHttpInfo(evApiKey, evAccessToken, startDate, endDate, endpointUrl, _event, statusCode, resourcePath, username, offset, limit, sort);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Get webhook logs Returns the webhook logs for your account. Optional query paramaters will filter the returned results based on a number of options including path, tpye of event, or status code.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). These are the valid options for event types:  - Upload - Download - Delete File - Delete Folder - Create Folder - Rename - Move - Copy - Compress - Extract - Share Folder - Send Files - Receive Files - Update Share - Update Receive - Delete Send - Delete Receive - Delete Share - Create Notification - Update Notification - Delete Notification - Create User - Update User  - Delete User - Connect - Disconnect
+        /// Get webhook logs Returns the webhook logs for your account. Use the available query parameters to filter the listing of activity that is returned.  **NOTE:** Total Results will always return as 0 to avoid querying data you&#x27;re not using and stay as performant as possible.   **Event Types**  Webhooks are triggered by enabled event types for your account, which are configured on the [developer settings page](/docs/account/09-settings/06-developer-settings). Not all event types may be allowed for your account type. These are the valid options for event types:  - resources.upload - resources.download - resources.delete - resources.createFolder - resources.rename - resources.move - resources.copy - resources.compress - resources.extract - shares.formSubmit 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API Key</param>
         /// <param name="evAccessToken">Access Token</param>
-        /// <param name="_event">Filter by triggered event (optional)</param>
-        /// <param name="statusCode">Filter by webhook response status code (optional)</param>
-        /// <param name="path">Path used to filter records (optional)</param>
+        /// <param name="startDate">Earliest date of entries to include in list (optional)</param>
+        /// <param name="endDate">Latest date of entries to include in list (optional)</param>
+        /// <param name="endpointUrl">Webhook listener endpoint (optional)</param>
+        /// <param name="_event">Type of activity that triggered the webhook attempt (optional)</param>
+        /// <param name="statusCode">Response code from the webhook endpoint (optional)</param>
+        /// <param name="resourcePath">Path of the resource that triggered the webhook attempt (optional)</param>
         /// <param name="username">Filter by triggering username. (optional)</param>
-        /// <param name="offset">Records to skip before returning results (optional)</param>
+        /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <param name="sort">Comma separated list sort params (optional)</param>
-        /// <returns>Task of ApiResponse (WebhooksActivityResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WebhooksActivityResponse>> GetWebhookLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, string _event = null, int? statusCode = null, string path = null, string username = null, int? offset = null, int? limit = null, string sort = null)
+        /// <returns>Task of ApiResponse (WebhookActivityResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<WebhookActivityResponse>> GetWebhookLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null)
         {
             // verify the required parameter 'evApiKey' is set
             if (evApiKey == null)
@@ -646,9 +673,12 @@ namespace ExaVault.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (endpointUrl != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endpointUrl", endpointUrl)); // query parameter
             if (_event != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "event", _event)); // query parameter
             if (statusCode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "statusCode", statusCode)); // query parameter
-            if (path != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "path", path)); // query parameter
+            if (resourcePath != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "resourcePath", resourcePath)); // query parameter
             if (username != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "username", username)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
@@ -669,9 +699,9 @@ namespace ExaVault.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<WebhooksActivityResponse>(localVarStatusCode,
+            return new ApiResponse<WebhookActivityResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (WebhooksActivityResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhooksActivityResponse)));
+                (WebhookActivityResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookActivityResponse)));
         }
 
     }
