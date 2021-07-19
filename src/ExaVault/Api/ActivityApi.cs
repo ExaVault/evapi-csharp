@@ -40,7 +40,7 @@ namespace ExaVault.Api
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **date**, **ip_address**, **username**, **file**, **sort_logs_file_source**, **type**, **duration**, **size**, and **protocol** (optional)</param>
         /// <returns>SessionActivityResponse</returns>
         SessionActivityResponse GetSessionLogs (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
 
@@ -61,7 +61,7 @@ namespace ExaVault.Api
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **date**, **ip_address**, **username**, **file**, **sort_logs_file_source**, **type**, **duration**, **size**, and **protocol** (optional)</param>
         /// <returns>ApiResponse of SessionActivityResponse</returns>
         ApiResponse<SessionActivityResponse> GetSessionLogsWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
         /// <summary>
@@ -82,7 +82,7 @@ namespace ExaVault.Api
         /// <param name="username">Filter by triggering username. (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **endpoint_url**, **event**, **status**, **username**, **attempt_id**, and **resource_path** (optional)</param>
         /// <returns>WebhookActivityResponse</returns>
         WebhookActivityResponse GetWebhookLogs (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null);
 
@@ -104,7 +104,7 @@ namespace ExaVault.Api
         /// <param name="username">Filter by triggering username. (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **endpoint_url**, **event**, **status**, **username**, **attempt_id**, and **resource_path** (optional)</param>
         /// <returns>ApiResponse of WebhookActivityResponse</returns>
         ApiResponse<WebhookActivityResponse> GetWebhookLogsWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null);
         #endregion Synchronous Operations
@@ -126,7 +126,7 @@ namespace ExaVault.Api
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **date**, **ip_address**, **username**, **file**, **sort_logs_file_source**, **type**, **duration**, **size**, and **protocol** (optional)</param>
         /// <returns>Task of SessionActivityResponse</returns>
         System.Threading.Tasks.Task<SessionActivityResponse> GetSessionLogsAsync (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
 
@@ -147,7 +147,7 @@ namespace ExaVault.Api
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **date**, **ip_address**, **username**, **file**, **sort_logs_file_source**, **type**, **duration**, **size**, and **protocol** (optional)</param>
         /// <returns>Task of ApiResponse (SessionActivityResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<SessionActivityResponse>> GetSessionLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null);
         /// <summary>
@@ -168,7 +168,7 @@ namespace ExaVault.Api
         /// <param name="username">Filter by triggering username. (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **endpoint_url**, **event**, **status**, **username**, **attempt_id**, and **resource_path** (optional)</param>
         /// <returns>Task of WebhookActivityResponse</returns>
         System.Threading.Tasks.Task<WebhookActivityResponse> GetWebhookLogsAsync (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null);
 
@@ -190,7 +190,7 @@ namespace ExaVault.Api
         /// <param name="username">Filter by triggering username. (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **endpoint_url**, **event**, **status**, **username**, **attempt_id**, and **resource_path** (optional)</param>
         /// <returns>Task of ApiResponse (WebhookActivityResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<WebhookActivityResponse>> GetWebhookLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null);
         #endregion Asynchronous Operations
@@ -318,7 +318,7 @@ namespace ExaVault.Api
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **date**, **ip_address**, **username**, **file**, **sort_logs_file_source**, **type**, **duration**, **size**, and **protocol** (optional)</param>
         /// <returns>SessionActivityResponse</returns>
         public SessionActivityResponse GetSessionLogs (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
         {
@@ -340,7 +340,7 @@ namespace ExaVault.Api
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **date**, **ip_address**, **username**, **file**, **sort_logs_file_source**, **type**, **duration**, **size**, and **protocol** (optional)</param>
         /// <returns>ApiResponse of SessionActivityResponse</returns>
         public ApiResponse< SessionActivityResponse > GetSessionLogsWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
         {
@@ -416,7 +416,7 @@ namespace ExaVault.Api
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **date**, **ip_address**, **username**, **file**, **sort_logs_file_source**, **type**, **duration**, **size**, and **protocol** (optional)</param>
         /// <returns>Task of SessionActivityResponse</returns>
         public async System.Threading.Tasks.Task<SessionActivityResponse> GetSessionLogsAsync (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
         {
@@ -439,7 +439,7 @@ namespace ExaVault.Api
         /// <param name="type">Filter session logs for operation type (see table above for acceptable values) (optional)</param>
         /// <param name="offset">Offset of the records list (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **date**, **ip_address**, **username**, **file**, **sort_logs_file_source**, **type**, **duration**, **size**, and **protocol** (optional)</param>
         /// <returns>Task of ApiResponse (SessionActivityResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<SessionActivityResponse>> GetSessionLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string ipAddress = null, string username = null, string path = null, string type = null, int? offset = null, int? limit = null, string sort = null)
         {
@@ -516,7 +516,7 @@ namespace ExaVault.Api
         /// <param name="username">Filter by triggering username. (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **endpoint_url**, **event**, **status**, **username**, **attempt_id**, and **resource_path** (optional)</param>
         /// <returns>WebhookActivityResponse</returns>
         public WebhookActivityResponse GetWebhookLogs (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null)
         {
@@ -539,7 +539,7 @@ namespace ExaVault.Api
         /// <param name="username">Filter by triggering username. (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **endpoint_url**, **event**, **status**, **username**, **attempt_id**, and **resource_path** (optional)</param>
         /// <returns>ApiResponse of WebhookActivityResponse</returns>
         public ApiResponse< WebhookActivityResponse > GetWebhookLogsWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null)
         {
@@ -617,7 +617,7 @@ namespace ExaVault.Api
         /// <param name="username">Filter by triggering username. (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **endpoint_url**, **event**, **status**, **username**, **attempt_id**, and **resource_path** (optional)</param>
         /// <returns>Task of WebhookActivityResponse</returns>
         public async System.Threading.Tasks.Task<WebhookActivityResponse> GetWebhookLogsAsync (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null)
         {
@@ -641,7 +641,7 @@ namespace ExaVault.Api
         /// <param name="username">Filter by triggering username. (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
-        /// <param name="sort">Comma separated list sort params (optional)</param>
+        /// <param name="sort">Comma separated list sort params. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort options are; **endpoint_url**, **event**, **status**, **username**, **attempt_id**, and **resource_path** (optional)</param>
         /// <returns>Task of ApiResponse (WebhookActivityResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<WebhookActivityResponse>> GetWebhookLogsAsyncWithHttpInfo (string evApiKey, string evAccessToken, DateTime? startDate = null, DateTime? endDate = null, string endpointUrl = null, string _event = null, int? statusCode = null, string resourcePath = null, string username = null, int? offset = null, int? limit = null, string sort = null)
         {

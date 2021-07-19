@@ -299,7 +299,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call. </param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the parent resource to get a list of resources for.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
@@ -317,7 +317,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call. </param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the parent resource to get a list of resources for.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
@@ -334,7 +334,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
@@ -353,7 +353,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
@@ -726,7 +726,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call. </param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the parent resource to get a list of resources for.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
@@ -744,7 +744,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call. </param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the parent resource to get a list of resources for.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
@@ -761,7 +761,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
@@ -780,7 +780,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
@@ -2647,7 +2647,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call. </param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the parent resource to get a list of resources for.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
@@ -2666,7 +2666,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call. </param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the parent resource to get a list of resources for.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
@@ -2739,7 +2739,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call. </param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the parent resource to get a list of resources for.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
@@ -2759,7 +2759,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call. </param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="id">ID of the parent resource to get a list of resources for.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the &#x60;offset parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. (optional)</param>
@@ -2832,7 +2832,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
@@ -2852,7 +2852,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
@@ -2927,7 +2927,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>
@@ -2948,7 +2948,7 @@ namespace ExaVault.Api
         /// <param name="evApiKey">API Key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
         /// <param name="resource">Resource identifier to get resources for. Can be path/id/name.</param>
-        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. (optional)</param>
+        /// <param name="sort">Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending. &lt;br&gt; Sort values are; **name**, **size**, **date**, **type**, and **timeline**. (optional)</param>
         /// <param name="offset">Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting &#x60;offset&#x3D;200&#x60; would trigger the server to skip the first 200 matching entries when returning the results. (optional, default to 0)</param>
         /// <param name="limit">The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the &#x60;offset&#x60; parameter, above. (optional)</param>
         /// <param name="type">Limit types of resources returned to \&quot;file\&quot; or \&quot;dir\&quot; only. This is ignored if you are using the &#x60;name&#x60; parameter to trigger a search. (optional)</param>

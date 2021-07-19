@@ -137,7 +137,7 @@ namespace ExaVault.Api
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <param name="limit">Limit of records to be returned (for pagination) (optional, default to 100)</param>
         /// <param name="scope">Set of shares to return. (**all**&#x3D;all of them, **active**&#x3D;shares that are currently active, **curentUser**&#x3D;shares created by you) (optional)</param>
-        /// <param name="sort">What order the list of matches should be in. (optional)</param>
+        /// <param name="sort">What order the list of matches should be in. &lt;br&gt; Sort values are; **sort_shares_name**, **created**, **sort_shares_user**, and **sort_shares_access_mode**. (optional)</param>
         /// <param name="type">Limit the list of matches to only certain types of shares. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **owner**, **resources**, **notifications**, **activity**. (optional)</param>
         /// <param name="name">When provided, only shares whose names include this value will be in the list. Supports wildcards, such as **send\\*** to return everything starting with \&quot;send\&quot;.  Use this parameter if you are searching for shares or receives for a specific folder name. For example **_/Clients/ACME/To Be Processed**. (optional)</param>
@@ -160,7 +160,7 @@ namespace ExaVault.Api
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <param name="limit">Limit of records to be returned (for pagination) (optional, default to 100)</param>
         /// <param name="scope">Set of shares to return. (**all**&#x3D;all of them, **active**&#x3D;shares that are currently active, **curentUser**&#x3D;shares created by you) (optional)</param>
-        /// <param name="sort">What order the list of matches should be in. (optional)</param>
+        /// <param name="sort">What order the list of matches should be in. &lt;br&gt; Sort values are; **sort_shares_name**, **created**, **sort_shares_user**, and **sort_shares_access_mode**. (optional)</param>
         /// <param name="type">Limit the list of matches to only certain types of shares. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **owner**, **resources**, **notifications**, **activity**. (optional)</param>
         /// <param name="name">When provided, only shares whose names include this value will be in the list. Supports wildcards, such as **send\\*** to return everything starting with \&quot;send\&quot;.  Use this parameter if you are searching for shares or receives for a specific folder name. For example **_/Clients/ACME/To Be Processed**. (optional)</param>
@@ -313,7 +313,7 @@ namespace ExaVault.Api
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <param name="limit">Limit of records to be returned (for pagination) (optional, default to 100)</param>
         /// <param name="scope">Set of shares to return. (**all**&#x3D;all of them, **active**&#x3D;shares that are currently active, **curentUser**&#x3D;shares created by you) (optional)</param>
-        /// <param name="sort">What order the list of matches should be in. (optional)</param>
+        /// <param name="sort">What order the list of matches should be in. &lt;br&gt; Sort values are; **sort_shares_name**, **created**, **sort_shares_user**, and **sort_shares_access_mode**. (optional)</param>
         /// <param name="type">Limit the list of matches to only certain types of shares. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **owner**, **resources**, **notifications**, **activity**. (optional)</param>
         /// <param name="name">When provided, only shares whose names include this value will be in the list. Supports wildcards, such as **send\\*** to return everything starting with \&quot;send\&quot;.  Use this parameter if you are searching for shares or receives for a specific folder name. For example **_/Clients/ACME/To Be Processed**. (optional)</param>
@@ -336,7 +336,7 @@ namespace ExaVault.Api
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <param name="limit">Limit of records to be returned (for pagination) (optional, default to 100)</param>
         /// <param name="scope">Set of shares to return. (**all**&#x3D;all of them, **active**&#x3D;shares that are currently active, **curentUser**&#x3D;shares created by you) (optional)</param>
-        /// <param name="sort">What order the list of matches should be in. (optional)</param>
+        /// <param name="sort">What order the list of matches should be in. &lt;br&gt; Sort values are; **sort_shares_name**, **created**, **sort_shares_user**, and **sort_shares_access_mode**. (optional)</param>
         /// <param name="type">Limit the list of matches to only certain types of shares. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **owner**, **resources**, **notifications**, **activity**. (optional)</param>
         /// <param name="name">When provided, only shares whose names include this value will be in the list. Supports wildcards, such as **send\\*** to return everything starting with \&quot;send\&quot;.  Use this parameter if you are searching for shares or receives for a specific folder name. For example **_/Clients/ACME/To Be Processed**. (optional)</param>
@@ -1129,7 +1129,7 @@ namespace ExaVault.Api
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <param name="limit">Limit of records to be returned (for pagination) (optional, default to 100)</param>
         /// <param name="scope">Set of shares to return. (**all**&#x3D;all of them, **active**&#x3D;shares that are currently active, **curentUser**&#x3D;shares created by you) (optional)</param>
-        /// <param name="sort">What order the list of matches should be in. (optional)</param>
+        /// <param name="sort">What order the list of matches should be in. &lt;br&gt; Sort values are; **sort_shares_name**, **created**, **sort_shares_user**, and **sort_shares_access_mode**. (optional)</param>
         /// <param name="type">Limit the list of matches to only certain types of shares. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **owner**, **resources**, **notifications**, **activity**. (optional)</param>
         /// <param name="name">When provided, only shares whose names include this value will be in the list. Supports wildcards, such as **send\\*** to return everything starting with \&quot;send\&quot;.  Use this parameter if you are searching for shares or receives for a specific folder name. For example **_/Clients/ACME/To Be Processed**. (optional)</param>
@@ -1153,7 +1153,7 @@ namespace ExaVault.Api
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <param name="limit">Limit of records to be returned (for pagination) (optional, default to 100)</param>
         /// <param name="scope">Set of shares to return. (**all**&#x3D;all of them, **active**&#x3D;shares that are currently active, **curentUser**&#x3D;shares created by you) (optional)</param>
-        /// <param name="sort">What order the list of matches should be in. (optional)</param>
+        /// <param name="sort">What order the list of matches should be in. &lt;br&gt; Sort values are; **sort_shares_name**, **created**, **sort_shares_user**, and **sort_shares_access_mode**. (optional)</param>
         /// <param name="type">Limit the list of matches to only certain types of shares. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **owner**, **resources**, **notifications**, **activity**. (optional)</param>
         /// <param name="name">When provided, only shares whose names include this value will be in the list. Supports wildcards, such as **send\\*** to return everything starting with \&quot;send\&quot;.  Use this parameter if you are searching for shares or receives for a specific folder name. For example **_/Clients/ACME/To Be Processed**. (optional)</param>
@@ -1233,7 +1233,7 @@ namespace ExaVault.Api
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <param name="limit">Limit of records to be returned (for pagination) (optional, default to 100)</param>
         /// <param name="scope">Set of shares to return. (**all**&#x3D;all of them, **active**&#x3D;shares that are currently active, **curentUser**&#x3D;shares created by you) (optional)</param>
-        /// <param name="sort">What order the list of matches should be in. (optional)</param>
+        /// <param name="sort">What order the list of matches should be in. &lt;br&gt; Sort values are; **sort_shares_name**, **created**, **sort_shares_user**, and **sort_shares_access_mode**. (optional)</param>
         /// <param name="type">Limit the list of matches to only certain types of shares. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **owner**, **resources**, **notifications**, **activity**. (optional)</param>
         /// <param name="name">When provided, only shares whose names include this value will be in the list. Supports wildcards, such as **send\\*** to return everything starting with \&quot;send\&quot;.  Use this parameter if you are searching for shares or receives for a specific folder name. For example **_/Clients/ACME/To Be Processed**. (optional)</param>
@@ -1258,7 +1258,7 @@ namespace ExaVault.Api
         /// <param name="offset">Current offset of records (for pagination) (optional)</param>
         /// <param name="limit">Limit of records to be returned (for pagination) (optional, default to 100)</param>
         /// <param name="scope">Set of shares to return. (**all**&#x3D;all of them, **active**&#x3D;shares that are currently active, **curentUser**&#x3D;shares created by you) (optional)</param>
-        /// <param name="sort">What order the list of matches should be in. (optional)</param>
+        /// <param name="sort">What order the list of matches should be in. &lt;br&gt; Sort values are; **sort_shares_name**, **created**, **sort_shares_user**, and **sort_shares_access_mode**. (optional)</param>
         /// <param name="type">Limit the list of matches to only certain types of shares. (optional)</param>
         /// <param name="include">Comma separated list of relationships to include in response. Possible values are **owner**, **resources**, **notifications**, **activity**. (optional)</param>
         /// <param name="name">When provided, only shares whose names include this value will be in the list. Supports wildcards, such as **send\\*** to return everything starting with \&quot;send\&quot;.  Use this parameter if you are searching for shares or receives for a specific folder name. For example **_/Clients/ACME/To Be Processed**. (optional)</param>
