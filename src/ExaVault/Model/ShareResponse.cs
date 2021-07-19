@@ -35,11 +35,13 @@ namespace ExaVault.Model
         /// <param name="responseStatus">Http status code of the response..</param>
         /// <param name="data">data.</param>
         /// <param name="included">included.</param>
-        public ShareResponse(int? responseStatus = default(int?), Share data = default(Share), List<AnyOfShareResponseIncludedItems> included = default(List<AnyOfShareResponseIncludedItems>))
+        /// <param name="meta">meta.</param>
+        public ShareResponse(int? responseStatus = default(int?), Share data = default(Share), List<AnyOfShareResponseIncludedItems> included = default(List<AnyOfShareResponseIncludedItems>), ShareResponseMeta meta = default(ShareResponseMeta))
         {
             this.ResponseStatus = responseStatus;
             this.Data = data;
             this.Included = included;
+            this.Meta = meta;
         }
         
         /// <summary>
@@ -62,6 +64,12 @@ namespace ExaVault.Model
         public List<AnyOfShareResponseIncludedItems> Included { get; set; }
 
         /// <summary>
+        /// Gets or Sets Meta
+        /// </summary>
+        [DataMember(Name="meta", EmitDefaultValue=false)]
+        public ShareResponseMeta Meta { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -72,6 +80,7 @@ namespace ExaVault.Model
             sb.Append("  ResponseStatus: ").Append(ResponseStatus).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  Included: ").Append(Included).Append("\n");
+            sb.Append("  Meta: ").Append(Meta).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -121,6 +130,11 @@ namespace ExaVault.Model
                     this.Included != null &&
                     input.Included != null &&
                     this.Included.SequenceEqual(input.Included)
+                ) && 
+                (
+                    this.Meta == input.Meta ||
+                    (this.Meta != null &&
+                    this.Meta.Equals(input.Meta))
                 );
         }
 
@@ -139,6 +153,8 @@ namespace ExaVault.Model
                     hashCode = hashCode * 59 + this.Data.GetHashCode();
                 if (this.Included != null)
                     hashCode = hashCode * 59 + this.Included.GetHashCode();
+                if (this.Meta != null)
+                    hashCode = hashCode * 59 + this.Meta.GetHashCode();
                 return hashCode;
             }
         }

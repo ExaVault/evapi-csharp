@@ -27,7 +27,7 @@ namespace ExaVault.Api
         /// Add A New Webhook
         /// </summary>
         /// <remarks>
-        /// Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use. 
+        /// Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use.   **Notes:**  While you can use our v1 request body, it will be deprecated in the future. 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
@@ -40,7 +40,7 @@ namespace ExaVault.Api
         /// Add A New Webhook
         /// </summary>
         /// <remarks>
-        /// Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use. 
+        /// Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use.   **Notes:**  While you can use our v1 request body, it will be deprecated in the future. 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
@@ -109,7 +109,7 @@ namespace ExaVault.Api
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
-        /// <param name="include">List of related record types to include. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
+        /// <param name="include">List of related record types to include in the response. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <returns>WebhookCollectionResponse</returns>
@@ -124,7 +124,7 @@ namespace ExaVault.Api
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
-        /// <param name="include">List of related record types to include. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
+        /// <param name="include">List of related record types to include in the response. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <returns>ApiResponse of WebhookCollectionResponse</returns>
@@ -212,7 +212,7 @@ namespace ExaVault.Api
         /// Add A New Webhook
         /// </summary>
         /// <remarks>
-        /// Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use. 
+        /// Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use.   **Notes:**  While you can use our v1 request body, it will be deprecated in the future. 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
@@ -225,7 +225,7 @@ namespace ExaVault.Api
         /// Add A New Webhook
         /// </summary>
         /// <remarks>
-        /// Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use. 
+        /// Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use.   **Notes:**  While you can use our v1 request body, it will be deprecated in the future. 
         /// </remarks>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
@@ -294,7 +294,7 @@ namespace ExaVault.Api
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
-        /// <param name="include">List of related record types to include. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
+        /// <param name="include">List of related record types to include in the response. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <returns>Task of WebhookCollectionResponse</returns>
@@ -309,7 +309,7 @@ namespace ExaVault.Api
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
-        /// <param name="include">List of related record types to include. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
+        /// <param name="include">List of related record types to include in the response. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <returns>Task of ApiResponse (WebhookCollectionResponse)</returns>
@@ -503,7 +503,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Add A New Webhook Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use. 
+        /// Add A New Webhook Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use.   **Notes:**  While you can use our v1 request body, it will be deprecated in the future. 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
@@ -517,7 +517,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Add A New Webhook Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use. 
+        /// Add A New Webhook Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use.   **Notes:**  While you can use our v1 request body, it will be deprecated in the future. 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
@@ -585,7 +585,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Add A New Webhook Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use. 
+        /// Add A New Webhook Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use.   **Notes:**  While you can use our v1 request body, it will be deprecated in the future. 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
@@ -600,7 +600,7 @@ namespace ExaVault.Api
         }
 
         /// <summary>
-        /// Add A New Webhook Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use. 
+        /// Add A New Webhook Create a new Webhook on your account. Creating a Webhook will require an endpoint URL, a path, what events should trigger a webhook, and what request version to use.   **Notes:**  While you can use our v1 request body, it will be deprecated in the future. 
         /// </summary>
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
@@ -989,7 +989,7 @@ namespace ExaVault.Api
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
-        /// <param name="include">List of related record types to include. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
+        /// <param name="include">List of related record types to include in the response. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <returns>WebhookCollectionResponse</returns>
@@ -1005,7 +1005,7 @@ namespace ExaVault.Api
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
-        /// <param name="include">List of related record types to include. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
+        /// <param name="include">List of related record types to include in the response. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <returns>ApiResponse of WebhookCollectionResponse</returns>
@@ -1069,7 +1069,7 @@ namespace ExaVault.Api
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
-        /// <param name="include">List of related record types to include. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
+        /// <param name="include">List of related record types to include in the response. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <returns>Task of WebhookCollectionResponse</returns>
@@ -1086,7 +1086,7 @@ namespace ExaVault.Api
         /// <exception cref="ExaVault.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="evApiKey">API key required to make the API call.</param>
         /// <param name="evAccessToken">Access token required to make the API call.</param>
-        /// <param name="include">List of related record types to include. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
+        /// <param name="include">List of related record types to include in the response. Valid options are &#x60;owningAccount&#x60; and &#x60;resource&#x60; (optional)</param>
         /// <param name="offset">Records to skip before returning results. (optional)</param>
         /// <param name="limit">Limit of the records list (optional)</param>
         /// <returns>Task of ApiResponse (WebhookCollectionResponse)</returns>
