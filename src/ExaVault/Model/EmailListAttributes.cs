@@ -36,12 +36,14 @@ namespace ExaVault.Model
         /// <param name="emails">Recipient emails in the email list.</param>
         /// <param name="created">Created datetime.</param>
         /// <param name="modified">Modified datetime.</param>
-        public EmailListAttributes(string name = default(string), List<string> emails = default(List<string>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?))
+        /// <param name="note">This will be any option notes to help you define what the list is for..</param>
+        public EmailListAttributes(string name = default(string), List<string> emails = default(List<string>), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?), string note = default(string))
         {
             this.Name = name;
             this.Emails = emails;
             this.Created = created;
             this.Modified = modified;
+            this.Note = note;
         }
         
         /// <summary>
@@ -73,6 +75,13 @@ namespace ExaVault.Model
         public DateTime? Modified { get; set; }
 
         /// <summary>
+        /// This will be any option notes to help you define what the list is for.
+        /// </summary>
+        /// <value>This will be any option notes to help you define what the list is for.</value>
+        [DataMember(Name="note", EmitDefaultValue=false)]
+        public string Note { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -84,6 +93,7 @@ namespace ExaVault.Model
             sb.Append("  Emails: ").Append(Emails).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Modified: ").Append(Modified).Append("\n");
+            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -138,6 +148,11 @@ namespace ExaVault.Model
                     this.Modified == input.Modified ||
                     (this.Modified != null &&
                     this.Modified.Equals(input.Modified))
+                ) && 
+                (
+                    this.Note == input.Note ||
+                    (this.Note != null &&
+                    this.Note.Equals(input.Note))
                 );
         }
 
@@ -158,6 +173,8 @@ namespace ExaVault.Model
                     hashCode = hashCode * 59 + this.Created.GetHashCode();
                 if (this.Modified != null)
                     hashCode = hashCode * 59 + this.Modified.GetHashCode();
+                if (this.Note != null)
+                    hashCode = hashCode * 59 + this.Note.GetHashCode();
                 return hashCode;
             }
         }

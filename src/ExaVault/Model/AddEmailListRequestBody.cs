@@ -34,7 +34,8 @@ namespace ExaVault.Model
         /// </summary>
         /// <param name="name">Name of the email list.  (required).</param>
         /// <param name="emails">Array of email addresses to include in the email list.  (required).</param>
-        public AddEmailListRequestBody(string name = default(string), List<string> emails = default(List<string>))
+        /// <param name="note">Optional note to help reference what the purpose of the list is. .</param>
+        public AddEmailListRequestBody(string name = default(string), List<string> emails = default(List<string>), string note = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -54,6 +55,7 @@ namespace ExaVault.Model
             {
                 this.Emails = emails;
             }
+            this.Note = note;
         }
         
         /// <summary>
@@ -71,6 +73,13 @@ namespace ExaVault.Model
         public List<string> Emails { get; set; }
 
         /// <summary>
+        /// Optional note to help reference what the purpose of the list is. 
+        /// </summary>
+        /// <value>Optional note to help reference what the purpose of the list is. </value>
+        [DataMember(Name="note", EmitDefaultValue=false)]
+        public string Note { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -80,6 +89,7 @@ namespace ExaVault.Model
             sb.Append("class AddEmailListRequestBody {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Emails: ").Append(Emails).Append("\n");
+            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -124,6 +134,11 @@ namespace ExaVault.Model
                     this.Emails != null &&
                     input.Emails != null &&
                     this.Emails.SequenceEqual(input.Emails)
+                ) && 
+                (
+                    this.Note == input.Note ||
+                    (this.Note != null &&
+                    this.Note.Equals(input.Note))
                 );
         }
 
@@ -140,6 +155,8 @@ namespace ExaVault.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Emails != null)
                     hashCode = hashCode * 59 + this.Emails.GetHashCode();
+                if (this.Note != null)
+                    hashCode = hashCode * 59 + this.Note.GetHashCode();
                 return hashCode;
             }
         }

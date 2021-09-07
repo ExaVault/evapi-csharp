@@ -30,40 +30,17 @@ namespace ExaVault.Model
         public partial class ShareRecipient :  IEquatable<ShareRecipient>, IValidatableObject
     {
         /// <summary>
-        /// Type of the recipient.
-        /// </summary>
-        /// <value>Type of the recipient.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-                public enum TypeEnum
-        {
-            /// <summary>
-            /// Enum Owner for value: owner
-            /// </summary>
-            [EnumMember(Value = "owner")]
-            Owner = 1,
-            /// <summary>
-            /// Enum Direct for value: direct
-            /// </summary>
-            [EnumMember(Value = "direct")]
-            Direct = 2        }
-        /// <summary>
-        /// Type of the recipient.
-        /// </summary>
-        /// <value>Type of the recipient.</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public TypeEnum? Type { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="ShareRecipient" /> class.
         /// </summary>
         /// <param name="id">ID of the recipient..</param>
         /// <param name="shareId">ID of the share that the recipoient belongs to..</param>
-        /// <param name="type">Type of the recipient..</param>
+        /// <param name="type">Type of the recipient. **direct** indicates they were emailed a direct invitation. **cc** means they were cc&#x27;d on an invitation to someone. **entered** means they entered their email to access the share..</param>
         /// <param name="hash">Share hash..</param>
         /// <param name="email">Recipient email address..</param>
         /// <param name="sent">Set to true if invite email was sent; false otherwise..</param>
         /// <param name="received">Set to true if recipient has accessed the share. Note this is set to true when the recipient clicks the link to access the share; not when they download a file..</param>
         /// <param name="created">Timestamp of adding recipient to the share..</param>
-        public ShareRecipient(int? id = default(int?), string shareId = default(string), TypeEnum? type = default(TypeEnum?), string hash = default(string), string email = default(string), bool? sent = default(bool?), bool? received = default(bool?), DateTime? created = default(DateTime?))
+        public ShareRecipient(int? id = default(int?), string shareId = default(string), string type = default(string), string hash = default(string), string email = default(string), bool? sent = default(bool?), bool? received = default(bool?), DateTime? created = default(DateTime?))
         {
             this.Id = id;
             this.ShareId = shareId;
@@ -89,6 +66,12 @@ namespace ExaVault.Model
         [DataMember(Name="shareId", EmitDefaultValue=false)]
         public string ShareId { get; set; }
 
+        /// <summary>
+        /// Type of the recipient. **direct** indicates they were emailed a direct invitation. **cc** means they were cc&#x27;d on an invitation to someone. **entered** means they entered their email to access the share.
+        /// </summary>
+        /// <value>Type of the recipient. **direct** indicates they were emailed a direct invitation. **cc** means they were cc&#x27;d on an invitation to someone. **entered** means they entered their email to access the share.</value>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public string Type { get; set; }
 
         /// <summary>
         /// Share hash.
