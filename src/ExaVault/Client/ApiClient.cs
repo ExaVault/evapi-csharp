@@ -44,7 +44,7 @@ namespace ExaVault.Client
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
         /// <param name="response">The RestSharp response object</param>
-        partial void InterceptResponse(RestRequest request, RestResponse response);
+        partial void InterceptResponse(RestRequest request, IRestResponse response);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
@@ -53,11 +53,11 @@ namespace ExaVault.Client
         public ApiClient()
         {
             Configuration = ExaVault.Client.Configuration.Default;
-            RestClient = new ExtendedRestClient("https://accountname.exavault.com/api/v2");
+            RestClient = new RestClient("https://accountname.exavault.com/api/v2");
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiClient" /> class
+        /// Initializes a new instance RestResponse the <see cref="ApiClient" /> class
         /// with default base path (https://accountname.exavault.com/api/v2).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
@@ -65,7 +65,7 @@ namespace ExaVault.Client
         {
             Configuration = config ?? ExaVault.Client.Configuration.Default;
 
-            RestClient = new ExtendedRestClient(Configuration.BasePath);
+            RestClient = new RestClient(Configuration.BasePath);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace ExaVault.Client
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
 
-            RestClient = new ExtendedRestClient(basePath);
+            RestClient = new RestClient(basePath);
             Configuration = Client.Configuration.Default;
         }
 
@@ -104,7 +104,7 @@ namespace ExaVault.Client
         /// Gets or sets the RestClient.
         /// </summary>
         /// <value>An instance of the RestClient</value>
-        public ExtendedRestClient RestClient { get; set; }
+        public RestClient RestClient { get; set; }
 
         // Creates and sets up a RestRequest prior to a call.
         private RestRequest PrepareRequest(
@@ -134,7 +134,7 @@ namespace ExaVault.Client
             // add file parameter, if any
             foreach(var param in fileParams)
             {
-                request.AddFile(param.Value.Name, param.Value.GetFile, param.Value.FileName, param.Value.ContentType);
+                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentLength, param.Value.ContentType);
             }
 
             if (postBody != null) // http body (model or byte[]) parameter
@@ -175,7 +175,7 @@ namespace ExaVault.Client
             request.AddHeader("User-Agent", Configuration.UserAgent);
 
             InterceptRequest(request);
-            var response = RestClient.ExecuteAsync(request).Result;
+            var response = RestClient.Execute(request);
             InterceptResponse(request, response);
 
             return (Object) response;
@@ -274,9 +274,9 @@ namespace ExaVault.Client
         /// <param name="response">The HTTP response.</param>
         /// <param name="type">Object type.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(RestResponse response, Type type)
+        public object Deserialize(IRestResponse response, Type type)
         {
-            IList<HeaderParameter> headers = response.Headers.ToList();
+            IList<Parameter> headers = response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
