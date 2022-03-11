@@ -6,7 +6,7 @@ Welcome to ExaVault's C# code library for our v2 API. Our v2 API will allow you 
 
 ## Requirements
 
-To use the SDK, you'll need Visual Studio installed as well as .NET Framework 4.0 or later.
+To use the SDK, you'll need Visual Studio installed as well as .NET Framework 4.0 or later or .Net Core since the library is based on .Net Standard.
 
 You will also need an ExaVault account, as well as an API key and access token.
 
