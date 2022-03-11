@@ -172,7 +172,7 @@ namespace ExaVault.Client
             
             RestClient.Timeout = Configuration.Timeout;
             // set user agent
-            request.AddHeader("User-Agent", Configuration.UserAgent);
+            RestClient.UserAgent = Configuration.UserAgent;
 
             InterceptRequest(request);
             var response = RestClient.Execute(request);
