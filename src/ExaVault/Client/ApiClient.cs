@@ -57,7 +57,7 @@ namespace ExaVault.Client
         }
 
         /// <summary>
-        /// Initializes a new instance RestResponse the <see cref="ApiClient" /> class
+        /// Initializes a new instance of the <see cref="ApiClient" /> class
         /// with default base path (https://accountname.exavault.com/api/v2).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
