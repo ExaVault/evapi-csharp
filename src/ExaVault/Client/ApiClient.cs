@@ -19,7 +19,6 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using RestSharp;
-using ExaVault.Api;
 
 namespace ExaVault.Client
 {
